@@ -1,0 +1,69 @@
+\documentclass{amsart}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+\newcommand{\RiemannIntable}{
+  \mathfrak{R}
+}
+
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{lemma}{Lemma}[subsubsection]
+
+\newtheorem{manualtheoreminner}{Theorem}
+\newenvironment{manualtheorem}[1]{%
+  \renewcommand\themanualtheoreminner{#1}%
+  \manualtheoreminner
+}{\endmanualtheoreminner}
+
+\author{Arthur Chen}
+\title{Pugh Chapter 4}
+\date{\today}
+
+\begin{document}
+
+\begin{manualtheorem}{1}
+If $f_n$ converges uniformly to $f$ and each $f_n$ is continuous at $x_0$, then $f$ is continuous at $x_0$.
+\end{manualtheorem}
+
+\begin{proof}
+Let $\frac{\epsilon}{3} > 0$ be arbitrary. Since the $f_n$ are continuous at $x_0$, for all $n$, there exists a $\delta_n >0$ such that for all $x \in (x_0 - \delta_n, x_0 + \delta_n)$,
+\[
+|f_n(x) - f_n(x_0)| < \frac{\epsilon}{3}
+\]
+
+Since the $f_n$ converge uniformly to $f$, for all $x$ in the $f$'s domain, there exists $N$ such that for all $n$ greater than $N$,
+\[
+|f_n(x) - f(x)| < \frac{\epsilon}{3}
+\]
+
+Choose arbitrary $n_0 \geq N$. Since $f_{n_0}$ is continuous, for all $x \in (x_0 - \delta_n, x_0 + \delta_n)$,
+\[
+|f_{n_0}(x) - f_{n_0}(x_0)| < \frac{\epsilon}{3}
+\]
+
+Using the second equation and the Triangle Inequality shows that for all $x \in (x_0 - \delta_n, x_0 + \delta_n)$,
+\[
+|f(x) - f(x_0)| < \epsilon
+\]
+
+Which shows that $f$ is continuous.
+
+\end{proof}
+
+\begin{manualtheorem}{4}
+$C_b$ is a complete metric space. That is, every Cauchy sequence converges to a limit in $C_b$.
+\end{manualtheorem}
+
+Have:
+Let $(p_n)$ be a Cauchy sequence in $C_b$. Then for all $\epsilon > 0$, there exists an $N$ such that for all $m,n \geq N$,
+\[
+|p_n - p_m| = \sup(|p_n(x) - p_m(x)|: x \in [a, b]) < \epsilon 
+\]
+
+Want:
+Let $(p_n)$ be a Cauchy sequence in $C_b$. Then there exists $p \in C_b$ such that $(p_n)$ converges to $p$. In other words, for all $\epsilon > 0$, there exists an $N$ such that for all $n \geq N$,
+\[
+|p_n - p| = \sup(|p_n(x) - p(x)|: x \in [a, b]) < \epsilon 
+\]
+
+\end{document}

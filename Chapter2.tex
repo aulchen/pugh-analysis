@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\author{Arthur Chen}
+\title{Pugh Chapter 2}
+\date{\today}
+
+\begin{document}
+
+\section*{Chapter 2 A Taste of Topology}
+
+\subsection*{Problem 6}
+
+Determine whether $d_x(p, q) = \sin |p - q|$ on $[0, \frac{\pi}{2}$ is a metric.
+
+\begin{proof}
+
+It is a metric. Positive definiteness follows from the fact that the absolute value function is a metric over $\mathbb{R}$, and sine being one-to-one over the range of possible functions. Symmetry follows for the same reason. The triangle inequality follows from sine being increasing and concave over $[0, \frac{\pi}{2})$.
+
+Specifically, let $p, r \in [0, \frac{\pi}{2})$, and without loss of generality, let $p \leq r$. If $q = p$ or $q = r$, the triangle inequality is trivial. 
+
+Let $q \notin [p, r]$. If $q > r$, then $q-p > r-p$ implies
+
+\[
+d_s(p, q) + d_s(q, r) \geq d_s(p, r) + 0 = \geq d_s(p, r)
+\]
+
+A similar result holds if $q < p$. If $q \in (p, r)$, imagine p, q, and r arranged on a line, with p at the origin. As x increases from q to r, the increase in sine is less than the corresponding increase from 0 to r-q, because sine is concave. Thus $sin(r-p) < sin(r-q) + sin(q-p)$.
+
+\end{proof}
+
+\end{document}
