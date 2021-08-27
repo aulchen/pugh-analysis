@@ -1,0 +1,6 @@
+*.aux
+*.log
+*.synctex.gz
+m104_Rudin_exs.pdf
+*.gz
+*.dvi

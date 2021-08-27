@@ -18,7 +18,7 @@
 
 \subsection*{Problem 6}
 
-Determine whether $d_x(p, q) = \sin |p - q|$ on $[0, \frac{\pi}{2}$ is a metric.
+Determine whether $d_x(p, q) = \sin |p - q|$ on $[0, \frac{\pi}{2})$ is a metric.
 
 \begin{proof}
 
@@ -33,6 +33,58 @@ d_s(p, q) + d_s(q, r) \geq d_s(p, r) + 0 = \geq d_s(p, r)
 \]
 
 A similar result holds if $q < p$. If $q \in (p, r)$, imagine p, q, and r arranged on a line, with p at the origin. As x increases from q to r, the increase in sine is less than the corresponding increase from 0 to r-q, because sine is concave. Thus $sin(r-p) < sin(r-q) + sin(q-p)$.
+
+\end{proof}
+
+\subsection*{Problem 12}
+
+Let $(p_n)$ be a sequence and $f: \mathbb{N} \rightarrow \mathbb{N}$ be a bijection. The sequence $(q_k)_{k\in\mathbb{N}}$ is a rearrangement of $(p_n)$ with $q_k = p_{f(k)}$.
+
+\subsubsection*{Part a}
+
+Are the limits of a sequence unaffected by rearrangement?
+
+The limits of a sequence are unaffected by rearrangement.
+
+Suppose that $(p_n) \rightarrow p$. Then for arbitrary $\epsilon > 0$, there exists an $n \in \mathbb{N}$ such that $i > n$ implies $d(p_i, p) < \epsilon$. This implies that there are at most finite elements of the sequence $(p_n)$ such that $d(p_n, p) \geq \epsilon$. In the rearrangement $(q_n)$, let $M$ be the smallest integer such that $f^{-1}(k) \leq n$. $M$ exists because $\{1, 2, 3\dots n\}$ is finite. Then for all $i > M$, $d(q_i, p) < \epsilon$, and thus $(q_i) \rightarrow p$.
+
+On the other hand, suppose that $(p_n)$ has no limit. Then for arbitrary $p$, there exists an $\epsilon > 0$ such that for all $n \in \mathbb{N}$, there exists $i > n$ such that $d(p_i, p) > \epsilon$. Letting $A(p)$ be the set of these points. $A$ is infinite, because $A$ being finite implies that $A$ has a maximum element.
+
+By contradiction, assume that that $(q_n)$ has a limit of $q$. Then for all $\epsilon_q > 0$, there exists $n(\epsilon_q) \in \mathbb{N}$ such that $i > n(\epsilon_q)$ implies $d(q_i, q) < \epsilon_q$.
+
+Let $\epsilon_q = \epsilon$. Then the set of points $A_q$ such that $d(q_i, q) > \epsilon$ is a subset of $\{1, 2 \dots n(\epsilon)\}$, and is thus finite. But because $(q_n)$ is a rearrangement of $(p_n)$, $A_q = A$. Thus $A_q$ is both finite and infinite, which is a contradiction.
+
+\subsubsection*{Part b}
+
+What if $f$ is an injection?
+
+At first glance, this question seems nonsensical, as for $n\in\mathbb{N}$ which are not in the preimage of $f(\mathbb{N})$, $q_n$ is undefined. If we define such points to have $q_n = 0$, this question becomes intelligible.
+
+Note that if $A$ is an arbitrary set in $\mathbb{N}$, then $f(A)$ has the same cardinality as $A$, because the restriction of $f$ on $A$ is a bijection between the two.
+
+The first result in Part a does not hold. Let $(p_n) = 1$, and let $f(x) = 2x$. The second result still holds, since the cardinality of the sets remains unchanged.
+
+\subsubsection*{Part c}
+
+What if $f$ is a surjection?
+
+The first result in Part a holds. The cardinality of the image of a function must be less than or equal to the cardinality of the domain of the function. Letting $A = \{1, 2 \dots n\}$ and $B = \{n+1, n+2, n+3, \dots\}$, $f(A)$ is finite. Since $f$ is surjective, it covers $\mathbb{N}$, which is infinite. $A + B = \mathbb{N}$ which is the domain of $f$. If $f(B)$ is finite, then $f(A) + f(B) = f(A+B) = f(\mathbb{N})$ is finite, which contradicts the assumption that $f$ is surjective. Therefore $f(B)$ is infinite, and the argument in Part a holds.
+
+The second result in Part b does not hold. Let $(p_n) = \{0, 0, 0, 1, 0, 1, 0, 1 \dots\}$ and let $f(x) = 1$ if $x$ is odd or equals 2, and $\frac{1}{2}x$ if $x$ is even and greater than 3. $f$ is clearly surjective, and $(q_n) = \{0, 1, 1, 1, 1\dots\}$ clearly has a limit of 1.
+
+\subsection*{Problem 13}
+
+Show that if $f: M\rightarrow N$ is a function such that $(p_n)$ converging in $M$ implies that $(f(p_n))$ converges in $N$, then $f$ is continuous.
+
+Note that this is almost the definition of convergence, except for the requirement that $(f(p_n)) \rightarrow f(p)$. Thus showing that $f$ is continuous is equivalent to showing the above requirement.
+
+\begin{proof}
+
+Let $p\in M$ be arbitrary. Let $(a_n)$ be the uniform sequence $a_n = p$ for all $n\in\mathbb{N}$. From the properties of $f$, $(f(a_n))$ converges in $N$, and it converges to $f(p)$. If $(a_n)$ is the only sequence in $M$ that converges to p for all p in $M$ (such as when the discrete metric is used), then $f$ satisfies the sequential convergence condition and is thus continuous.
+
+Let $(b_n)$ be an arbitrary sequence in $M$ such that $b_n \rightarrow p$. Construct the sequence $(c_n)$ such that $c_n = a_{\lceil n/2 \rceil}$ if n is odd and $c_n = b_{n/2}$ if n is even. $(c_n)$ clearly converges to $p$.
+
+By the convergence preservation condition of $f$, $(f(c_n))$ converges in $N$. The subsequence of $(f(c_n))$ consisting of the odd numbers converges to $f(p)$. All subsequences of a convergent sequence converge to the same limit as the main sequence, so $f(c_n) \rightarrow f(p)$, and since $(f(b_n))$ is a subsequence of $(f(c_n))$, $f(b_n) \rightarrow f(p)$. Thus $f$ preserves sequential convergence, and is thus continuous.
 
 \end{proof}
 
