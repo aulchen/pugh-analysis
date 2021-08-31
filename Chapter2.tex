@@ -32,7 +32,7 @@ Let $q \notin [p, r]$. If $q > r$, then $q-p > r-p$ implies
 d_s(p, q) + d_s(q, r) \geq d_s(p, r) + 0 = \geq d_s(p, r)
 \]
 
-A similar result holds if $q < p$. If $q \in (p, r)$, imagine p, q, and r arranged on a line, with p at the origin. As x increases from q to r, the increase in sine is less than the corresponding increase from 0 to r-q, because sine is concave. Thus $sin(r-p) < sin(r-q) + sin(q-p)$.
+A similar result holds if $q < p$. If $q \in (p, r)$, imagine p, q, and r arranged on a line, with p at the origin. As x increases from q to r, the increase in sine is less than the corresponding increase from 0 to r-q, because sine is concave. Thus $\sin(r-p) < \sin(r-q) + \sin(q-p)$.
 
 \end{proof}
 
@@ -87,5 +87,93 @@ Let $(b_n)$ be an arbitrary sequence in $M$ such that $b_n \rightarrow p$. Const
 By the convergence preservation condition of $f$, $(f(c_n))$ converges in $N$. The subsequence of $(f(c_n))$ consisting of the odd numbers converges to $f(p)$. All subsequences of a convergent sequence converge to the same limit as the main sequence, so $f(c_n) \rightarrow f(p)$, and since $(f(b_n))$ is a subsequence of $(f(c_n))$, $f(b_n) \rightarrow f(p)$. Thus $f$ preserves sequential convergence, and is thus continuous.
 
 \end{proof}
+
+\subsection*{Problem 14}
+
+Let $f: M\rightarrow N$ be a bijection from one metric space to another that preserves distance, i.e. for all $p, q \in M$
+
+\[
+d_N(fp, fq) = d_M(p, q)
+\]
+
+Then $f$ is called an isometry from $M$ to $N$, and $M$ and $N$ are said to be isometric, $M \equiv N$.
+
+\subsubsection*{Part a}
+
+Prove that every isometry is continuous.
+
+\begin{proof}
+
+Let $(p_n) \in M$ be an arbitrary sequence such that $p_n \rightarrow p \in M$. Then for arbitrary $\epsilon > 0$, there exists an $A \in \mathbb{N}$ such that $a > A$ implies that $d_M(p_a, p) < \epsilon$. Moving to the sequence $(f(p_n))$, by the distance preservation property we have that for the same $\epsilon > 0$, for the same $a > A$, we have $d_N(f(p_a), f(p)) < \epsilon$. Thus $f(p_n) \rightarrow f(p) \in N$, so $f$ preserves sequential convergence and is thus continuous.
+
+\end{proof}
+
+\subsubsection*{Part b}
+
+Prove that every isometry is a homeomorphism.
+
+\begin{proof}
+
+Since $f$ is a bijection, its inverse $f^{-1}$ exists. Since we proved that $f$ is continuous, if we prove that $f^{-1}$ is continuous, then $f$ is a homeomorphism between $M$ and $N$, and thus $M$ and $N$ are homeomorphic.
+
+Let $(p_n) \in N$ be arbitrary such that $p_n \rightarrow p \in N$. Then because $f$ is a bijection, $f^{-1}$, exists, and so $(f^{-1}(p_n))$ and $f^{-1}(p)$ are well defined.
+
+Suppose $f^{-1}$ is not continuous. Then $(f^{-1}(p_n))$ does not converge to $f^{-1}(p)$, and since $f$ is continuous and the inverse of $f^{-1}$, this implies that $(f(f^{-1}(p_n))) = (p_n)$ does not converge to $f(f^{-1}(p)) = p$. But this contradicts the assumption that $p_n \rightarrow p$. Thus $f^{-1}$ is continuous, and $M$ and $N$ are homeomorphic.
+
+\end{proof}
+
+\subsubsection*{Part c}
+
+Prove that $[0, 1]$ is not isometric to $[0, 2]$.
+
+\begin{proof}
+
+Consider the set of pairs of points in $[0, 2]$ that are distance 1 from each other. Because of the total ordering that $[0, 2]$ inherits from $\mathbb{R}$, these pairs can be uniquely identified by their left endpoints. Letting $A$ be the set of left endpoints of such pairs of points, $A$ takes the form $A = \{a: [a, a+1] \subset [0, 2]\} = [0, 1]$.
+
+Let $f$ be an isometry from $[0, 1]$ to $[0, 2]$. By the distance preservation condition of $f$, for all $a \in A$, the preimage of $a$ under $f$ is a point $b \in [0, 1]$ such that the interval $[b, b+1] \subset [0, 1]$. However, the only interval of such form is $[0, 1]$. $f(0)$ can not correspond to $[0, 1]$, as this violates $f$ being a function. Thus an isometry from $[0, 1]$ to $[0, 2]$ does not exist.
+
+\end{proof}
+
+\subsection*{Problem 15}
+
+Prove that isometry is an equivalence relation.
+
+\begin{proof}
+Let $M$ be isometric to $N$, and $f: M\rightarrow N$ be the isometry. For arbitrary $p, q \in N$, consider $f^{-1}(p), f^{-1}(p) \in M$. By the distance preserving condition of $f$, $d_M(f^{-1}(p), f^{-1}(q)) = d_N(f(f^{-1}(p)), f(f^{-1}(q))) = d_N(p, q)$. Thus $f^{-1}$ is a bijection that preserves distances from $N$ to $M$, and thus $N$ is isometric to $M$.
+
+Let $M$ be a metric space and $f$ be the identity function. $f$ is clearly a bijection from $M$ to $M$ and distance-preserving, so $f$ is an isometry. Therefore $M$ is isometric to itself.
+
+Let $f:M \rightarrow N$ and $g:N \rightarrow P$ be isometries. Consider their composition $H:M \rightarrow P = (g \circ f)(m)$. $H$ is the composition of bijective functions, and thus is bijective itself, and it's clear that $H$ preserves distances between $M$ and $P$. Thus $M$ is isometric to $P$.
+\end{proof}
+
+\subsection*{Problem 16}
+
+Is the perimeter of a square isometric to the circle?  Homeomorphic?
+
+Assuming that the square and the circle are embedded in $\mathbb{R}^2$ with the usual metric, the two are not isometric. If the length diagonal of the square does not equal the diameter of the circle, the proof is immediate. If the length of the diagonal of the square equals the diameter of the circle, call their common distance $d$. There are only two pairs of points on the square with distance $d$ from each other, while there are an infinite number of pairs on the circle distance $d$ from each other. Therefore $f$ can not map between them while remaining a function.
+
+The two are homeomorpic, as one can be stretched into the other.
+
+\subsection*{Problem 18}
+
+Is $\mathbb{R}$ homeomorphic to $\mathbb{Q}$?
+
+No, as the two have different cardinalities, there can not be a bijection between them.
+
+\subsection*{Problem 19}
+
+Is $\mathbb{Q}$ homeomorphic to $\mathbb{N}$?
+
+No. Let $p \in \mathbb{N}$. All convergent sequences $p_n \rightarrow p$ in $\mathbb{N}$ eventually end in repeating $p$. On the other hand, for $q \in \mathbb{Q}$, there exist sequences $(q_n), (r_n) \in \mathbb{Q}$ such that for all $n$, $q_n \neq r_n \neq q$.
+
+Suppose that $f$ is a homeomorphism from $\mathbb{Q}$ to $\mathbb{N}$ such that $f(q) = p \in \mathbb{N}$.  Since $f$ is bicontinuous, it preserves sequential convergence. Thus $(f(q_n))$ and $(f(r_n))$ both converge to $p$. Because of the nature of continuous sequences in $\mathbb{N}$, there exists an $N \in \mathbb{N}$ such that $n > N$ implies that $f(q_n) = f(r_n) = p$. But this implies that $f$ is not injective, and thus not a bijection, which contradicts the assumption that $f$ is a homeomorphism. Thus there exists no homeomorphism between $\mathbb{Q}$ and $\mathbb{N}$.
+
+\subsection*{Problem 20}
+
+What function is a homeomorphism from $(-1, 1)$ to $\mathbb{R}$? Is every open interval homeomorphic to $(0, 1)$?
+
+The function $\tan(\frac{\pi}{2}x$ is a homeomorphism from $(-1, 1)$ to $\mathbb{R}$. It is bijective, continuous, and its inverse $\frac{2}{\pi}\tan^{-1}(x)$ is continuous.
+
+Every open interval $(a, b)$ is homeomorphic to $(0, 1)$. The function $\frac{x-a}{b-a}$ is bijective and bicontinuous.
 
 \end{document}
