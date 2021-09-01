@@ -176,4 +176,74 @@ The function $\tan(\frac{\pi}{2}x$ is a homeomorphism from $(-1, 1)$ to $\mathbb
 
 Every open interval $(a, b)$ is homeomorphic to $(0, 1)$. The function $\frac{x-a}{b-a}$ is bijective and bicontinuous.
 
+\subsection*{Problem 22}
+
+If every closed and bounded subset of a metric space $M$ is compact, does it follow that $M$ is complete?
+
+No. Let $M = {x\in \mathbb{R}: x > 0}$ with the usual metric. The closed and bounded subsets of $M$ are compact, by the same reasoning as in $\mathbb{R}$. However, the Cauchy sequence $(p_n) = \frac{1}{n}$ has no limit in $M$.
+
+\subsection*{Problem 24}
+
+For which intervals $[a, b]$ in $\mathbb{R}$ is the intersection $[a, b]\cup \mathbb{Q}$ a clopen subset of the metric space $\mathbb{Q}$?
+
+The intervals where $a \leq b$ and $a, b$ are irrational numbers. Since $\mathbb{Q}$ is a metric subspace of $\mathbb{R}$, it inherits its open and closed sets from $\mathbb{R}$. Since all intervals of the form $[a, b]$ are closed in $\mathbb{R}$, their intersection with $\mathbb{Q}$ is closed.
+
+These intersections are also open. In $\mathbb{R}$, the interval $(a, b)$ is open, and because $a, b$ are irrational, $a, b \notin \mathbb{Q}$, so $[a, b]\cup\mathbb{Q} = (a, b)\cup\mathbb{Q}$. Thus $[a, b]\cup\mathbb{Q}$ is open.
+
+The above does not hold if $a$ or $b$ is rational. Without any loss of generality, suppose $a$ is rational. Then $a \in [a, b]\cup\mathbb{Q}$, and there is no open ball that contains $a$ and is a subset of  $[a, b]\cup\mathbb{Q}$. Thus $[a, b]\cup\mathbb{Q}$ is not open.
+
+\subsection*{Problem 28}
+
+A map $f: M \rightarrow N$ is open if $U$ being an open subset of $M$ implies that $f(U)$ is an open subset of $N$.
+
+\subsubsection*{Part a}
+If $f$ is open, is it continuous?
+
+No. Let $f$ be the floor function from $\mathbb{R}$ to $\mathbb{Z}$. Every set in $Z$ is open, since singleton sets are open in $Z$ and the union of open sets is open, whether finite or infinite. However, the floor function is not continuous, as the example of $p_n = 1 - \frac{1}{n}$ shows.
+
+\subsubsection*{Part b}
+If $f$ is a homeomorphism, is it open?
+
+Yes. Let $f: M \rightarrow N$. Let $A \subset M$ be an arbitrary open set, and $f(A) \subset N$ be its image. Because $f$ is a bijection, it has a continuous inverse function $f^{-1}$. Since $f(A)$ is the preimage of $A$, $f^{-1}(f(A)) = A$ being open implies $f(A)$ is open. Thus open sets are mapped to open sets, and $f$ is open.
+
+\subsubsection*{Part c}
+If $f$ is an open, continuous bijection, is it a homeomorphism?
+
+Yes. By similar reasoning to Part b, let $A \subset M$ be an arbitrary open set. Because $f$ is a bijection, $f^{-1}$ exists, and $A$ is the image of some set $f(A) \subset N$. Because $f$ is open, $f(A)$ is open. Thus the preimage of open sets of $f^{-1}$ is an open set, and $f^{-1}$ is continuous. Since $f$ is a bicontinuous bijection, it is a homeomorphism.
+
+\subsubsection*{Part d}
+If $f: \mathbb{R} \rightarrow \mathbb{R}$ is a continuous surjection, must it be open?
+
+No. Let $f$ be defined as $f(x) = x \text{ if } x\in\mathbb{Z}$. For $x \in \mathbb{R} - \mathbb{Z}$, define $f$ as
+
+\[
+f(x) = 
+\begin{cases}
+x & x \in \mathbb{Z} \\
+\lfloor x \rfloor + 2(x \text{ mod }1) & x \text{ mod }1 \in (0, \frac{1}{2}) \\
+\lceil x \rceil & x \text{ mod }1 \in [\frac{1}{2}, 1)
+\end{cases}
+\]
+
+$f(x)$ is essentially a piecewise staircase with a slope of 2 on $[0, \frac{1}{2})$ pieces and a slope of 0 on $(\frac{1}{2}, 1)$ pieces. The function is continuous and surjective, but not open. For example, the open set $(\frac{1}{2}, \frac{3}{4})$ maps to the singleton ${1}$, which is not open.
+
+\subsubsection*{Part e}
+If $f: \mathbb{R} \rightarrow \mathbb{R}$ is a continuous, open surjection, must it be a homeomorphism?
+
+Yes. Note that if $f$ is injective, then $f$ is a bijection and Part c implies that it is a homeomorphism.
+
+Suppose that $f$ is not injective. Then there exists $a, b \in \mathbb{R}, a \neq b$ such that $f(a) = f(b)$. Without loss of generality, let $a < b$. Then by continuity, $f$ achieves a maximum value on $[a, b]$.
+
+If $f(a) = M = m$, then $f$ is constant on $[a, b]$. This contradicts the assumption that $f$ is open. For example, the image of the open ball $(a + \frac{b-a}{4}, b - \frac{b-a}{4})$ is a singleton, and thus not open.
+
+If $f(a) < M$, then there exists $c \in (a, b)$ such that $f(c) = M$. Thus there exists $\delta = \min(\frac{c-a}{2}, \frac{b-a}{2})>0$. Consider the open ball $(c-\delta, c+\delta)$ and its image under $f$. Because $f$ is bounded, the image is bounded, and because $f$ is continuous, the image obtains all intermediate values. Thus $f((c-\delta, c+\delta))$ is an interval. Let $x, y$ be the left and right endpoints of the interval, respectively. 
+
+Since $f(c)$ is the maximum of $f$, the right endpoint of the interval is closed. Thus $f((c-\delta, c+\delta))$ has the form $(x, y]$ or $[x, y]$, neither of which is open. Thus, the image of an open set under $f$ is not open, which contradicts the assumption that $f$ is open. A similar argument holds for the minimum. This, $f$ is injective, bijective, and a homeomorphism.
+
+\subsubsection*{Part f}
+
+What happens in Part e if $\mathbb{R}$ is replaced by the unit circle $S^1$?
+
+The result does not hold. Parameterize $S^1$ by the angle $\theta = \arctan(x)$, and let $f: S^1 \rightarrow S^1$ map a point $x$ to the corresponding point at $2\theta$. $f$ is obviously surjective, and it is continuous because it preserves sequential limits. It is open because open sets in $S^1$ consist of open line segments or their unions, and the image of line segments is either another union of line segments, or the entire metric space $S^1$. However, $f$ is not injective. Letting $a$ be the point at $\theta=0$ and $b$ the point at $\theta = \pi$, $a\neq b$, but $f(a) = f(b)$.
+
 \end{document}
