@@ -276,9 +276,7 @@ Let $d$ be a metric on $M$. By the properties of metrics, $d(a, b) = d(b, a) = c
 \subsection*{Problem 31}
 Prove the following.
 \subsubsection*{Part a}
-If $U$ is an open subset of $\mathbb{R}$ then it consists of countably many disjoint intervals $U = \cup U_i$. (Unbounded intervals $(-\infty, b)$, $(a, \infty)$, and $(-\infty, \infty)$ are allowed).
-
-First, we will show that an open set consists of the (perhaps uncountable) disjoint union of open intervals. Let $U$ be open. Then for all $u \in U$, there exists an $r_u > 0$ such that the open ball $(u-r_u, u+r_u) \subset U$.
+If $U$ is an open subset of $\mathbb{R}$ then it consists of countably many disjoint intervals $U = \sqcup U_i$. (Unbounded intervals $(-\infty, b)$, $(a, \infty)$, and $(-\infty, \infty)$ are allowed).
 
 \begin{lemma}
 The bounded, connected sets on $\mathbb{R}$ are intervals.
@@ -288,10 +286,42 @@ Let $A$ be bounded and connected. By connectedness, it has the intermediate valu
 \end{lemma}
 
 \begin{lemma}
+\label{OverlappingIntervalsAreIntervals}
 Let $A$ and $B$ be overlapping bounded open intervals. Then $A \cup B$ is an open interval.
 \begin{proof}
 $A$ and $B$ are connected and share a common point, so $A \cup B$ is connected. Since $A \cup B$ is bounded, $A \cup B$ is an interval. Since $A \cup B$ is open, $A \cup B$ is an open interval.
 \end{proof}
 \end{lemma}
+
+\begin{corollary}
+\label{BoundedIntervalsBecomeDisjoint}
+Let ${A_i}$ be a collection of bounded open intervals of $\mathbb{R}$. Then there exists disjoint open intervals ${B_i}$ such that $\cup A_i = \cup B_i$
+\begin{proof}
+If the $A_i$ are disjoint, the proof is obvious. If not, then there exist $i, j$ such that $A_i$ and $A_j$ overlap. By Lemma \ref{OverlappingIntervalsAreIntervals}, $B_i = A_i \cup A_j$ is an open interval. Substitute $A_i$ and $A_j$ with $B_i$, and repeat while there are still overlapping intervals in $A$.
+\end{proof}
+\end{corollary}
+
+\begin{lemma}
+\label{OpenSetsAreUnionsOfOpenIntervals}
+If $A$ is an open subset in $\mathbb{R}$, then there exist bounded open intervals $A_i$ such that $\cup A_i = A$.
+\begin{proof}
+Because $A$ is open, for all $a \in A$, there exists $r_a > 0$ such that $(a-r_a, a+r_a) \subset A$. Do this for all points in $A$.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+Let $\epsilon > 0$. Let $A_i$ be a collection of disjoint open intervals such that $\text{length}(A_i) > \epsilon$ for all $i$. Then $A_i$ is countable.
+\begin{proof}
+TODO.
+\end{proof}
+\end{lemma}
+
+\begin{theorem}
+If $A$ is an open subset of $\mathbb{R}$, then it consists of countably many disjoint intervals $A = \sqcup A_i$.
+
+\begin{proof}
+By Lemma \ref{OpenSetsAreUnionsOfOpenIntervals} and Corollary\ref{BoundedIntervalsBecomeDisjoint}, there exists a collection of disjoint (possibly unbounded) open intervals $A_i$ such that $A = \sqcup A_i$.
+\end{proof}
+\end{theorem}
 
 \end{document}
