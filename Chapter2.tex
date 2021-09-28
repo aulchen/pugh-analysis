@@ -312,15 +312,30 @@ Because $A$ is open, for all $a \in A$, there exists $r_a > 0$ such that $(a-r_a
 \begin{lemma}
 Let $\epsilon > 0$. Let $A_i$ be a collection of disjoint open intervals such that $\text{length}(A_i) > \epsilon$ for all $i$. Then $A_i$ is countable.
 \begin{proof}
-TODO.
+Let $B_i$ be the intervals of $A_i$ dilated by a factor of $1/\epsilon$. That is, if $A_i = (x, y)$, $B_i = (x/\epsilon, y/\epsilon)$. Because all of the $A_i$s have length greater than $1/\epsilon$, the $B_i$ have length greater than 1. Thus the $B_i$ can be uniquely identified with the natural numbers by associating each $B_i$ with the floor of its left endpoint. Since the natural numbers are countable, $B_i$ is at most countable, and there exists a homeomorphism between the $A_i$ and $B_i$, the $A_i$ are countable.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+Let $A$ be an open set in $\mathbb{R}$, and let $A = B \sqcup C$. If $B$ is open, then $C$ is open. (Furthermore, $B$ and $C$ are disconnected, but I don't know if I need that right now).
+\begin{proof}
+TODO
 \end{proof}
 \end{lemma}
 
 \begin{theorem}
-If $A$ is an open subset of $\mathbb{R}$, then it consists of countably many disjoint intervals $A = \sqcup A_i$.
+If $A$ is an open subset of $\mathbb{R}$, then it consists of disjoint open intervals $A = \sqcup A_i$ (unbounded open intervals are acceptable).
 
 \begin{proof}
-By Lemma \ref{OpenSetsAreUnionsOfOpenIntervals} and Corollary\ref{BoundedIntervalsBecomeDisjoint}, there exists a collection of disjoint (possibly unbounded) open intervals $A_i$ such that $A = \sqcup A_i$.
+If $A$ is bounded, then by Lemma \ref{OpenSetsAreUnionsOfOpenIntervals}, $A$ can be expressed as the union of open intervals, and by Corollary \ref{BoundedIntervalsBecomeDisjoint}, $A$ can be expressed as the disjoint union of bounded open intervals.
+
+If $A$ is unbounded and $A = \mathbb{R}$, the proof is trivial. Suppose $A$ is unbounded in the positive direction. For simplicity, suppose that $A$ is bounded in the negative direction. Since $A$ does not equal $\mathbb{R}$, $A^C$ is nonempty, and by $A$ being unbounded in the positive direction, $A^C$ is bounded above. Thus $A^C$ has a least upper bound. Denoting the bound as a, $(a, \infty) \subset A$. Because $A$ is open, $A^C$ is closed, and thus $a \in A^C$.
+
+Let $C = A-(a, \infty)$. For all $c \in C$, $c < a$. If $c = a$, then $C \subset A$ implies $c \in A$ contradicts that $a \in A^C$. If $c > a$, then $c \in C$ and $c \in (a, \infty)$ is a contradiction because by construction $C$ and $(a, \infty)$ are disjoint.
+
+USE THE LEMMA TO SHOW THAT THIS IMPLIES THAT C IS OPEN. YOU STILL HAVEN'T SHOWN THAT YET.
+
+Thus $C$ is a bounded open subset of $\mathbb{R}$, and can be expressed as the disjoint union of bounded open intervals $C_i$. Adding back in $(a, \infty)$ gives $A$ as the disjoint union of open intervals $A_i$. The reverse, and the case when $A$ is unbounded in both directions, follow similarly.
 \end{proof}
 \end{theorem}
 
