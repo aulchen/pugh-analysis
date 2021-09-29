@@ -295,10 +295,12 @@ $A$ and $B$ are connected and share a common point, so $A \cup B$ is connected. 
 
 \begin{corollary}
 \label{BoundedIntervalsBecomeDisjoint}
-Let ${A_i}$ be a collection of bounded open intervals of $\mathbb{R}$. Then there exists disjoint open intervals ${B_i}$ such that $\cup A_i = \cup B_i$
+Let ${A_i}$ be a collection of bounded open intervals of $\mathbb{R}$. Then there exists disjoint open intervals ${B_i}$ such that $\cup A_i = \sqcup B_i$
 \begin{proof}
 If the $A_i$ are disjoint, the proof is obvious. If not, then there exist $i, j$ such that $A_i$ and $A_j$ overlap. By Lemma \ref{OverlappingIntervalsAreIntervals}, $B_i = A_i \cup A_j$ is an open interval. Substitute $A_i$ and $A_j$ with $B_i$, and repeat while there are still overlapping intervals in $A$.
 \end{proof}
+
+(I'm not sure that this proof is rigorous. It seems like I'm implicitly assuming that $A_i$ is countable, but I don't know enough to be sure.)
 \end{corollary}
 
 \begin{lemma}
@@ -310,33 +312,53 @@ Because $A$ is open, for all $a \in A$, there exists $r_a > 0$ such that $(a-r_a
 \end{lemma}
 
 \begin{lemma}
+\label{IntervalsGreaterThanEpsilonAreCountable}
 Let $\epsilon > 0$. Let $A_i$ be a collection of disjoint open intervals such that $\text{length}(A_i) > \epsilon$ for all $i$. Then $A_i$ is countable.
 \begin{proof}
 Let $B_i$ be the intervals of $A_i$ dilated by a factor of $1/\epsilon$. That is, if $A_i = (x, y)$, $B_i = (x/\epsilon, y/\epsilon)$. Because all of the $A_i$s have length greater than $1/\epsilon$, the $B_i$ have length greater than 1. Thus the $B_i$ can be uniquely identified with the natural numbers by associating each $B_i$ with the floor of its left endpoint. Since the natural numbers are countable, $B_i$ is at most countable, and there exists a homeomorphism between the $A_i$ and $B_i$, the $A_i$ are countable.
 \end{proof}
 \end{lemma}
 
-\begin{lemma}
-Let $A$ be an open set in $\mathbb{R}$, and let $A = B \sqcup C$. If $B$ is open, then $C$ is open. (Furthermore, $B$ and $C$ are disconnected, but I don't know if I need that right now).
-\begin{proof}
-TODO
-\end{proof}
-\end{lemma}
-
 \begin{theorem}
+\label{OpenSetsAreUnionOfDisjointIntervals}
 If $A$ is an open subset of $\mathbb{R}$, then it consists of disjoint open intervals $A = \sqcup A_i$ (unbounded open intervals are acceptable).
 
 \begin{proof}
 If $A$ is bounded, then by Lemma \ref{OpenSetsAreUnionsOfOpenIntervals}, $A$ can be expressed as the union of open intervals, and by Corollary \ref{BoundedIntervalsBecomeDisjoint}, $A$ can be expressed as the disjoint union of bounded open intervals.
 
-If $A$ is unbounded and $A = \mathbb{R}$, the proof is trivial. Suppose $A$ is unbounded in the positive direction. For simplicity, suppose that $A$ is bounded in the negative direction. Since $A$ does not equal $\mathbb{R}$, $A^C$ is nonempty, and by $A$ being unbounded in the positive direction, $A^C$ is bounded above. Thus $A^C$ has a least upper bound. Denoting the bound as a, $(a, \infty) \subset A$. Because $A$ is open, $A^C$ is closed, and thus $a \in A^C$.
+If $A$ is unbounded and $A = \mathbb{R}$, the proof is trivial. Suppose $A$ is unbounded in the positive direction. For simplicity, suppose that $A$ is bounded in the negative direction. Since $A$ does not equal $\mathbb{R}$, $A^C$ is nonempty, and by $A$ being unbounded in the positive direction, $A^C$ is bounded above. Thus $A^C$ has a least upper bound. Denote the l.u.b. of $A^C$ as a. By definition, $(a, \infty) \subset A$. Because $A$ is open, $A^C$ is closed, and since $a$ is a limit point of $A^C$, $a \in A^C$.
 
-Let $C = A-(a, \infty)$. For all $c \in C$, $c < a$. If $c = a$, then $C \subset A$ implies $c \in A$ contradicts that $a \in A^C$. If $c > a$, then $c \in C$ and $c \in (a, \infty)$ is a contradiction because by construction $C$ and $(a, \infty)$ are disjoint.
+Let $C = A-(a, \infty)$. For all $c \in C$, $c < a$. If $c = a$, then $C \subset A$ implies $c \in A$, which contradicts that $a \in A^C$. If $c > a$, then $c \in C$ and $c \in (a, \infty)$, which is a contradiction because by construction $C$ and $(a, \infty)$ are disjoint. Thus $C$ is bounded above. $C$ is bounded below because $C \subset A$ and $A$ is bounded below. Thus $C$ is bounded.
 
-USE THE LEMMA TO SHOW THAT THIS IMPLIES THAT C IS OPEN. YOU STILL HAVEN'T SHOWN THAT YET.
+$C$ is open. $C^C = A^C \cup (a, \infty) = A^C \cup [a, \infty)$ because $a \in A^C$. Thus $C^C$ is the finite union of closed sets, and is closed.
 
-Thus $C$ is a bounded open subset of $\mathbb{R}$, and can be expressed as the disjoint union of bounded open intervals $C_i$. Adding back in $(a, \infty)$ gives $A$ as the disjoint union of open intervals $A_i$. The reverse, and the case when $A$ is unbounded in both directions, follow similarly.
+Thus $C$ is a bounded open subset of $\mathbb{R}$, and can be expressed as the disjoint union of bounded open intervals $C_i$. Adding back in $(a, \infty)$ gives $A$ as the disjoint union of open intervals $A_i$. The cases where $A$ is bounded above and unbounded below, and case when $A$ is unbounded in both directions, follow similarly.
 \end{proof}
 \end{theorem}
+
+\begin{lemma}
+Let $A_i$ be a collection of disjoint intervals in $\mathbb{R}$. Then there is at most one unbounded interval in the positive direction, and and most one (possibly the same) unbounded interval in the negative direction.
+\begin{proof}
+Let $A_m$ and $A_n$ be distinct intervals in $A$ that are unbounded above. Because they are intervals, they are non-empty, so there exist $m \in A_m$ and $n \in A_n$. By the trichotomy property on $\mathbb{R}$, either $m = n$, $m > n$, or $n > m$. In any of the cases, one of $m$ or $n$ is in both sets, violating the assumption that $A_i$ is disjoint.
+\end{proof}
+\end{lemma}
+
+\begin{theorem}
+\label{DisjointOpenIntervalsAreCountable}
+If $A_i$ is a collection of disjoint open intervals in $\mathbb{R}$, then $A_i$ is countable.
+\begin{proof}
+Create subcollections $B_i$, where $i = 0, 1, 2 \dots \mathbb{N}$. Let $B_0$ consist of the unbounded intervals of $A_i$, of which there are at most 2, $B_1$ the intervals of $A_i$ with finite length greater than 1, and $B_i$ the intervals of $A_i$ with length greater than $1/ i$ and less than or equal to $1/(i-1)$. By Lemma \ref{IntervalsGreaterThanEpsilonAreCountable}, $B_i$ contains at most countable many intervals. Continuing this process for all $\mathbb{N}$, we see that the $B_i$s contains all the intervals of $A_i$. Because $B_i$ contains a countable number of sets, each with a countable number of elements, $B_i$, and thus $A_i$ is countable.
+\end{proof}
+\end{theorem}
+
+\begin{corollary}
+If $U$ is an open subset of $\mathbb{R}$ then it consists of countably many disjoint intervals $U = \sqcup U_i$. (Unbounded intervals $(-\infty, b)$, $(a, \infty)$, and $(-\infty, \infty)$ are allowed).
+\begin{proof}
+Follows immediately from Theorems \ref{OpenSetsAreUnionOfDisjointIntervals} and \ref{DisjointOpenIntervalsAreCountable}.
+\end{proof}
+\end{corollary}
+
+\subsubsection*{Part b}
+Prove that the intervals $U_i$ are uniquely determined by $U$. In other words, there is only one way to express $U$ as a disjoint union of open intervals.
 
 \end{document}
