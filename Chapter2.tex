@@ -288,10 +288,11 @@ Let $A$ be bounded and connected. By connectedness, it has the intermediate valu
 
 \begin{corollary}
 \label{OpenConnectedSetsAreOpenIntervals}
-The bounded, connected, open sets on $\matbb{R}$ are open intervals.
+The bounded, connected, open sets on $\mathbb{R}$ are open intervals.
 \begin{proof}
 The connected sets on $\mathbb{R}$ are intervals, and the (topologically) open intervals are (colloquial) open intervals.
 \end{proof}
+\end{corollary}
 
 \begin{lemma}
 \label{OverlappingIntervalsAreIntervals}
@@ -303,7 +304,7 @@ $A$ and $B$ are connected and share a common point, so $A \cup B$ is connected. 
 
 \begin{corollary}
 \label{BoundedIntervalsBecomeDisjoint}
-Let ${A_i}$ be a collection of bounded open intervals of $\mathbb{R}$. Then there exists disjoint open intervals ${B_i}$ such that $\cup A_i = \sqcup B_i$
+Let ${A_i}$ be a collection of disjoint bounded open intervals of $\mathbb{R}$. Then there exists disjoint open intervals ${B_i}$ such that $\cup A_i = \sqcup B_i$
 \begin{proof}
 If the $A_i$ are disjoint, the proof is obvious. If not, then there exist $i, j$ such that $A_i$ and $A_j$ overlap. By Lemma \ref{OverlappingIntervalsAreIntervals}, $B_i = A_i \cup A_j$ is an open interval. Substitute $A_i$ and $A_j$ with $B_i$, and repeat while there are still overlapping intervals in $A$.
 \end{proof}
@@ -372,23 +373,17 @@ Prove that the intervals $U_i$ are uniquely determined by $U$. In other words, t
 I will assume that the $U_i$ have to be open, otherwise the statement is false. For example, $(0, 1)$ can also be written as $(0, .5] \cup (.5, 1)$.
 
 \begin{lemma}
-\label{DisjointOpenIntervalsAreDisconnected}
-If two open intervals in $\mathbb{R}$ are disjoint, then they are disconnected.
+\label{EndpointsOfDisjointUnionsAreOutside}
+Let $A_i$ be a disjoint union of open intervals and $A = \sqcup A_i$. Let $A_k$ be a particular interval with left and right endpoints $b$ and $c$, respectively. Then $b, c \in A^C$.
 \begin{proof}
-Let $A$ and $B$ be two disjoint open intervals and let $X = A \cup B$. $A$ is open in $X$ because $A$ is open in $\mathbb{R}$ and $X$ is a metric subset of $\mathbb{R}$. Similarly, $B$ is open in $X$. $A^C$ in $X$ is $B$, so $A$ is closed in $X$. Thus $A$ is clopen in $X$, and since $B$ is nonempty, $A$ is a clopen proper subset of $X$, and thus $X$ is disconnected.
+Suppose $b \in A$. Since $b \in A_k^C$, $b$ must be in a different open interval. Denote the open interval $A_j$. Since $A_j$ is open, there exists $r > 0$ such that $(b-r, b+r) \subset A_j$. Consider $b-r/2$. $b-r/2 < b$, so $b-r/2 \in A_k$. $b-r/2 \in (b-r, b+r) \subset A_j$, so $b-r/2 \in A_j$. Thus $A_k$ and $A_j$ intersect, which contradicts the assumption that the $A_i$ are disjoint. Thus $b \in A^C$. The exact same argument holds for $c$.
 \end{proof}
+\end{lemma}
 
-We will prove the main result via induction. First, the base case.
+Now to prove the theorem. Let $A$ be an open subset and $B_i$ and $C_j$ be disjoint collections of open intervals such that $A = \sqcup B_i = \sqcup C_j$. If $A$ is unbounded in both directions, the proof is trivial.
 
-\begin{lemma}
-\label{OpenIntervalIsOpenInterval}
-If $A$ is a (possibly unbounded) open interval, then can be uniquely represented by the disjoint union of open intervals $A_i$ such that $A = \sqcup A_i$. Namely, the only element of $A_i$ is $A$ itself.
-\begin{proof}
-$A_i$ can not be empty because $A$ is not the null set. The size of $A_i$ can not be greater than 1. For if there are two or more elements in $A_i$, $\sqcup A_i$ is disconnected by Lemma \ref{DisjointOpenIntervalsAreDisconnected}, while $A$ is connected. Thus $A_i$ has only one element, and it's obvious that that element is $A$ itself.
-\end{proof}
+Consider an arbitrary point $a \in A$. Because the $B_i$'s are disjoint and the $C_j$'s are disjoint, there exist unique $B_a$ and $C_a$ such that $a \in B_a$ and $a \in C_a$.
 
-Now, to prove the main theorem. Let $A$ be an open subset of $\mathbb{R}$. By Part a, 
-
-\end{proof}
+Because $A$ is not equal to $\mathbb{R}$, it has an upper or lower bound. Suppose $A$ has an upper bound. Then $B_a$ and $C_a$ have right endpoints $b$ and $c$. We claim that $b = c$. If $b < c$, then 
 
 \end{document}
