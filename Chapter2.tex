@@ -279,11 +279,19 @@ Prove the following.
 If $U$ is an open subset of $\mathbb{R}$ then it consists of countably many disjoint intervals $U = \sqcup U_i$. (Unbounded intervals $(-\infty, b)$, $(a, \infty)$, and $(-\infty, \infty)$ are allowed).
 
 \begin{lemma}
+\label{ConnectedSetsAreIntervals}
 The bounded, connected sets on $\mathbb{R}$ are intervals.
 \begin{proof}
 Let $A$ be bounded and connected. By connectedness, it has the intermediate value property. By boundedness, it has a l.u.b. and g.l.b. Letting $a$ be the g.l.b. and $b$ be the l.u.b. and using the intermediate value property, $(a, b) \subset A$. By the l.u.b., $A \subset [a, b]$. Thus $A$ is an interval. The reverse was shown in the book.
 \end{proof}
 \end{lemma}
+
+\begin{corollary}
+\label{OpenConnectedSetsAreOpenIntervals}
+The bounded, connected, open sets on $\matbb{R}$ are open intervals.
+\begin{proof}
+The connected sets on $\mathbb{R}$ are intervals, and the (topologically) open intervals are (colloquial) open intervals.
+\end{proof}
 
 \begin{lemma}
 \label{OverlappingIntervalsAreIntervals}
@@ -360,5 +368,27 @@ Follows immediately from Theorems \ref{OpenSetsAreUnionOfDisjointIntervals} and 
 
 \subsubsection*{Part b}
 Prove that the intervals $U_i$ are uniquely determined by $U$. In other words, there is only one way to express $U$ as a disjoint union of open intervals.
+
+I will assume that the $U_i$ have to be open, otherwise the statement is false. For example, $(0, 1)$ can also be written as $(0, .5] \cup (.5, 1)$.
+
+\begin{lemma}
+\label{DisjointOpenIntervalsAreDisconnected}
+If two open intervals in $\mathbb{R}$ are disjoint, then they are disconnected.
+\begin{proof}
+Let $A$ and $B$ be two disjoint open intervals and let $X = A \cup B$. $A$ is open in $X$ because $A$ is open in $\mathbb{R}$ and $X$ is a metric subset of $\mathbb{R}$. Similarly, $B$ is open in $X$. $A^C$ in $X$ is $B$, so $A$ is closed in $X$. Thus $A$ is clopen in $X$, and since $B$ is nonempty, $A$ is a clopen proper subset of $X$, and thus $X$ is disconnected.
+\end{proof}
+
+We will prove the main result via induction. First, the base case.
+
+\begin{lemma}
+\label{OpenIntervalIsOpenInterval}
+If $A$ is a (possibly unbounded) open interval, then can be uniquely represented by the disjoint union of open intervals $A_i$ such that $A = \sqcup A_i$. Namely, the only element of $A_i$ is $A$ itself.
+\begin{proof}
+$A_i$ can not be empty because $A$ is not the null set. The size of $A_i$ can not be greater than 1. For if there are two or more elements in $A_i$, $\sqcup A_i$ is disconnected by Lemma \ref{DisjointOpenIntervalsAreDisconnected}, while $A$ is connected. Thus $A_i$ has only one element, and it's obvious that that element is $A$ itself.
+\end{proof}
+
+Now, to prove the main theorem. Let $A$ be an open subset of $\mathbb{R}$. By Part a, 
+
+\end{proof}
 
 \end{document}
