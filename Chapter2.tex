@@ -384,6 +384,20 @@ Now to prove the theorem. Let $A$ be an open subset and $B_i$ and $C_j$ be disjo
 
 Consider an arbitrary point $a \in A$. Because the $B_i$'s are disjoint and the $C_j$'s are disjoint, there exist unique $B_a$ and $C_a$ such that $a \in B_a$ and $a \in C_a$.
 
-Because $A$ is not equal to $\mathbb{R}$, it has an upper or lower bound. Suppose $A$ has an upper bound. Then $B_a$ and $C_a$ have right endpoints $b$ and $c$. We claim that $b = c$. If $b < c$, then 
+Letting $x$ be the right endpoint of $B_a$ and $y$ the right endpoint of $C_a$, $x = y$. Suppose it's not. Without loss of generality, let $x < y$. Then $x \in A$ because $x \in C_a$, but $x \in A^C$ because $x$ is the right endpoint of $B_a \subset A$, and so $x \in B_a$. Repeating this for $x > y$ shows that $x = y$.
+
+A similar argument holds for the left endpoint. Repeat this argument for all points in $A$ to show that for all $a \in A$, the endpoints of $B_a$ equal the endpoints of $C_a$. Thus, $B_a = C_a$ and the two collections $B$ and $C$ are equal.
+
+\subsubsection*{Part c}
+
+If $U, V \subset \mathbb{R}$ are both open, so $U = \sqcup U_i$ and $V = \sqcup V_j$ where $U_i$ and $V_j$ are open intervals, show that $U$ and $V$ are homeomorphic if and only if there are equally many $U_i$ and $V_j$.
+
+\begin{proof}
+
+For the forward, suppose there are not equally many $U_i$ and $V_j$.
+
+For the reverse, construct a homeomorphism as follows. By Part a above, $U_i$ and $V_j$ are countable. Label the sets. Let the homeomorphism be $f$ such that each $U_k$ is shifted and dilated so that $f(U_k) = V_k$. $f$ is trivially a bijection. Since on each segment, $f$ is a non-singular linear transformation, $f$ and $f^{-1}$ are continuous.
+
+\end{proof}
 
 \end{document}
