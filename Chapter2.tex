@@ -8,6 +8,8 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
 \author{Arthur Chen}
 \title{Pugh Chapter 2}
 \date{\today}
@@ -394,10 +396,44 @@ If $U, V \subset \mathbb{R}$ are both open, so $U = \sqcup U_i$ and $V = \sqcup 
 
 \begin{proof}
 
-For the forward, suppose there are not equally many $U_i$ and $V_j$.
+Let $m$ be the number of element in $U_i$, and $n$ be the number of elements in $V_j$. Note that $m, n$ may be infinity.
+
+For the forward, suppose there are not equally many $U_i$ and $V_j$. Without loss of generality, let $m < n$. Let $f$ be a homeomorphism between $U_i$ and $V_j$. For arbitrary $k \in 1, 2 \dots m$, consider the restriction of $f$ on $U_k$. Because $U_k$ is an interval, it is connected, and so its image is connected. Repeating this for all $U_i$ shows that $V$ is the union of at most $m$ connected sets. However, $V$ consists of $n$ connected intervals, so $V$ can not be the image of $U$. Thus the homeomorphism $f$ does not exist. A similar argument in reverse if $m > n$.
 
 For the reverse, construct a homeomorphism as follows. By Part a above, $U_i$ and $V_j$ are countable. Label the sets. Let the homeomorphism be $f$ such that each $U_k$ is shifted and dilated so that $f(U_k) = V_k$. $f$ is trivially a bijection. Since on each segment, $f$ is a non-singular linear transformation, $f$ and $f^{-1}$ are continuous.
-
 \end{proof}
+
+\subsection*{Problem 33}
+
+\subsubsection*{Part a}
+Find a metric space in which the boundary of $M_r p$ is not equal to the sphere of radius $r$ at $p$, $\partial(M_r p) \neq {x \in M: d(x, p) = r}$.
+
+Consider the discrete metric on a space with at least two elements. Note that since all sets under the discrete metric are clopen, the boundry of all sets is the null set. However, the sphere of radius 0 centered at $p$ is $p$ itself, and the sphere of radius 1 centered at $p$ is the entire metric space, neither of which are the null set.
+
+\subsubsection*{Part b}
+
+Need the boundary be contained in the sphere?
+
+Yes. Suppose not. For an arbitrary set $A$ in a metric space $M$, $\partial A \subset \overbar{A}$. Thus the boundary not being contained in the sphere implies that $CB_r p = \{x \in M| d(x, p) \leq r\}$ is a proper subset of $\overbar{M_r p}$, so that the boundary can potentially be outside of $CB_r p$. Because $\overbar{M_r p}$ is the smallest closed set that contains $M_r p$ and $M_r p \subset CB_r p$, $CB_r p$ being a proper subset of $\bar{M_r p}$ implies that $CB_r p$ is not closed. This implies that $CB_r p^C = \{x \in M: d(x, p) > r \}$ is not open. If $CB_r p^C$ is the null set, this is a contradiction.
+
+Otherwise, for all $x \in CB_r p^C$, let $d(x, p) = y > r$. Then the open ball $M_{\frac{y-r}{2}} x \subset CB_r p^C$ by the triangle inequality, and $CB_r p^C$ is open, implying $CB_r p$ is closed. Thus there is a closed set containing $M_r p$ that is strictly smaller than the closure of $M_r p$, a contradiction.
+
+\subsection*{Problem 34}
+
+Assume that $N$ is a metric subspace of $M$ and is also a closed subset of $M$. Show that $L \subset N$ is closed in $N$ if and only if it is closed in $M$. Similarly, if $N$ is a metric subspace of $M$ and also is an open subset of $M$ then $U \subset N$ is open in $N$ if and only if it is open in $M$.
+
+\begin{proof}
+For the closed version, we start with the forward. Because $L$ is closed in $N$, by the Inheritance Principle, $L = N \cap P$, where $P$ is a closed set in $M$. Viewing $N$ and $P$ as subsets of $M$, since $N$ is closed by assumption, $L = N \cap P$ is closed in $M$. Conversely, let $L$ be closed in $M$. Then by the Inheritance Principle, $L \cap N$ is a closet set in $N$. Since $L \subset N$, $L \cap N = L$ is closed in $N$. The open version is essentially the same, with the word 'open' replacing the word 'closed.'
+\end{proof}
+
+\subsection*{Problem 35}
+Prove that $S$ clusters at $p$ if and only if for each $r > 0$ there is a point $q \in M_r p \cap S$ such that $q \neq p$.
+
+This should be a direct consequence of Theorem 52, that $p$ being a cluster point of $S$ is characterized by each neighborhood of $p$ containing at least one point of $S$ other than $p$.
+
+\subsection*{Problem 36}
+Construct a set with exactly three cluster points.
+
+In $\mathbb{R}^2$, let $A_i = \{(x, y) \in \mathbb{R}^2| (x, y) = (i, 1/n) \text{ for some } n \in \mathbb{N}\}$. Let $A = A_1 \cup A_2 \cup A_3$. The three cluster points are $\{(0, 0), (1, 0), (2, 0)\}$.
 
 \end{document}
