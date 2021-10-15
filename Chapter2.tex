@@ -436,4 +436,122 @@ Construct a set with exactly three cluster points.
 
 In $\mathbb{R}^2$, let $A_i = \{(x, y) \in \mathbb{R}^2| (x, y) = (i, 1/n) \text{ for some } n \in \mathbb{N}\}$. Let $A = A_1 \cup A_2 \cup A_3$. The three cluster points are $\{(0, 0), (1, 0), (2, 0)\}$.
 
+\subsection*{Problem 37}
+
+Construct a function $f: \mathbb{R} \rightarrow \mathbb{R}$ that is continuous only at points of $\mathbb{Z}$.
+
+First we consider the function which is $x$ on the rationals and $-x$ on the irrationals. It is continuous only at $x = 0$. Take miniature copies of this function, centered at the integers, all only on the interval $(n - 1/2, n + 1/2]$. For all integers $z$, $f(z) = 0$. The function is continuous at the integers, and nowhere else.
+
+\subsection*{Problem 38}
+
+Let $X, Y$ be metric spaces with metrics $d_X, d_Y$, and let $M = X \times Y$ be their Cartesian product. Prove that the three natural metrics $d_E$, $d_{max}$, and $d_{sum}$ on $M$ are actually metrics.
+
+Symmetry is obvious. The positive definiteness of $d_{max}$ follows from the positive definiteness of the $d_X$ and $d_Y$. The positive definiteness of $d_{sum}$ is similar, and the positive definiteness of $d_{E}$ follows because the square root function only has a root at 0.
+
+For the triangle inequality on $d_{sum}$,
+
+\begin{align*}
+d_{sum}(p, p^*) + d_{sum}(p^*, p') &= d_X(x, x^*) + d_X(x^*, x') + d_Y(y, y^*) + d_Y(y^*, y') \\
+&> d_X(x, x') + d(y, y') = d_{sum}(p, p')
+\end{align*}
+
+by the triangle inequality on $d_X$ and $d_Y$. For $d_{max}$, $d_{max}(p, p') = \max \{d_X(x, x'), d_Y(y, y')\}$. Without loss of generality, suppose that $d_X(x, x') \geq d_Y(y, y')$. Then
+\begin{align*}
+d_{max}(p, p^*) + d_{max}(p^*, p') &= \max \{d_X(x, x^*), d_Y(y, y^*)\} + \max \{d_X(x^*, x'), d_Y(y, y')\} \\
+&\geq d_X(x, x^*) + d_X(x^*, x') \geq d_X(x, x') = d_{max}(p, p')
+\end{align*}
+The argument if $d_X(x, x') < d_Y(y, y')$ is similar. For the triangle inequality on $d_E$,
+
+
+\subsection*{Problem 40}
+
+Let $M$ be a metric space with metric $d$. Prove that the following are equivalent.
+\begin{enumerate}
+\item $M$ is homeomorphic to $M$ equipped with the discrete metric.
+\item Every function $f: M \rightarrow M$ is continuous.
+\item Every bijection $g: M \rightarrow M$ is a homeomorphism.
+\item $M$ has no cluster points.
+\item Every subset of $M$ is clopen.
+\item Every compact subset of $M$ is finite.
+
+\begin{proof}
+If written with no other qualifiers, $M$ is equipped with its metric $d$.
+
+For $1 \rightarrow 2$, 
+for any arbitrary set equipped with the discrete metric, if $p_n$ is a sequence such that $p_n \rightarrow p$, then the tail of $p_n = p$. Because $M_{discrete}$ is homeomorphic to $M_d$, this is true on $M_d$. Thus every convergent sequence has a constant tail, which is trivially preserved under an arbitrary function. Thus arbitrary functions are continuous.
+
+Thus for any function $f: M_1 \rightarrow M_2$, sequential limits are trivially preserved, so $f$ is continuous.
+
+For $2 \rightarrow 3$, this follows because $g^{-1}$ exists due to $g$ being a bijection, and $g: M \rightarrow M$ and $g^{-1}: M \rightarrow M$ are both continuous.
+
+For $3 \rightarrow 4$, 
+\end{proof}
+\end{enumerate}
+
+\subsection*{Problem 45}
+Draw a Cantor set $C$ on the circle and consider the set $A$ of all chords between points of $C$.
+
+Without loss of generality, I will assume the circle has circumference 1. I will arbitrarily choose a point $p$ to be $0$ and count off distances going counterclockwise.
+\subsubsection*{Part a}
+Prove that $A$ is compact.
+
+For an interval $I_a$, denote the left and right endpoints of $I_A$ as $A_L$ and $A_R$, respectively.
+\begin{lemma}
+\label{TwoIntervalChords}
+Let $I_A$ and $I_B$ be intervals in $C_n$, the $n$th step of the Cantor set. Without loss of generality, let $A_R < B_L$. Then the set of all chords between the intervals is the shape bounded by the curve $A_L A_R$, the line segment $\overbar{A_R B_L}$, the curve $B_L B_R$, and the line segment $\overbar{A_R B_L}$. Denote this shape $S_{AB}$.
+\begin{proof}
+All chords must have one of their endpoints on $I_A$ and the other on $I_B$. Since the intervals are disjoint, mental playing around with the picture will show that the curve draws the desired shape.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+\label{SubintervalChords}
+Let $I_A$ and $I_B$ be intervals as defined in \ref{TwoIntervalChords}, and let $I_C$, $I_D$ be subintervals such that $I_C, I_D \subset I_A \cup I_B$ Then $S_{CD} \subset S_{AB}$.
+\begin{proof}
+For $p \in S_{CD}$, $p$ is on a chord with one endpoint on $I_C$ and the other on $I_D$. By subintervals, the endpoints are in $I_A \cup I_B$, so the chord that connects those endpoints is contained in $S_{AB}$. Thus $p \in S_{AB}$.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+\label{TwoIntervalCompact}
+$S_{AB}$ as defined in Lemma \ref{TwoIntervalChords} is compact.
+\begin{proof}
+The shape is closed and bounded in $\mathbb{R}^2$.
+\end{proof}
+\end{corollary}
+
+\begin{lemma}
+\label{ChordAIsCompact}
+Denote $A_n$ the set of all chords that are drawn between intervals in $C_n$. Then $A_n$ is compact.
+\begin{proof}
+$A_n = \cup_{i, j=1}^n S_{ij}$. In other words, $A_n$ is the union of all $S_{ij}$, where $i, j$ are two intervals in $C_n$. $A_n$ is bounded, and because it is the union of finite closed sets, $A_n$ is closed. Since $A_n \subset \mathbb{R}^2$, $A_n$ is compact.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+\label{ChordAIsNested}
+$A_{n+1}$ is a subset of $A_n$.
+\begin{proof}
+Let $p \in A_{n+1}$. Then $p$ is in an $S$ between two intervals of $C_{n+1}$, which are subintervals of an interval or intervals in $C_n$. By Lemma \ref{SubintervalChords}, $p$ is in the corresponding $S$ in $C_n$, so $p \in A_n$.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+\label{ChordAIsNonempty}
+$A_n$ is nonempty for all $n$.
+\begin{proof}
+${1/3, 2/3}$ are always points in $A_n$, and their chord is nonempty.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+$A$ is compact.
+\begin{proof}
+$A = \cap_{i=1}^\infty A_i$. By Lemmas \ref{ChordAIsCompact}, \ref{ChordAIsNested}, and \ref{ChordAIsNonempty}, $A$ is the intersection of a nested series of nonempty compacts, and is thus compact. 
+\end{proof}
+\end{lemma}
+
+\subsubsection*{Part b}
+Is $A$ convex?
+
 \end{document}
