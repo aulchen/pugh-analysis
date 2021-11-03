@@ -496,6 +496,18 @@ Let $p$ be a cluster point of $M$. Then for every open neighborhood of $p$, ther
 
 Consider the set $C = (\cup_{n=1}^{\infty} x_n) \cup p$, and let $A$ be an open cover of $C$. Because $A$ is an open cover, there exists $A_p \in A$ such that $p \in A_p$. Since $A_p$ is open, there exists a neighborhood with $r > 0$ centered at $p$ such that $B_r(p) \subset A_p$. By the construction of $C$, $B_r(p)$ covers all of the $x_n$ with $n > 1/r$. Thus the finite subcover $A_1 \cup A_2 \dots A_p$ covers $A$, making $A$ compact. But this contradicts the assumption that all compact subsets of $M$ are finite. Thus $M$ has no cluster points.
 
+\subsection*{Problem 41}
+
+Let $\| \cdot \|$ be a norm on $\mathbb{R}^m$, and let $B = \{x\in \mathbb{R}^m: \|x\| \leq 1\}$. Prove that $B$ is compact.
+
+(The hint in the book says that if I can prove that $B$ is closed and bounded with respect to the Euclidian metric, then $B$ is compact. I still need to figure out exactly why this is true)
+
+Let $\|\cdot \|_E$ be the Euclidean norm on $\mathbb{R}^m$.
+
+For boundedness, consider the unit circle in $\mathbb{R}^m$ under the standard Euclidean norm. This is a closed and bounded subset of $\mathbb{R}^m$, so it is a compact. Since all norms are  continuous, $\| \cdot \|: \mathbb{R}^m \rightarrow \mathbb{R}$ is a continuous function, and so the image of the unit circle under $\| \cdot \|$ obtains maximum and minimum values. The minimum value is trivially 0, because the zero-vector in $\mathbb{R}^m$ is an element of $B$, and all norms are positive definite.
+
+Let $M$ be the maximum. If $M \geq 1$, then $B$ is a subset of the unit circle, and $B$ is bounded under the Euclidean metric. Otherwise, define $B' = \{x \in \mathbb{R}^m : \|x\| \leq M\}$. By construction, $B'$ is a subset of the unit disk, and is thus bounded under the Euclidean metric. Dilate $B'$ and the unit disk by a factor of $1/M$. By the norm property that $\|\alpha x \| = |\alpha| \|x\|$, after dilation, $B'$ maps to $B$, and the unit disk maps to a circle with radius 1/M centered at the origin. It's clear that $B$ is a subset of this disk, thus making $B$ bounded under the Euclidean metric.
+
 \subsection*{Problem 45}
 Draw a Cantor set $C$ on the circle and consider the set $A$ of all chords between points of $C$.
 
