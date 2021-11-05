@@ -500,13 +500,35 @@ Consider the set $C = (\cup_{n=1}^{\infty} x_n) \cup p$, and let $A$ be an open 
 
 Let $\| \cdot \|$ be a norm on $\mathbb{R}^m$, and let $B = \{x\in \mathbb{R}^m: \|x\| \leq 1\}$. Prove that $B$ is compact.
 
-(The hint in the book says that if I can prove that $B$ is closed and bounded with respect to the Euclidian metric, then $B$ is compact. I still need to figure out exactly why this is true)
+Let $\|\cdot \|_E$ be the Euclidean norm on $\mathbb{R}^m$. If $\| \cdot \|$ equals the Euclidean norm, this is trivial.
 
-Let $\|\cdot \|_E$ be the Euclidean norm on $\mathbb{R}^m$.
+We first start with a theorem.
 
-For boundedness, consider the unit circle in $\mathbb{R}^m$ under the standard Euclidean norm. This is a closed and bounded subset of $\mathbb{R}^m$, so it is a compact. Since all norms are  continuous, $\| \cdot \|: \mathbb{R}^m \rightarrow \mathbb{R}$ is a continuous function, and so the image of the unit circle under $\| \cdot \|$ obtains maximum and minimum values. The minimum value is trivially 0, because the zero-vector in $\mathbb{R}^m$ is an element of $B$, and all norms are positive definite.
+\begin{theorem}
+The identity transformation from $(\mathbb{R}^m, \|\cdot\|_E)$ to $(\mathbb{R}^m, \|\cdot\|)$ is continuous.
+\begin{proof}
+By the translation invariance of norms, if we show that the identity transformation is continuous at the origin, we have shown that it is continuous everywhere.
+Let $\epsilon > 0$, and let $B = \{x \in \mathbb{R}^m: \|x\| = \epsilon\}$ be the circle with radius epsilon under the $\|\cdot \|$ norm. By homogeneity, $B$ is a curve that does not intersect itself, and by positive definiteness, $B$ does not pass through the origin. Considering $B$ as a subset of $(\mathbb{R}^m, \|\cdot\|_E$, $B$ is closed since it's a curve.
 
-Let $M$ be the maximum. If $M \geq 1$, then $B$ is a subset of the unit circle, and $B$ is bounded under the Euclidean metric. Otherwise, define $B' = \{x \in \mathbb{R}^m : \|x\| \leq M\}$. By construction, $B'$ is a subset of the unit disk, and is thus bounded under the Euclidean metric. Dilate $B'$ and the unit disk by a factor of $1/M$. By the norm property that $\|\alpha x \| = |\alpha| \|x\|$, after dilation, $B'$ maps to $B$, and the unit disk maps to a circle with radius 1/M centered at the origin. It's clear that $B$ is a subset of this disk, thus making $B$ bounded under the Euclidean metric.
+(I'm not sure how to show boundedness. Ugh.)
+\end{proof}
+
+\end{theorem}
+
+\begin{corollary}
+If $A \subset \mathbb{R}^m$ is compact with respect to the Euclidean norm, then it is compact with respect to $\|\cdot\|$.
+\begin{proof}
+The identity function is continuous, so $A \subset (\mathbb{R}^m, \|\cdot\|)$ is the image of a compact with respect to the Euclidean norm. By the theorems in the book, this implies that $A$ is compact with respect to the $\|\cdot\|$ norm.
+\end{proof}
+\end{corollary}
+
+Thus, if we can prove that $B$ is compact with respect to the Euclidean norm, it is compact with respect to the norm $\| \cdot \|$. By the Heine-Borel theorem, this is equivalent to $B$ being closed and bounded under the Euclidean norm.
+
+For closedness, norms are continuous functions from $\mathbb{R}^m$ to $\mathbb{R}$. It's clear that $B$ is the preimage of the closed set $[0, 1] \subset \mathbb{R}$, implying that $B$ is closed with respect to $\|\cdot\|$. Since the identity transformation from the Euclidean norm to the $\|\cdot\|$ norm is continuous, this implies that $B$ is closed with respect to the Euclidean norm.
+
+For boundedness, let $A = \{x \in \mathbb{R}^m: \|x\|_E = 1\}$ be the surface of the unit ball in $\mathbb{R}^m$ under the Euclidean norm. $A$ is clearly closed and bounded, so because it is a  subset of $\mathbb{R}^m$, it is a compact. Since all norms are continuous, $\| \cdot \|: \mathbb{R}^m \rightarrow \mathbb{R}$ is a continuous function, and so the image of $A$ under $\| \cdot \|$ obtains maximum and minimum values. Let $y = \min \|A\|$ be the minimum value. Because norms are positive definite, the zero vector is not an element of $A$, so $y > 0$.
+
+Define $B' = \{x \in \mathbb{R}^m : \|x\| \leq y\}$, and $A'$ be the unit ball in $\mathbb{R}^m$. By construction, $B' \subset A'$ and is thus bounded under the Euclidean metric. Dilate $B'$ and $A'$ by a factor of $1/y$. By the norm property that $\|\alpha x \| = |\alpha| \|x\|$, after dilation, $B'$ maps to $B$, and $A'$ maps to a ball with radius 1/x centered at the origin. It's clear that $B$ is a subset of this ball, thus making $B$ bounded under the Euclidean metric.
 
 \subsection*{Problem 45}
 Draw a Cantor set $C$ on the circle and consider the set $A$ of all chords between points of $C$.
