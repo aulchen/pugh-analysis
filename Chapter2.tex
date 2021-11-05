@@ -502,18 +502,14 @@ Let $\| \cdot \|$ be a norm on $\mathbb{R}^m$, and let $B = \{x\in \mathbb{R}^m:
 
 Let $\|\cdot \|_E$ be the Euclidean norm on $\mathbb{R}^m$. If $\| \cdot \|$ equals the Euclidean norm, this is trivial.
 
-We first start with a theorem.
+We first want to show that the identity transformation from $(\mathbb{R}^m, \|\cdot\|_E)$ to $(\mathbb{R}^m, \|\cdot\|)$ is continuous. Due to the translation invariance of norms, if we show that the identity transformation is continuous at the origin, we have shown it for all $\mathbb{R}^m$. We begin with some lemmas. Let $\epsilon > 0$, and $C = \{x \in \mathbb{R}^m: \|x\| = \epsilon\}$.
 
-\begin{theorem}
-The identity transformation from $(\mathbb{R}^m, \|\cdot\|_E)$ to $(\mathbb{R}^m, \|\cdot\|)$ is continuous.
+\begin{lemma}
+The identity function from $(\mathbb{R}^m, \|\cdot\|_E)$ to $(\mathbb{R}^m, \|\cdot\|)$ is continuous.
 \begin{proof}
-By the translation invariance of norms, if we show that the identity transformation is continuous at the origin, we have shown that it is continuous everywhere.
-Let $\epsilon > 0$, and let $B = \{x \in \mathbb{R}^m: \|x\| = \epsilon\}$ be the circle with radius epsilon under the $\|\cdot \|$ norm. By homogeneity, $B$ is a curve that does not intersect itself, and by positive definiteness, $B$ does not pass through the origin. Considering $B$ as a subset of $(\mathbb{R}^m, \|\cdot\|_E$, $B$ is closed since it's a curve.
-
-(I'm not sure how to show boundedness. Ugh.)
+All norms on a finite-dimensional vector space are equivalent, which means that open sets under $\|\cdot\|$ are open sets under $\|\cdot\|_E$, and vice versa. Thus the preimage of open sets under the identity transformation is trivially open.
 \end{proof}
-
-\end{theorem}
+\end{lemma}
 
 \begin{corollary}
 If $A \subset \mathbb{R}^m$ is compact with respect to the Euclidean norm, then it is compact with respect to $\|\cdot\|$.
@@ -524,7 +520,7 @@ The identity function is continuous, so $A \subset (\mathbb{R}^m, \|\cdot\|)$ is
 
 Thus, if we can prove that $B$ is compact with respect to the Euclidean norm, it is compact with respect to the norm $\| \cdot \|$. By the Heine-Borel theorem, this is equivalent to $B$ being closed and bounded under the Euclidean norm.
 
-For closedness, norms are continuous functions from $\mathbb{R}^m$ to $\mathbb{R}$. It's clear that $B$ is the preimage of the closed set $[0, 1] \subset \mathbb{R}$, implying that $B$ is closed with respect to $\|\cdot\|$. Since the identity transformation from the Euclidean norm to the $\|\cdot\|$ norm is continuous, this implies that $B$ is closed with respect to the Euclidean norm.
+For being closed, norms are continuous functions from $\mathbb{R}^m$ to $\mathbb{R}$. It's clear that $B$ is the preimage of the closed set $[0, 1] \subset \mathbb{R}$, implying that $B$ is closed with respect to $\|\cdot\|$. Since the identity transformation from the Euclidean norm to the $\|\cdot\|$ norm is continuous, this implies that $B$ is closed with respect to the Euclidean norm.
 
 For boundedness, let $A = \{x \in \mathbb{R}^m: \|x\|_E = 1\}$ be the surface of the unit ball in $\mathbb{R}^m$ under the Euclidean norm. $A$ is clearly closed and bounded, so because it is a  subset of $\mathbb{R}^m$, it is a compact. Since all norms are continuous, $\| \cdot \|: \mathbb{R}^m \rightarrow \mathbb{R}$ is a continuous function, and so the image of $A$ under $\| \cdot \|$ obtains maximum and minimum values. Let $y = \min \|A\|$ be the minimum value. Because norms are positive definite, the zero vector is not an element of $A$, so $y > 0$.
 
