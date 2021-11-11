@@ -562,11 +562,17 @@ Because $f$ is continuous and $M$ is compact, $f(M) \subset \mathbb{R}$ is a com
 \subsubsection*{Part c}
 Prove that if the graph of $f$ is compact then $f$ is continuous.
 
-WORK IN PROGRESS.
+If $M$ is empty, then $f$ is trivially continuous. If $M$ is nonempty but $p$ is an isolated point of $M$, then $f$ is trivially continuous at $p$.
 
-If $M$ is empty then continuity is trivial. Otherwise, let $a_n \rightarrow p \in M$ be an arbitrary convergent sequence. Because $(a, f(a))_n$ is a sequence in $M \times f(M)$ which is compact, there is a convergent subsequence $(a, f(a))_{n_k} \rightarrow (q, r) \in M \times f(M)$. Looking at $a_n$ and $a_{n_k}$, $a_n \rightarrow p$ and $a_{n_k} \rightarrow q$ imply that $q = p$.
+Otherwise, let $p$ be a cluster point of $M$ and suppose $f$ is discontinuous at $p$. Then there exists $\epsilon > 0$ such that for all $\delta > 0$, there exists a $x \neq p \in M : d_M(x, p) < \delta$ such that $|f(p) - f(x)| > \epsilon$. 
 
-Because $f$ is a function, the only point in $M \times f(M)$ with first coordinate $p$ is $(p, f(p))$. Thus $(a, f(a))_{n_k} \rightarrow (p, f(p))$. Using the sum metric again, this implies that $f(p)_{n_k} \rightarrow f(p)$. If I can somehow show that the main sequence $f(a)_n$ itself has a limit, then its limit must be $f(p)$, but I don't know how to show that.
+Therefore for all $n \in \mathbb{N}$, there exists a point $a_n \neq p \in M$ such that $d_M(a_n, p) < \frac{1}{n}$ and $|f(a_n) - f(p)| > \epsilon$.
+
+Consider the sequence $(a_n) \in M$, and its associated sequence $((a_n, f(a_n))) \in M \times \mathbb{R}$. By construction, it's clear that all subsequences of $((a_n, f(a_n)))$ converge to a point with first coordinate $p$. However, because $f$ is a function, the only point in $G(f)$ with first coordinate $p$ is $(p, f(p))$. Also by construction, $f(a_n)$ not converging to $f(p)$ implies that $((a_n, f(a_n)))$ does not converge to $(p, f(p))$. Thus the sequence $((a_n, f(a_n))) \in $ has no convergent subsequence, which contradicts the assumption that $G(f)$ is compact. Therefore $f$ is continuous at $x$. Since all points in $M$ are either isolated points or cluster points, $f$ is continuous on $M$.
+
+\subsubsection*{Part d}
+
+Give an example of a discontinuous function $f: \mathbb{R} \rightarrow \mathbb{R}$ whose graph is closed.
 
 \subsection*{Problem 45}
 Draw a Cantor set $C$ on the circle and consider the set $A$ of all chords between points of $C$.
