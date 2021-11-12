@@ -574,6 +574,17 @@ Consider the sequence $(a_n) \in M$, and its associated sequence $((a_n, f(a_n))
 
 Give an example of a discontinuous function $f: \mathbb{R} \rightarrow \mathbb{R}$ whose graph is closed.
 
+Consider the function
+\[
+f(x) = 
+\begin{cases}
+0 & \text{if } x = 0 \\
+\frac{1}{x} & \text{else}
+\end{cases}
+\]
+
+The singleton at $(0, 0)$ is trivially closed. The two hyperbola arms are closed because they contain all of their limits. However, the graph is obviously discontinuous.
+
 \subsection*{Problem 45}
 Draw a Cantor set $C$ on the circle and consider the set $A$ of all chords between points of $C$.
 
@@ -643,8 +654,5 @@ Suppose $A, B \subset \mathbb{R}^2$.
 \subsubsection*{Part a}
 If $A$ and $B$ are homeomorphic, are their complements homeomorphic?
 No. Let $A = (0, 1)$ and $B$ be the x-axis. $(0, 1)$ is homeomorphic to $\mathbb{R}$, so $A$ is homeomorphic to $B$. However, $A^C$ is connected while $B^C$ is not.
-
-\subsubsection*{Part b}
-What if $A$ and $B$ are compact?
 
 \end{document}
