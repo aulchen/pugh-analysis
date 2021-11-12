@@ -648,6 +648,17 @@ $A = \cap_{i=1}^\infty A_i$. By Lemmas \ref{ChordAIsCompact}, \ref{ChordAIsNeste
 \end{proof}
 \end{lemma}
 
+\subsection*{Problem 46}
+
+Assume that $A$ and $B$ are compact, disjoint, nonempty subsets of $M$. Prove that there are $a_0 \in A$ and $b_0 \in B$ such that for all $a \in A$ and $b \in B$ we have
+\[
+d(a_0, b_0) \leq d(a, b)
+\]
+
+In other words, $a_0$ and $b_0$ are closest together.
+
+The metric $d: A \times b \rightarrow \mathbb{R}$ is a function from the Cartesian product of $A$ and $B$ to $\mathbb{R}$. As shown in the book, $A$ and $B$ being compact implies $A \times B$ is compact. Furthermore, all metrics are continuous functions. Therefore, $d$ achieves a maximum and minimum value on $\mathbb{R}$. Denote $m$ as the minimum. Because $A \times B$ is nonempty, $m < \infty$, and because $A$ and $B$ are disjoint, $m > 0$. Let $(a_0, b_0)$ be an arbitrary point in the preimage of $m$. Then the desired property follows immediately.
+
 \subsection*{Problem 47}
 Suppose $A, B \subset \mathbb{R}^2$.
 
