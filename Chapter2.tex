@@ -666,4 +666,32 @@ Suppose $A, B \subset \mathbb{R}^2$.
 If $A$ and $B$ are homeomorphic, are their complements homeomorphic?
 No. Let $A = (0, 1)$ and $B$ be the x-axis. $(0, 1)$ is homeomorphic to $\mathbb{R}$, so $A$ is homeomorphic to $B$. However, $A^C$ is connected while $B^C$ is not.
 
+\subsection*{Problem 48}
+
+Prove that there is an embedding of a line as a closed subset of the plane, and an embedding of a line as a bounded subset of the plane, but there is not an embedding of a line as a closed and bounded subset of the plane.
+
+For closed subset, embed the line onto the x-axis on the plane. This is trivially a homeomorphism, and the x-axis is trivially closed.
+
+For the bounded subset, a line is homeomorphic to the interval $(0, 1)$. Embed $(0, 1)$ on the x-axis on the plane. This is trivially bounded.
+
+For the closed and bounded subset, if a line can be embedded onto a closed and bounded subset of the plane, then there exists a homeomorphism $f: \mathbb{R} \rightarrow \mathbb{R}^2$ such that $f(\mathbb{R})$ is closed and bounded. By the Heine-Borel theorem, this implies that $f(\mathbb{R})$ is compact. Since compactness is a topological property, this implies that the line is compact. But this is a contradiction, as $\mathbb{R}$ is not compact.
+
+\subsection*{Problem 52}
+
+Let $(A_n)$ be a nested decreasing sequence of nonempty closed sets in the metric space $M$
+
+\subsubsection*{Part a}
+
+Show that if $M$ is complete and $\text{diam}(A_n) \rightarrow 0$ as $n \rightarrow \infty$, show that $A = \cap A_n$ is exactly one point.
+
+Let $a_n$ be an arbitrary point in $A_n$. Because the $(A_n)$ are decreasing, for $n \geq m$, $A_n \subset A_m$. Because $\text{diam}(A_n) \rightarrow 0$, for all $\epsilon > 0$, there exists an $m \in \mathbb{N}$ such that $\text{diam}(A_m) < \epsilon$. Thus for all $n \geq m$, $a_m, a_n \in A_m$, so $d(a_m, a_n) \leq \text{diam}(A_m) < \epsilon$, implying that $(a_n)$ is Cauchy.
+
+Since $M$ is complete, there exists $a \in M$ such that $a_n \rightarrow a$. Since for all $n$, $a_n \in A_1$ and $A_1$ is closed, $a \in A_1$. Letting $m$ be fixed and considering the tail of $(a_n)$, we see that $a_m \in A_m$ implies that $a \in A_m$, for all $m$. Thus $a \in A$. Because the diameter of a set with more than one distinct points is greater than zero, $a$ is the only point in $A$.
+
+\subsubsection*{Part b}
+
+To what assertions do the sets $[n, \infty)$ provide counterexamples to?
+
+The sets are not closed, and their diameter does not go to zero.
+
 \end{document}
