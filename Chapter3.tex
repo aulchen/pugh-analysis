@@ -8,6 +8,8 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
+\newcommand{\R}{\mathbb{R}}
+
 \author{Arthur Chen}
 \title{Pugh Chapter 3}
 \date{\today}
@@ -16,23 +18,38 @@
 
 \section*{Chapter 3 Functions of a Real Variable}
 
-\subsection*{Problem 17}
-Define $f: \mathbb{R} \rightarrow \mathbb{R}$ by
-
-\[
-f(x) = 
-\begin{cases}
-e^{-1/x} & \text{if } x > 0 \\
-0 & \text{if } x \leq 0
-\end{cases}
-\]
-
-\subsection*{Part a}
-Prove that $f$ is smooth; that is, $f$ has derivatives of all orders at all points $x$.
+\subsection*{Problem 1}
+Assume that $f: \R \rightarrow \R$ satisfies $|f(t) - f(x)| \leq |t-x|^2$ for all $t, x$. Prove that $f$ is constant.
 
 \begin{proof}
-The smoothness on $x < 0$ is trivial.
+The assumption implies that for all $t, x$,
+\[
+0 \leq \left| \frac{f(t)-f(x)}{t-x} \right| = \frac{|f(t)-f(x)|}{|t-x|} \leq |t-x|
+\]
 
-For smoothness on $x>0$, we use induction. We 
+implies that $f'(t) = \lim_{x \rightarrow t} \frac{f(t)-f(x)}{t-x} = 0$ at all $t$. The only functions with derivatives that are zero everywhere are constant functions.
+\end{proof}
+
+\subsection*{Problem 2}
+A function $f: (a, b) \rightarrow \R$ satisfies a Holder condition of order $\alpha$ if $\alpha > 0$, and for some constant $H$ and all $u, x \in (a, b)$ se have
+
+\[
+|f(u) - f(x)| \leq H|u - x|^\alpha
+\]
+
+The function is said to be $\alpha$-Holder, with $\alpha$-Holder constant H.
+
+\subsubsection*{Part a}
+Prove that the $\alpha$-Holder function defined on $(a, b)$ is uniformly continuous and infer that it extends uniquely to a continuous function defined on $[a, b]$. Is the extended function $\alpha$-Holder?
+
+\begin{proof}
+Let $\epsilon > 0$ and define $\delta = (\frac{\epsilon}{H})^{1/\alpha}$. Then for all $u, x \in (a, b)$ such that $|u-x| < \delta$, we have
+\[
+|f(u)-f(x)| \leq H|u-x|^\alpha < \epsilon
+\]
+since $\alpha > 0$.
+\end{proof}
+
+CONTINUOUS EXTENSION TO COME.
 
 \end{document}
