@@ -8,6 +8,9 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
+\newcommand{\diam}{\text{diam}}
+\newcommand{\R}{\mathbb{R}}
+
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
 \author{Arthur Chen}
@@ -693,5 +696,17 @@ Since $M$ is complete, there exists $a \in M$ such that $a_n \rightarrow a$. Sin
 To what assertions do the sets $[n, \infty)$ provide counterexamples to?
 
 The sets are not closed, and their diameter does not go to zero.
+
+\subsection*{Problem 53}
+
+Suppose that $(K_n)$ is a nested sequence of compact nonempty sets, $K_1 \supset K_2 \supset \dots $, and $K = \cap K_n$. If for some $\mu > 0$, $\diam K_n \geq \mu$ for all $n$, is it true that $\diam K \geq \mu$?
+
+Yes.
+
+Note that for all $K_n$, there exist $a_n, b_n \in K_n$ such that $d(a_n, b_n) \geq \mu$. To see this, note that for all $n$, the metric is a continuous function $d: K_n \times K_n \Rightarrow \R$, and continuous functions achieve a maximum and minimum on a compact set. Since $\diam K_n$ is the maximum of $d$ on $K_n \times K_n$, there exists a point $(a_n, b_n) \in K_n \times K_n$ that achieves this maximum.
+
+Repeat this for all $K_n$ to create the sequence $((a_n, b_n))$. Because the sets are nested, $((a_n, b_n)) \in K_1 \times K_1$. Because $K_1$ is compact, $K_1 \times K_1$ is compact, so there exists a subsequence $((a_{n_k}, b_{n_k})) \in K_1 \times K_1$ and a point $(p, q) \in K_1 \times K_1$ such that $((a_{n_k}, b_{n_k})) \rightarrow (p, q)$. $(p, q)$ is also in $K_2 \times K_2$, since all terms of $((a_{n_k}, b_{n_k}))$ except for possibly the first one are in $K_2$. The same is true for $K_3$, and so on. Thus, $(p, q) \in K \times K$.
+
+Now noting that the metric is a continuous function, it preserves sequential limits, so $\lim_{n \rightarrow \infty} d((a_n, b_n)) = d((p, q))$. Because $d((a_n, b_n)) \geq \mu$ by definition, $\lim_{n \rightarrow \infty} d((a_n, b_n)) \geq \mu$. Therefore $d((p, q)) \geq \mu$, and since $(p, q) \in K \times K$, this implies that $\diam(K) \geq \mu$.
 
 \end{document}
