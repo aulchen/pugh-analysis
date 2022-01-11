@@ -719,7 +719,7 @@ If $f: A \rightarrow B$ and $g: C \rightarrow B$ such that $A \subset C$ and for
 
 Prove that $f$ extends to a uniformly continuous function $\bar{f}: \bar{S} \rightarrow \R$.
 
-From the theorems in the book, we know that $\bar{S} = S \cup S'$, where $S$ is the set of cluster points of $S$. Note that by the definition of cluster point, if $x \in S'$, then there exists $(x_n) \in S$ such that $x_n \rightarrow x$.
+If $S = \bar{S}$, then the result is trivial. Otherwise, from the theorems in the book, we know that $\bar{S} = S \cup S'$, where $S$ is the set of cluster points of $S$. Note that by the definition of cluster point, if $x \in S'$, then there exists $(x_n) \in S$ such that $x_n \rightarrow x$.
 
 We begin with a theorem.
 
@@ -739,12 +739,12 @@ If $x \in S$, the proof is trivial due to continuity of $f$. Otherwise, $(x_n)$ 
 \end{proof}
 \end{corollary}
 
-\label{FunctionLimitsUnique}
 \begin{lemma}
+\label{FunctionLimitsUnique}
 Let $(a_n), (b_n) \in S$ be sequences with the same limit in $\bar{S}$, that is, $a_n, b_n \rightarrow x$. Let $f: S \rightarrow \R$ be uniformly continuous. Then $\lim_{n \rightarrow \infty} f(a_n) = \lim_{n \rightarrow \infty} f(b_n)$.
 
 \begin{proof}
-Let $\lim_{n \rightarrow \infty} f(a_n) = L$, $\lim_{n \rightarrow \infty} f(b_n) = M$. Because $a_n$ and $b_n$ considered in $\bar{S}$ are approaching the same point, for large enough $n$ $d(a_n, b_n)$ can be made arbitrarily small. Because the elements of $(a_n), (b_n)$ are in $S$, by the uniform continuity of $f$, $|f(a_n) - f(b_n)|$ can be made arbitrarily small for large $n$. Similarly, because $\lim_{n \rightarrow \infty} f(a_n) = L$ and $\lim_{n \rightarrow \infty} f(b_n) = M$, $|f(a_n)-L|$ and $|f(b_n)-M|$ can be made arbitrarily small for large $n$. By the Triangle Inequality, $|L-M|$ can be made arbitrarily small for large $n$, implying $L = M$.
+Let $\lim_{n \rightarrow \infty} f(a_n) = L$, $\lim_{n \rightarrow \infty} f(b_n) = M$. Because $a_n$ and $b_n$ considered in $\bar{S}$ are approaching the same point, for large enough $n$, $d(a_n, b_n)$ can be made arbitrarily small. Because the elements of $(a_n), (b_n)$ are in $S$, by the uniform continuity of $f$, $|f(a_n) - f(b_n)|$ can be made arbitrarily small for large $n$. Similarly, because $\lim_{n \rightarrow \infty} f(a_n) = L$ and $\lim_{n \rightarrow \infty} f(b_n) = M$, $|f(a_n)-L|$ and $|f(b_n)-M|$ can be made arbitrarily small for large $n$. By the Triangle Inequality, $|L-M|$ can be made arbitrarily small for large $n$, implying $L = M$.
 \end{proof}
 \end{lemma}
 
@@ -768,8 +768,12 @@ By construction of $p'$ and $q'$, $d(p', p) < \delta/3$ and $d(q', q) < \delta/3
 
 If only one of $p$ or $q$ is in $\bar{S} - S$, the proof is essentially the same. Thus, $p, q \in \bar{S}$ such that $d(p, q) < \delta/3$ implies that $|bar{f}(p) - \bar{f}(q)| < 3\epsilon$, implying that $\bar{f}$ is uniformly continuous.
 
-\subsubsection{Part b}
+\subsubsection*{Part b}
 
 Prove that $\bar{f}$ is the unique continuous extension of $f$ to a function defined on $\bar{S}$.
+
+If $S = \bar{S}$ then uniqueness of the extension is trivial. Otherwise, let $g: \bar{S} \rightarrow \R$ be a continuous extension of $f: S \rightarrow \R$ such that $g \neq \bar{f}$. Then there exists $p \in \bar{S}$ such that $g(p) \neq \bar{f}(p)$. Because $g$ and $\bar{f}$ are both extensions of $f$, for all $x \in S$, $\bar{f}(x) = g(x)$. Thus $p \in \bar{S} - S \subset S'$. Because $p$ is a cluster point of $S$, there exists $(p_n) \in S$ such that $p_n \rightarrow p$.
+
+Because $(p_n) \in S$ and $g$ is an extension of $f$, for all $n$, $g(p_n) = f(p_n)$. Taking limits, $\lim_{n \rightarrow \infty} g(p_n) = \lim_{n \rightarrow \infty} f(p_n) = \bar{f}(p)$, by the definition of $\bar{f}$. By the continuity of $g$, $\lim_{n \rightarrow \infty} g(p_n) = g(p)$. Thus $g(p) = \bar{f}(p)$, contradicting the assumption that $g(p) \neq \bar{f}(p)$. Thus there is no continuous extension $g$ that differs from $\bar{f}$, and $\bar{f}$ is the unique continuous extension of $f$ to $\bar{S}$.
 
 \end{document}
