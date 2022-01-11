@@ -9,7 +9,9 @@
 \newtheorem{corollary}[theorem]{Corollary}
 
 \newcommand{\diam}{\text{diam}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
+
 
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
@@ -708,5 +710,66 @@ Note that for all $K_n$, there exist $a_n, b_n \in K_n$ such that $d(a_n, b_n) \
 Repeat this for all $K_n$ to create the sequence $((a_n, b_n))$. Because the sets are nested, $((a_n, b_n)) \in K_1 \times K_1$. Because $K_1$ is compact, $K_1 \times K_1$ is compact, so there exists a subsequence $((a_{n_k}, b_{n_k})) \in K_1 \times K_1$ and a point $(p, q) \in K_1 \times K_1$ such that $((a_{n_k}, b_{n_k})) \rightarrow (p, q)$. $(p, q)$ is also in $K_2 \times K_2$, since all terms of $((a_{n_k}, b_{n_k}))$ except for possibly the first one are in $K_2$. The same is true for $K_3$, and so on. Thus, $(p, q) \in K \times K$.
 
 Now noting that the metric is a continuous function, it preserves sequential limits, so $\lim_{n \rightarrow \infty} d((a_n, b_n)) = d((p, q))$. Because $d((a_n, b_n)) \geq \mu$ by definition, $\lim_{n \rightarrow \infty} d((a_n, b_n)) \geq \mu$. Therefore $d((p, q)) \geq \mu$, and since $(p, q) \in K \times K$, this implies that $\diam(K) \geq \mu$.
+
+\subsection*{Problem 54}
+
+If $f: A \rightarrow B$ and $g: C \rightarrow B$ such that $A \subset C$ and for each $a \in A$ we have $f(a) = g(a)$, then $g$ extends $f$, or $f$ is extended by $g$. Assume that $f : S \rightarrow \R$ is a uniformly continuous function defined on a subset $S$ of a metric space $M$.
+
+\subsubsection*{Part a}
+
+Prove that $f$ extends to a uniformly continuous function $\bar{f}: \bar{S} \rightarrow \R$.
+
+From the theorems in the book, we know that $\bar{S} = S \cup S'$, where $S$ is the set of cluster points of $S$. Note that by the definition of cluster point, if $x \in S'$, then there exists $(x_n) \in S$ such that $x_n \rightarrow x$.
+
+We begin with a theorem.
+
+\begin{theorem}
+Let $f: S \rightarrow T$ be uniformly continuous between two metric spaces. Then $f$ preserves Cauchy sequences.
+
+\begin{proof}
+Let $(x_n) \in S$ be Cauchy. Fix $\epsilon > 0$ and let $\delta > 0$ be the associated distance in uniform continuity. Since $(x_n)$ is Cauchy, there exists $N \in \N$ such that $c, d \geq N$ implies $d_S(x_c, x_d) < \delta$. By uniform continuity, this implies that for all $c, d \geq N$, $d_T(f(x_c), f(x_d)) < \epsilon$, which shows that $f(x_n)$ is Cauchy.
+\end{proof}
+\end{theorem}
+
+\begin{corollary}
+Let $(x_n) \in S$ be a sequence with a limit in $\bar{S}$, that is, considered as a sequence in $\bar{S}$, $x_n \rightarrow x \in \bar{S}$. Let $f: S \rightarrow \R$ be uniformly continuous. Then $\lim_{n \rightarrow \infty} f(x_n)$ exists.
+
+\begin{proof}
+If $x \in S$, the proof is trivial due to continuity of $f$. Otherwise, $(x_n)$ is Cauchy because all sequences with limits are Cauchy, and the uniform continuity of $f$ implies that $f(x_n)$ is Cauchy. Since $\R$ is complete, $f(x_n)$ has a limit in $\R$.
+\end{proof}
+\end{corollary}
+
+\label{FunctionLimitsUnique}
+\begin{lemma}
+Let $(a_n), (b_n) \in S$ be sequences with the same limit in $\bar{S}$, that is, $a_n, b_n \rightarrow x$. Let $f: S \rightarrow \R$ be uniformly continuous. Then $\lim_{n \rightarrow \infty} f(a_n) = \lim_{n \rightarrow \infty} f(b_n)$.
+
+\begin{proof}
+Let $\lim_{n \rightarrow \infty} f(a_n) = L$, $\lim_{n \rightarrow \infty} f(b_n) = M$. Because $a_n$ and $b_n$ considered in $\bar{S}$ are approaching the same point, for large enough $n$ $d(a_n, b_n)$ can be made arbitrarily small. Because the elements of $(a_n), (b_n)$ are in $S$, by the uniform continuity of $f$, $|f(a_n) - f(b_n)|$ can be made arbitrarily small for large $n$. Similarly, because $\lim_{n \rightarrow \infty} f(a_n) = L$ and $\lim_{n \rightarrow \infty} f(b_n) = M$, $|f(a_n)-L|$ and $|f(b_n)-M|$ can be made arbitrarily small for large $n$. By the Triangle Inequality, $|L-M|$ can be made arbitrarily small for large $n$, implying $L = M$.
+\end{proof}
+\end{lemma}
+
+Now we prove the main result. By the theorems in the book, $x \in S'$ implies that there exists a sequence $(x_n) \in S$ such that $x_n \rightarrow x$. Define $\bar{f}: \bar{S} \rightarrow \R$ as
+
+\[
+\bar{f}(x) = 
+\begin{cases}
+f(x) & x \in S \\
+\lim_{n \rightarrow \infty} f(x_n) & \text{ else}
+\end{cases}
+\]
+
+where $(x_n) \in S, x_n \rightarrow x$ is arbitrary. As stated above, for all $x \in S$, at least one such $(x_n)$ exists, and by Lemma \ref{FunctionLimitsUnique}, all such sequences share the same limit under $f$. Therefore, $\bar{f}$ is uniquely defined. Because $\bar{S} = S \cup S'$, $\bar{f}$ is properly defined. $\bar{f}$ trivially continues $f$.
+
+Now to show uniform continuity. If $p, q \in S$, then the result is trivial. Fix $\epsilon > 0$, and choose $\delta$ for the uniform continuity of $f$ such that for all $a, b \in S$, $d(a, b) < \delta$ implies $|f(b) - f(a)| < \epsilon$.
+
+Let $p, q \in \bar{S}, p, q \neq S$ such that $d(p, q) \leq \delta/3$. Then $p, q \in S'$. From the above, there exist sequences $(p_n), (q_n) \in S$ such that $p_n \rightarrow p$, $q_n \rightarrow q$. Because $p_n \rightarrow p$, there exists $n_1$ such that for all $n \geq n_1$, $d(p_{n_1}, p) < \delta/3$. Similarly, because $\bar{f}(p_n) \rightarrow \bar{f}(p)$ by construction, there exists $n_2$ such that for all $n \geq n_2$, $|\bar{f}(p_{n_2}) - \bar{f}(p)| \leq \epsilon$. Define $n^* = \max{n_1, n_2}$. Define $p' = p_{n^*} \in S$. Define $q' \in S$ similarly.
+
+By construction of $p'$ and $q'$, $d(p', p) < \delta/3$ and $d(q', q) < \delta/3$, and by assumption $d(p, q) < \delta/3$. By the Triangle Inequality, this implies that $d(p', q') < \delta$. Since $p', q' \in S$, the uniform continuity of $f$ implies that $|f(p') - f(q')| = |\bar{f}(p') - \bar{f}(q')| < \epsilon$. By construction of $p'$ and $q'$, $|\bar{f}(p') - \bar{f}(p)| < \epsilon$ and $|\bar{f}(q') - \bar{f}(q)| < \epsilon$. By the Triangle Inequality, this implies that $|\bar{f}(p) - \bar{f}(q)| < 3\epsilon$, which can be made arbitrarily small.
+
+If only one of $p$ or $q$ is in $\bar{S} - S$, the proof is essentially the same. Thus, $p, q \in \bar{S}$ such that $d(p, q) < \delta/3$ implies that $|bar{f}(p) - \bar{f}(q)| < 3\epsilon$, implying that $\bar{f}$ is uniformly continuous.
+
+\subsubsection{Part b}
+
+Prove that $\bar{f}$ is the unique continuous extension of $f$ to a function defined on $\bar{S}$.
 
 \end{document}
