@@ -12,6 +12,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 
+\newcommand{\dist}{\text{dist}}
 
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
@@ -701,15 +702,15 @@ The sets are not closed, and their diameter does not go to zero.
 
 \subsection*{Problem 53}
 
-Suppose that $(K_n)$ is a nested sequence of compact nonempty sets, $K_1 \supset K_2 \supset \dots $, and $K = \cap K_n$. If for some $\mu > 0$, $\diam K_n \geq \mu$ for all $n$, is it true that $\diam K \geq \mu$?
+Suppose that $(K_n)$ is a nested sequence of compact nonempty sets, $K_1 \supset K_2 \supset \dots $, and $K = \cap K_n$. If for some $\mu > 0$, $\diam(K_n) \geq \mu$ for all $n$, is it true that $\diam(K) \geq \mu$?
 
 Yes.
 
-Note that for all $K_n$, there exist $a_n, b_n \in K_n$ such that $d(a_n, b_n) \geq \mu$. To see this, note that for all $n$, the metric is a continuous function $d: K_n \times K_n \Rightarrow \R$, and continuous functions achieve a maximum and minimum on a compact set. Since $\diam K_n$ is the maximum of $d$ on $K_n \times K_n$, there exists a point $(a_n, b_n) \in K_n \times K_n$ that achieves this maximum.
+Note that for all $K_n$, there exist $a_n, b_n \in K_n$ such that $d(a_n, b_n) \geq \mu$. To see this, note that for all $n$, the metric is a continuous function $d: K_n \times K_n \rightarrow \R$, and continuous functions achieve a maximum and minimum on a compact set. Since $\diam(K_n)$ is the maximum of $d$ on $K_n \times K_n$, there exists a point $(a_n, b_n) \in K_n \times K_n$ that achieves this maximum.
 
 Repeat this for all $K_n$ to create the sequence $((a_n, b_n))$. Because the sets are nested, $((a_n, b_n)) \in K_1 \times K_1$. Because $K_1$ is compact, $K_1 \times K_1$ is compact, so there exists a subsequence $((a_{n_k}, b_{n_k})) \in K_1 \times K_1$ and a point $(p, q) \in K_1 \times K_1$ such that $((a_{n_k}, b_{n_k})) \rightarrow (p, q)$. $(p, q)$ is also in $K_2 \times K_2$, since all terms of $((a_{n_k}, b_{n_k}))$ except for possibly the first one are in $K_2$. The same is true for $K_3$, and so on. Thus, $(p, q) \in K \times K$.
 
-Now noting that the metric is a continuous function, it preserves sequential limits, so $\lim_{n \rightarrow \infty} d((a_n, b_n)) = d((p, q))$. Because $d((a_n, b_n)) \geq \mu$ by definition, $\lim_{n \rightarrow \infty} d((a_n, b_n)) \geq \mu$. Therefore $d((p, q)) \geq \mu$, and since $(p, q) \in K \times K$, this implies that $\diam(K) \geq \mu$.
+Now noting that the metric is a continuous function, it preserves sequential limits, so $\lim_{n \rightarrow \infty} d((a_{n_k}, b_{n_k})) = d((p, q))$. Because $d((a_{n_k}, b_{n_k})) \geq \mu$ by definition, $\lim_{n \rightarrow \infty} d((a_{n_k}, b_{n_k})) \geq \mu$. Therefore $d((p, q)) \geq \mu$, and since $(p, q) \in K \times K$, this implies that $\diam(K) \geq \mu$.
 
 \subsection*{Problem 54}
 
@@ -762,11 +763,11 @@ where $(x_n) \in S, x_n \rightarrow x$ is arbitrary. As stated above, for all $x
 
 Now to show uniform continuity. If $p, q \in S$, then the result is trivial. Fix $\epsilon > 0$, and choose $\delta$ for the uniform continuity of $f$ such that for all $a, b \in S$, $d(a, b) < \delta$ implies $|f(b) - f(a)| < \epsilon$.
 
-Let $p, q \in \bar{S}, p, q \neq S$ such that $d(p, q) \leq \delta/3$. Then $p, q \in S'$. From the above, there exist sequences $(p_n), (q_n) \in S$ such that $p_n \rightarrow p$, $q_n \rightarrow q$. Because $p_n \rightarrow p$, there exists $n_1$ such that for all $n \geq n_1$, $d(p_{n_1}, p) < \delta/3$. Similarly, because $\bar{f}(p_n) \rightarrow \bar{f}(p)$ by construction, there exists $n_2$ such that for all $n \geq n_2$, $|\bar{f}(p_{n_2}) - \bar{f}(p)| \leq \epsilon$. Define $n^* = \max{n_1, n_2}$. Define $p' = p_{n^*} \in S$. Define $q' \in S$ similarly.
+Let $p, q \in \bar{S}, p, q \neq S$ such that $d(p, q) \leq \delta/3$. Then $p, q \in S'$. From the above, there exist sequences $(p_n), (q_n) \in S$ such that $p_n \rightarrow p$, $q_n \rightarrow q$. Because $p_n \rightarrow p$, there exists $n_1$ such that for all $n \geq n_1$, $d(p_{n_1}, p) < \delta/3$. Similarly, because $\bar{f}(p_n) \rightarrow \bar{f}(p)$ by construction, there exists $n_2$ such that for all $n \geq n_2$, $|\bar{f}(p_{n_2}) - \bar{f}(p)| \leq \epsilon$. Define $n^* = \max\{n_1, n_2\}$. Define $p' = p_{n^*} \in S$. Define $q' \in S$ similarly.
 
 By construction of $p'$ and $q'$, $d(p', p) < \delta/3$ and $d(q', q) < \delta/3$, and by assumption $d(p, q) < \delta/3$. By the Triangle Inequality, this implies that $d(p', q') < \delta$. Since $p', q' \in S$, the uniform continuity of $f$ implies that $|f(p') - f(q')| = |\bar{f}(p') - \bar{f}(q')| < \epsilon$. By construction of $p'$ and $q'$, $|\bar{f}(p') - \bar{f}(p)| < \epsilon$ and $|\bar{f}(q') - \bar{f}(q)| < \epsilon$. By the Triangle Inequality, this implies that $|\bar{f}(p) - \bar{f}(q)| < 3\epsilon$, which can be made arbitrarily small.
 
-If only one of $p$ or $q$ is in $\bar{S} - S$, the proof is essentially the same. Thus, $p, q \in \bar{S}$ such that $d(p, q) < \delta/3$ implies that $|bar{f}(p) - \bar{f}(q)| < 3\epsilon$, implying that $\bar{f}$ is uniformly continuous.
+If only one of $p$ or $q$ is in $\bar{S} - S$, the proof is essentially the same. Thus, $p, q \in \bar{S}$ such that $d(p, q) < \delta/3$ implies that $|\bar{f}(p) - \bar{f}(q)| < 3\epsilon$, implying that $\bar{f}$ is uniformly continuous.
 
 \subsubsection*{Part b}
 
@@ -775,5 +776,50 @@ Prove that $\bar{f}$ is the unique continuous extension of $f$ to a function def
 If $S = \bar{S}$ then uniqueness of the extension is trivial. Otherwise, let $g: \bar{S} \rightarrow \R$ be a continuous extension of $f: S \rightarrow \R$ such that $g \neq \bar{f}$. Then there exists $p \in \bar{S}$ such that $g(p) \neq \bar{f}(p)$. Because $g$ and $\bar{f}$ are both extensions of $f$, for all $x \in S$, $\bar{f}(x) = g(x)$. Thus $p \in \bar{S} - S \subset S'$. Because $p$ is a cluster point of $S$, there exists $(p_n) \in S$ such that $p_n \rightarrow p$.
 
 Because $(p_n) \in S$ and $g$ is an extension of $f$, for all $n$, $g(p_n) = f(p_n)$. Taking limits, $\lim_{n \rightarrow \infty} g(p_n) = \lim_{n \rightarrow \infty} f(p_n) = \bar{f}(p)$, by the definition of $\bar{f}$. By the continuity of $g$, $\lim_{n \rightarrow \infty} g(p_n) = g(p)$. Thus $g(p) = \bar{f}(p)$, contradicting the assumption that $g(p) \neq \bar{f}(p)$. Thus there is no continuous extension $g$ that differs from $\bar{f}$, and $\bar{f}$ is the unique continuous extension of $f$ to $\bar{S}$.
+
+\subsubsection*{Part c}
+
+Prove the same things when $\R$ is replaced with a complete metric space $N$.
+
+The proof is essentially the same. The only properties of $\R$ that we used in the above are that it is a metric space, and that it is complete. Replace all absolute value signs with the metric on $N$, and replace all references to $d$ with references to the metric on $S$.
+
+\subsection*{Problem 55}
+
+The distance from a point $p$ in a metric space $M$ to a nonempty subset $S \subset M$ is defined to be $\dist(p, S) = \inf\{d(p, s): s \in S \}$.
+
+\subsubsection*{Part a}
+
+Show that $p$ is a limit of $S$ if and only if $\dist(p, S) = 0$.
+
+For the forward, $p$ being a limit of $S$ implies that for all $\epsilon > 0$, there exists $s \in S$ such that $d(s, p) < \epsilon$. This is equivalent to the definition of the infimum. For the reverse, $\dist(p, S) = 0$ implies that for all $\epsilon > 0$, there exists $s \in S$ such that $d(s, p) < \epsilon$. Choose $\epsilon_n = 1/n$, and let the associated $s_n \in S$ form a sequence that converges to $p$. Thus $p$ is a limit point of $S$.
+
+\subsubsection*{Part b}
+
+Show that $p \rightarrow \dist(p, S)$ is a uniformly continuous function of $p \in M$.
+
+Let $\delta = \epsilon$, and let $p, q \in M$. We first consider the case when $p$ or $q$ are in $\bar{S}$. Without loss of generality, let $p \in \bar{S} = S \cup S'$. Then $\dist(p, S) = 0$. Since $p \in \bar{S} = S \cup S'$, there exist points in $S$ arbitrarily close to $p$, so $\inf\{d(q, s): s \in S\} \leq d(p, q)$. Thus
+
+\[
+|\dist(p, S) - dist(q, S)| = \dist(q, S) = \inf\{d(q, s): s \in S\} \leq d(p, q) < \epsilon
+\]
+
+which proves uniform continuity.
+
+If $p, q \in \bar{S}^C$, then we proceed through the equality trichotomy.
+
+\begin{lemma}
+Let $p, q \in S$ such that $d(p, q) < \epsilon$. Then $\dist(p, S) \leq \dist(q, S) + \epsilon$
+\begin{proof}
+Suppose not. Then there exists $\xi > 0$ such that $\dist(p, S) \geq \dist(q, S) + \epsilon + \xi$. Because $\dist(p, S) = \inf\{d(p, s): s \in S\}$ is a greatest lower bound, there exists $s \in S$ such that $\dist(p, S) \leq d(p, s) < \dist(p, S) + \frac{\xi}{2}$. By the Triangle Inequality,
+
+\[
+\dist(q, S) \leq d(q, s) \leq d(p, q) + d(p, s) \leq \dist(p, S) + \epsilon + \frac{\xi}{2}
+\]
+
+which contradicts the assumption that $\dist(q, S) > \dist(p, S) + \epsilon$.
+\end{proof}
+\end{lemma}
+
+Thus $\dist(p, S) \leq \dist(q, S) + \epsilon$. By symmetry, this also implies that $\dist(q, S) \leq \dist(p, S) + \epsilon$. Combining the two inequalities gives $|\dist(p, S) - \dist(q, S)| \leq \epsilon$, as desired.
 
 \end{document}
