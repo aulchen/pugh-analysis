@@ -10,15 +10,15 @@
 
 \newcommand{\R}{\mathbb{R}}
 
+\newcommand{\B}{\mathbb{B}}
+
 \author{Arthur Chen}
-\title{Pugh Chapter 3}
+\title{Chapter 3 Functions of a Real Variable}
 \date{\today}
 
 \begin{document}
-
-\section*{Chapter 3 Functions of a Real Variable}
-
-\subsection*{Problem 1}
+\maketitle
+\section*{Problem 1}
 Assume that $f: \R \rightarrow \R$ satisfies $|f(t) - f(x)| \leq |t-x|^2$ for all $t, x$. Prove that $f$ is constant.
 
 \begin{proof}
@@ -30,7 +30,7 @@ The assumption implies that for all $t, x$,
 implies that $f'(t) = \lim_{x \rightarrow t} \frac{f(t)-f(x)}{t-x} = 0$ at all $t$. The only functions with derivatives that are zero everywhere are constant functions.
 \end{proof}
 
-\subsection*{Problem 2}
+\section*{Problem 2}
 A function $f: (a, b) \rightarrow \R$ satisfies a Holder condition of order $\alpha$ if $\alpha > 0$, and for some constant $H$ and all $u, x \in (a, b)$ se have
 
 \[
@@ -39,7 +39,7 @@ A function $f: (a, b) \rightarrow \R$ satisfies a Holder condition of order $\al
 
 The function is said to be $\alpha$-Holder, with $\alpha$-Holder constant H.
 
-\subsubsection*{Part a}
+\subsection*{Part a}
 Prove that the $\alpha$-Holder function defined on $(a, b)$ is uniformly continuous and infer that it extends uniquely to a continuous function defined on $[a, b]$. Is the extended function $\alpha$-Holder?
 
 \begin{proof}
@@ -50,6 +50,128 @@ Let $\epsilon > 0$ and define $\delta = (\frac{\epsilon}{H})^{1/\alpha}$. Then f
 since $\alpha > 0$.
 \end{proof}
 
-CONTINUOUS EXTENSION TO COME.
+By Problem 54 in Chapter 2, a uniformly continuous function defined on a metric space $S$ has a unique continuous extension on $\bar{S}$. Since $[a, b] = \bar{(a, b)}$, $f: (a, b) \rightarrow \R$ being uniformly continuous implies that $f$ extends uniquely to $g: [a, b] \rightarrow \R$, where $g$ is continuous. In fact, $g$ is uniformly continuous because it is continuous on a compact.
+
+We claim that $g$ is $\alpha$-Holder on $[a, b]$. Let $x, y \in [a, b]$. If $x, y \in (a, b)$, this just follows because $g$ extends $f$.
+
+Without loss of generality, let $x = a$ and let $y \in (a, b)$. Let $\epsilon > 0$ be fixed and arbitrary, and let $\delta>0$ be the corresponding continuity condition. Then
+
+\[
+|g(c) - g(a)| \leq |g(c) - g(a+\delta)| + |g(a) - g(a+\delta)|
+\]
+
+by the Triangle inequality. For the first term, because $c$ and $a+\delta$ are in the interval $(a, b)$, the Holder condition from $f$ extends to $g$, so
+
+\[
+|g(c) - g{f}(a+\delta)| \leq H|c-a-\delta|^\alpha \leq H|c-a|^\alpha
+\]
+
+because $\alpha > 0$ and $\delta > 0$. For the second term, continuity of $g$ means $|g(a) - g(a+\delta)| < \epsilon$. Thus
+
+\[
+|g(c) - g(a)| \leq H|c-a|^\alpha + \epsilon
+\]
+
+and $\epsilon$ can be made arbitrarily small. The case where $y = b$, and the case where $x=a$ and $y=b$ simultaneously, are essentially the same.
+
+\subsection*{Part b}
+
+What does $\alpha$-Holder continuity mean when $\alpha = 1$?
+
+When $\alpha=1$, $\alpha$-Holder continuity simplifies to Lipschitz continuity.
+
+\subsection*{Part c}
+
+Prove that $\alpha$-Holder continuity when $\alpha > 1$ implies that $f$ is constant.
+
+Let $x$ in the domain of $f$ be arbitrary. Dividing both sides by $|u-x|$,
+
+\[
+0 \leq \frac{|f(u)-f(x)|}{|u-x|} \leq H|u-x|^{\alpha-1}
+\]
+
+Let $u \rightarrow x$. Since $\alpha > 1$ the right side goes to $0$, implying $\frac{|f(u)-f(x)|}{|u-x|} \rightarrow 0$ and that $f'(x) = 0$ for all $x$ in $f$'s domain. The only functions with this property are constant functions.
+
+\section*{Problem 3}
+
+Assume that $f:(a, b) \rightarrow \R$ is differentiable.
+
+\subsection*{Part a}
+
+If $f'(x) > 0$ for all $x$, prove that $f$ is strictly monotone increasing.
+
+\begin{proof}
+Let $c, d \in (a, b), c < d$. Then because $f$ is differentiable on its domain, the Mean Value Theorem indicates that there is a point $\theta \in (c, d)$ such that
+
+\[
+f(c)-f(d) = f'(\theta)(d-c)
+\]
+
+Since $f'$ is always strictly positive and $c < d$, the right side is strictly positive.
+\end{proof}
+
+\subsection*{Part b}
+
+If $f'(x) \geq 0$ for all $x$, what can you prove?
+
+We can prove that $f$ is weakly monotone increasing. The proof is the same, except that $f'(\theta)(d-c)$ 
+can be zero.
+
+\section*{Problem 4}
+Prove that $\sqrt{n+1} - \sqrt{n} \rightarrow 0$ as $n \rightarrow \infty$.
+
+\section*{Problem 29}
+
+Prove that the interval $[a, b]$ is not a zero set.
+
+\subsection*{Part a}
+
+Explain why the following observation is not a solution to the problem: "Every open interval that contains $[a, b]$ has length $> b-a$."
+
+This 'solution' does not consider the possibility that there is a union of open sets that cover $[a, b]$ such that their sum of their lengths can be made arbitrarily small.
+
+\subsection*{Part b}
+
+Instead, suppose there is a "bad" covering of $[a, b]$ by open intervals $\{I_i\}$ whose total length is $< b-a$, and justify the following steps in the proof by contradiction.
+
+I will define a good covering as a covering of $[a, b]$ by open intervals $\{J\}$ such that the total length of the intervals in $\{J\}$ is greater than or equal to $b-a$.
+
+\subsubsection*{i}
+
+It is enough to deal with finite bad coverings.
+
+Let $\{I\}$ be an infinite bad covering of $[a, b]$. Because $\{I\}$ is an open cover of compact $[a, b]$, it reduces to a finite subcovering $\{I_i\}$. Thus, either $\{I\}$ reduces to a finite bad covering, or it reduces to a good covering. If $\{I\}$ reduces to a good covering $\{J_i\}$, then  $\{J_i\} \subset \{I\}$ and the sum of the intervals in $\{J_i\}$ being $\geq b-a$ implies that the sum of the intervals in $\{I\}$ is $\geq b-a$. Thus $\{I\}$ is an infinite good covering, which contradicts the assumption that $\{I\}$ is a bad covering.
+
+Thus, if $\{I\}$ is an infinite bad covering, it reduces to a finite bad covering. Contrapositively, if there are no finite bad coverings, then there are no infinite bad coverings, and the theorem is proven.
+
+\subsubsection*{ii}
+
+Let $\B = \{I_1, \dots I_n\}$ be a bad covering such that $n$ is minimal among all bad coverings.
+
+There is at least one finite bad covering, by assumption. $n=1$ is a lower bound for the size of bad coverings. Then because $\R$ is complete, there exists a greatest lower bound for the sizes of the bad coverings, denoted $c$.
+
+The must be a finite bad covering $\{C\}$ such that the size of $|\{C\}| = c$. Suppose not. Then all bad coverings have size $> c$, and size the sizes of the bad coverings must be integers, all bad coverings have size $\geq c+1$. This contradicts the assumption that $c$ is a greatest lower bound. This bad covering $\{C\}$ is the bad covering with minimal $n$ among all bad coverings.
+
+\subsubsection*{iii}
+
+Show that no bad covering has $n=1$ so we have $n \geq 2$.
+
+This follows from the observation in Part a.
+
+\subsubsection*{iv}
+
+Show that it is no loss of generality to assume $a \in I_1$ and $I_1 \cap I_2 \neq \emptyset$.
+
+There exists at least one interval such that $a \in I_j$, and we are free to denote that interval $I_1$.
+
+There must exist an interval that intersects $I_1$. Suppose not. Let $d_1$ be the right endpoint of $I_1$, and let $c_2, c_3 \dots c_n$ be the left endpoints of the other intervals in the bad covering, and let $c = \min\{c_1 \dots c_n\}$. Then $\frac{c-d}{2}$ is not covered by the bad covering, contradicting the assumption that $\{I\}$ is a covering. Thus, there exists an interval in $\{I\}$ that intersects $I_1$. Denote it $I_2$. By construction, $I_1 \cap I_2$ is nonempty.
+
+\subsubsection*{v}
+
+Show that $I = I_1 \cup I_2$ is an open interval and $|I| < |I_1| + |I_2|$.
+
+$I_1 \cup I_2$ is open. Let $x \in I_1 \cup I_2$. Then there exists $\delta_1 > 0$ such that $(x-\delta_1, x+\delta_1} \subset I_1$, and $\delta_2 > 0$ such that $(x-\delta_2, x+\delta_2} \subset I_2$. Take $\delta = \min\{\delta_1, \delta_2\}$. Then for all $x \in I_1 \cup I_2$, there exists $\delta > 0$ such that $(x-\delta, x+\delta) \subset I_1 \cup I_2$, which implies that $I_1 \cup I_2$ is open.
+
+
 
 \end{document}
