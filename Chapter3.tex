@@ -170,8 +170,22 @@ There must exist an interval that intersects $I_1$. Suppose not. Let $d_1$ be th
 
 Show that $I = I_1 \cup I_2$ is an open interval and $|I| < |I_1| + |I_2|$.
 
-$I_1 \cup I_2$ is open. Let $x \in I_1 \cup I_2$. Then there exists $\delta_1 > 0$ such that $(x-\delta_1, x+\delta_1} \subset I_1$, and $\delta_2 > 0$ such that $(x-\delta_2, x+\delta_2} \subset I_2$. Take $\delta = \min\{\delta_1, \delta_2\}$. Then for all $x \in I_1 \cup I_2$, there exists $\delta > 0$ such that $(x-\delta, x+\delta) \subset I_1 \cup I_2$, which implies that $I_1 \cup I_2$ is open.
+If $I_1 \subset I_2$ or $I_2 \subset I_1$, $I_1 \cup I_2$ is trivially an open interval. Otherwise, $I_1 \cup I_2$ is the open because it is the union of open sets, connected because it is the union of two connected sets with a common point, and bounded because it is the finite union of bounded sets. Therefore $I_1 \cup I_2$ is a open, connected, and bounded subset of $\R$, and by the theorems shown in Chapter 2 Problem 31, open, connected, and bounded subsets of $\R$ are open intervals.
 
+\begin{lemma}
+Let $C, D \subset \R$ be (bounded) intervals that intersect, and let $E = C + D$. Then $|E| < |C| + |D|$.
 
+\begin{proof}
+If $C$ is a subset of $D$ or vice versa, the proof is trivial. Without loss of generality, let the left endpoint of $C$ be less than the left endpoint of $D$. Denote $c$ as the right endpoint of $C$, and $d$ the left endpoint of $D$. $d < c$, otherwise the two intervals do not intersect. Letting $\epsilon = c - d > 0$, the total length of $E$ is $|C| + |D| - \epsilon$, which is strictly less than $|C| + |D|$.
+\end{proof}
+\end{lemma}
+
+By using the above Lemma, we see that $|I| < |I_1| + |I_2|$.
+
+\subsubsection*{vi}
+
+Show that $\B' = \{I, I_3, \dots I_n\}$ is a bad covering of $[a, b]$ with fewer intervals, contradicting the minimality of $n$.
+
+Let $x \in [a, b]$. Since $\B$ is a covering of $[a, b]$, there exists $i \in 1, 2 \dots n$ such that $x \in I_i$. If $i \geq 3$, then because $I_i \in \B'$, $x$ is also covered by $\B'$. If $i = 1, 2$, then $x \in I = I_1 \cup I_2$, so $x$ is still covered by $\B'$. $\B'$ is a covering by open intervals, because $I$ is an open interval. $\B'$ is a bad covering. $|I| < |I_1| + |I_2|$ implies that $|I| + \sum_{j=3}^n I_j < \sum_{i=1}^n I_i < b-a$, implying that the total length of $\B'$ is less than the total length of $\B$. Thus $\B'$ is a bad covering with fewer intervals than $\B$, contradicting the assumption that $\B$ is the minimal bad covering. Thus, there are no bad coverings of $[a, b]$, coverings of $[a, b]$ can not have arbitrarily small length, and $[a, b]$ is not a zero set.
 
 \end{document}
