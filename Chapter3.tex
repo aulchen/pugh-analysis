@@ -121,15 +121,19 @@ can be zero.
 \section*{Problem 4}
 Prove that $\sqrt{n+1} - \sqrt{n} \rightarrow 0$ as $n \rightarrow \infty$.
 
-Consider the function $f(x) = \sqrt{x}$, and take a Taylor approximation around $x = n$, where $n$ is a positive natural number. For all $x \in \R^+$, we have
+Consider the function $f(x) = \sqrt{x}$, and take a Taylor approximation of degree zero around $x = n$, where $n$ is a positive natural number. Then $P_0(x) = \sqrt{n}$. Use the Taylor approximation to approximate $x = n+1$. The Taylor remainder term is
 
-\begin{align*}
-f(x) &= x^{\frac{1}{2}} \\
-f'(x) &= \frac{1}{2}x^{-\frac{1}{2}} \\
-f''(x) &= -\frac{1}{2}x^{-\frac{3}{2}} \\
-\end{align*}
+\[
+R(1) = \sqrt{n+1} - \sqrt{n}
+\]
 
-TODO. YOU DON'T KNOW WHETHER THE FUNCTION IS ANALYTIC, AND EVEN IF IT IS, WHAT THE RADIUS OF CONVERGENCE IS.
+$\sqrt{x}$ is smooth when $x > 0$, and $n \geq 1$. Therefore, $f$ is smooth on $(n, n+1)$, and the Taylor approximation theorem states that there exists $\theta \in (n, n+1)$ such that
+
+\[
+R(1; n) = \sqrt{n+1} - \sqrt{n} = \frac{f'(\theta)}{1!}(1)^1 = \frac{1}{2}\theta^{-\frac{1}{2}}
+\]
+
+As $n \rightarrow \infty$, $\theta > n$ implies $\theta \rightarrow \infty$ implies $R(1; n) \rightarrow 0$ implies $\lim_{n \rightarrow \infty} \sqrt{n+1} - \sqrt{n} = 0$.
 
 \section*{Problem 8}
 
@@ -191,6 +195,77 @@ x & x \in \R - \Q \\
 \]
 
 $f$ is continuous at $x=1$ and discontinuous everywhere else. These discontinuities are discontinuities of the second kind, since left and right limits don't exist when $x$ is not $1$. $f(x)$ clearly does not have the intermediate value property, as except for $1$, $f$ assumes no rational values. Since this is a function without jump discontinuities but does not possess the intermediate value property, functions without jumps are not necessarily Darboux continuous.
+
+\section*{Problem 11}
+
+Let $f: (a, b) \rightarrow \R$ be given.
+
+\subsection*{Part a}
+
+If $f''(x)$ exists, prove that
+
+\begin{equation}
+\label{SecondDerivativeDiscreteDifference}
+\lim_{h \rightarrow 0} \frac{f(x-h) - 2f(x) + f(x+h)}{h^2} = f''(x)
+\end{equation}
+
+I will assume that '$f''(x)$ exists' means that $f''(x)$ exists everywhere. Denote the left side of this equation as $G(x)$. We begin by reparameterizing the derivative.
+
+\begin{lemma}
+If $f'(x)$ exists, then
+\[
+f'(x) = \lim{h \rightarrow 0} \frac{f(x+h) - f(x)}{h}
+\]
+\begin{proof}
+Taking the definition of derivative as
+\[
+f'(x) = \lim_{t \rightarrow x} \frac{f(t) - f(x)}{t-x}
+\]
+substitute $t = x+h$.
+\end{proof}
+\end{lemma}
+
+Rearranging the terms in Equation \ref{SecondDerivativeDiscreteDifference}, we have
+
+\begin{equation}
+\label{GNestedDerivatives}
+G(x) = \lim_{h \rightarrow 0} 
+\frac{
+\frac{f(x+h) - f(x)}{h}
+-
+\frac{f(x) - f(x-h)}{h}
+}
+{h}
+\end{equation}
+
+We now show a quick lemma.
+
+\begin{lemma}
+Let $f: \R \rightarrow \R$ and $g: \R \rightarrow \R$. If $\lim_{x \rightarrow a} f(g(a))$ exists and $g$ is continuous near $a$, then
+\[
+\lim_{x \rightarrow a} f(g(a)) = \lim_{x \rightarrow a} f( \lim_{y \rightarrow x} g(y))
+\]
+\begin{proof}
+Since in the limit $x$ is close to $a$, $g(x)$ is continuous, so sequential preservation holds.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+\[
+G(x) = \lim_{h \rightarrow 0} 
+\frac{
+\lim_{i \rightarrow h} \frac{f(x+i) - f(x)}{i}
+-
+\frac{f(x) - f(x-i)}{i}
+}
+{h}
+\]
+\begin{proof}
+$f''(x)$ exists everywhere, so $f'(x)$ is continuous everywhere. We then use the above lemma.
+\end{proof}
+\end{corollary}
+
+TO BE COMPLETED.
 
 \section*{Problem 29}
 
