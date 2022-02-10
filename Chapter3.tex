@@ -9,6 +9,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
 
 \newcommand{\B}{\mathbb{B}}
 
@@ -119,6 +120,77 @@ can be zero.
 
 \section*{Problem 4}
 Prove that $\sqrt{n+1} - \sqrt{n} \rightarrow 0$ as $n \rightarrow \infty$.
+
+Consider the function $f(x) = \sqrt{x}$, and take a Taylor approximation around $x = n$, where $n$ is a positive natural number. For all $x \in \R^+$, we have
+
+\begin{align*}
+f(x) &= x^{\frac{1}{2}} \\
+f'(x) &= \frac{1}{2}x^{-\frac{1}{2}} \\
+f''(x) &= -\frac{1}{2}x^{-\frac{3}{2}} \\
+\end{align*}
+
+TODO. YOU DON'T KNOW WHETHER THE FUNCTION IS ANALYTIC, AND EVEN IF IT IS, WHAT THE RADIUS OF CONVERGENCE IS.
+
+\section*{Problem 8}
+
+\subsection*{Part b}
+
+Find a formula for a continuous function defined on $[0, 1]$ that is differentiable on the interval $(0, 1)$, but not at the endpoints.
+
+Consider the function
+
+\[
+f(x) = 
+\begin{cases}
+x\sin(\frac{1}{x}) & x \in (0, 1]\\
+0 & \text{else}
+\end{cases}
+\]
+
+$f$ is the composition of continuous functions on $(0, 1]$, so it is continuous on that interval. At $x=0$, we noting that for all $x \in (0, 1]$, we have
+
+\[
+-x \leq x \sin(\frac{1}{x}) \leq x
+\]
+
+implying that $\lim_{x \rightarrow 0^+} f(x) = 0 = f(0)$ by the Squeeze theorem. This implies that $f(x)$ is continuous at $x=0$, and thus $[0, 1]$. $\frac{1}{x}$ is differentiable on $\R - {0}$, so $f(x)$ is differentiable on $(0, 1]$.
+
+Taking the definition of derivative to attempt to evaluate $f'(0)$,
+
+\[
+f'(0) = \lim_{x \rightarrow 0^+} \frac{f(x) - f(0)}{x - 0} = \lim_{x \rightarrow 0^+} \sin(\frac{1}{x})
+\]
+
+which does not exist. Thus $f(x)$ is differentiable on $(0, 1]$.
+
+Consider the function
+
+\[
+g(x) = f(x) + f(1-x)
+\]
+
+This consists of $f$ and $f$ reflected about the line $x = \frac{1}{2}$ added together. From the above, $g$ is continuous on $[0, 1]$, and differentiable on $(0, 1)$, but not $0$ or $1$.
+
+\subsection*{Part c}
+
+Does the Mean Value Theorem apply to such a function?
+
+Yes, since the Mean Value Theorem only requires the function to be differentiable on the open interval. In this case, the Mean Value Theorem states there is a point $\theta \in (0, 1)$ such that $g'(\theta) = 0$. We can probably prove that a point exists by using the Intermediate Value Theorem on $g'(x)$ since it's continuous on $(0, 1)$, but I'm too lazy at the moment.
+
+\section*{Problem 10}
+
+Concoct a function $f: \R \rightarrow \R$ with a discontinuity of the second kind at $x = 0$ such that $f$ does not have the intermediate value property there. Infer that it is incorrect to assert that functions without jumps are Darboux continuous.
+
+Consider the function
+\[
+f(x) = 
+\begin{cases}
+x & x \in \R - \Q \\
+1 & \text{else}
+\end{cases}
+\]
+
+$f$ is continuous at $x=1$ and discontinuous everywhere else. These discontinuities are discontinuities of the second kind, since left and right limits don't exist when $x$ is not $1$. $f(x)$ clearly does not have the intermediate value property, as except for $1$, $f$ assumes no rational values. Since this is a function without jump discontinuities but does not possess the intermediate value property, functions without jumps are not necessarily Darboux continuous.
 
 \section*{Problem 29}
 
