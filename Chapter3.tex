@@ -204,68 +204,31 @@ Let $f: (a, b) \rightarrow \R$ be given.
 
 If $f''(x)$ exists, prove that
 
-\begin{equation}
-\label{SecondDerivativeDiscreteDifference}
+\[
 \lim_{h \rightarrow 0} \frac{f(x-h) - 2f(x) + f(x+h)}{h^2} = f''(x)
-\end{equation}
-
-I will assume that '$f''(x)$ exists' means that $f''(x)$ exists everywhere. Denote the left side of this equation as $G(x)$. We begin by reparameterizing the derivative.
-
-\begin{lemma}
-If $f'(x)$ exists, then
-\[
-f'(x) = \lim{h \rightarrow 0} \frac{f(x+h) - f(x)}{h}
 \]
-\begin{proof}
-Taking the definition of derivative as
+
+Denote $F(x) = \lim_{h \rightarrow 0} \frac{f(x-h) - 2f(x) + f(x+h)}{h^2}$. Since $f$ is twice differentiable, we take take a second-order Taylor expansion of $f$ around $x$, getting
+
 \[
-f'(x) = \lim_{t \rightarrow x} \frac{f(t) - f(x)}{t-x}
+f(x+h) = f(x) + hf'(x) + \frac{1}{2} h^2 f''(x) + R(x)
 \]
-substitute $t = x+h$.
-\end{proof}
-\end{lemma}
 
-Rearranging the terms in Equation \ref{SecondDerivativeDiscreteDifference}, we have
+where $R(x)$ is second-order flat at $h = 0$, i.e. $\lim_{h \rightarrow 0} R(x)/h^2 = 0$. Similarly,
 
-\begin{equation}
-\label{GNestedDerivatives}
-G(x) = \lim_{h \rightarrow 0} 
-\frac{
-\frac{f(x+h) - f(x)}{h}
--
-\frac{f(x) - f(x-h)}{h}
-}
-{h}
-\end{equation}
-
-We now show a quick lemma.
-
-\begin{lemma}
-Let $f: \R \rightarrow \R$ and $g: \R \rightarrow \R$. If $\lim_{x \rightarrow a} f(g(a))$ exists and $g$ is continuous near $a$, then
 \[
-\lim_{x \rightarrow a} f(g(a)) = \lim_{x \rightarrow a} f( \lim_{y \rightarrow x} g(y))
+f(x-h) = f(x) - hf'(x) + \frac{1}{2} h^2 f''(x) + S(x)
 \]
-\begin{proof}
-Since in the limit $x$ is close to $a$, $g(x)$ is continuous, so sequential preservation holds.
-\end{proof}
-\end{lemma}
 
-\begin{corollary}
+where $S(x)$ is second-order flat at $h = 0$. Substituting,
+
 \[
-G(x) = \lim_{h \rightarrow 0} 
-\frac{
-\lim_{i \rightarrow h} \frac{f(x+i) - f(x)}{i}
--
-\frac{f(x) - f(x-i)}{i}
-}
-{h}
+F(x) =
+\lim_{h \rightarrow 0} \frac{h^2 f''(x) + R(x) + S(x)}{h^2}
+= f''(x)
 \]
-\begin{proof}
-$f''(x)$ exists everywhere, so $f'(x)$ is continuous everywhere. We then use the above lemma.
-\end{proof}
-\end{corollary}
 
-TO BE COMPLETED.
+since the $f(x)$ and $hf'(x)$ terms cancel, and $R(x)$ and $S(x)$ are second-order flat.
 
 \section*{Problem 29}
 
