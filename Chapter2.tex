@@ -10,6 +10,7 @@
 
 \newcommand{\diam}{\text{diam}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
 
 \newcommand{\dist}{\text{dist}}
@@ -821,5 +822,31 @@ which contradicts the assumption that $\dist(q, S) > \dist(p, S) + \epsilon$.
 \end{lemma}
 
 Thus $\dist(p, S) \leq \dist(q, S) + \epsilon$. By symmetry, this also implies that $\dist(q, S) \leq \dist(p, S) + \epsilon$. Combining the two inequalities gives $|\dist(p, S) - \dist(q, S)| \leq \epsilon$, as desired.
+
+\subsection*{Problem 56}
+
+Show that the 2-sphere is not homeomorphic to the plane.
+
+The 2-sphere is compact, because it is a closed and bounded subset of $\R^3$. If the 2-sphere is homeomorphic to the plane, then because compactness is a topological property, the plane is compact.
+
+I claim that plane is not compact. Cover the plane with open disks with radius 1 centered at all points $\Z^2$. By compactness this should reduce to a finite subcover. However, we can not remove a single disk without losing the covering property. Say we remove the disk centered at the origin. Then there is no other disk that covers the origin, for the disks at $(0, 1), (1, 0)$, etc. are too far away, and the other disks are even further away. Thus this open cover does not reduce to a finite subcover, and the plane is not compact.
+
+\subsection*{Problem 60}
+
+\subsubsection*{Part a}
+
+Prove that a continuous function $f: M \rightarrow \R$, all of whose values are integers is a constant provided that $M$ is connected.
+
+I will assume that $M$ is nonempty. If $M$ is a singleton, the proof is trivial.
+
+Assume that $M$ has at least two elements. Because $f$ is continuous and $M$ is connected, the range of $f$ is connected. Suppose that there are at least two distinct points in the range of $f$. Denote them $x, y \in \Z$. Then the range of $f$ is disconnected. The set $\{x\}$ is proper clopen subset of the range of $f$. It is closed, because singleton sets are always closed in any metric space. It is open, because we can construct an open ball with radius $1/2$ centered at $x$ that is a subset of the set. It is proper, because $y$ is not in $\{x\}$. Thus the range of $f$ is disconnected. Since this is a contradiction, there is only one point in the range of $f$. Thus $f$ is a constant function.
+
+\subsubsection*{Part b}
+
+What if all the values are irrational?
+
+The same conclusion holds, that $f$ is a constant function. Again, if $M$ has only one element, the proof is trivial. Otherwise, let $x, y$ be distinct irrational numbers in the range of $f$. By the denseness of rationals in $\R$, there exists a rational number $p \in (x, y)$.
+
+Consider the metric space $X = \R - \{p\}$, the real line with $p$ removed, and the subset $A = (-\infty, p)$. $A$ and $A^C$ are open in $X$, implying that $A$ is a clopen subset of $X$. Letting $F$ be the range of $f$, because $F \subset X$, we see that $A \cap F$ is a clopen subset of $F$ by the Inheritance Principle. Because $p < y$, $y$ is not in $F$, so $A$ is a proper clopen subset of $F$. Thus the range of $f$ is disconnected, a contradiction. Thus there are no two distinct points $x, y$ in the range of $f$, and $f$ is a constant function. 
 
 \end{document}
