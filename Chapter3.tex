@@ -230,6 +230,60 @@ F(x) =
 
 since the $f(x)$ and $hf'(x)$ terms cancel, and $R(x)$ and $S(x)$ are second-order flat.
 
+\subsection*{Part b}
+
+Find an example that this limit can exist even when $f''(x)$ fails to exist.
+
+Let $f(x) = x|x|$. Taking the first derivative, when $x>0$, $f(x) = x^2$, so $f'(x) = 2x$. Similarly, when $x<0$, $f'(x) = -2x$. When $x=0$,
+
+\[
+f'(0) = \lim_{h \rightarrow 0} \frac{f(0+h) - f(0)}{h} = \lim_{h \rightarrow 0} \frac{h|h|}{h} = \lim_{h \rightarrow 0} |h| = 0
+\]
+
+Thus
+
+\[
+f'(x) =
+\begin{cases}
+2x & x \geq 0 \\
+-2x & x < 0
+\end{cases}
+\]
+
+As previously stated, $f''(0)$ does not exist, since
+
+\[
+f''(0) = \lim_{h \rightarrow 0} \frac{f'(x+h) - f'(x)}{h} = \lim_{h \rightarrow 0} \frac{f'(h)}{h}
+\]
+
+which does not exist, since the limit from the positive direction is $2$ and the limit from the negative direction is $-2$.
+
+Despite this, the partial difference approximation exists at $x = 0$. The partial difference approximation from the right is
+
+\[
+\lim_{h \rightarrow 0^+} \frac{f(-h) + f(h)}{h^2} = 
+\lim_{h \rightarrow 0^+} \frac{-h|-h| + h|h|}{h^2} =
+\lim_{h \rightarrow 0^+} \frac{0}{h^2} = \infty
+\]
+
+Similarly,
+
+\[
+\lim_{h \rightarrow 0^-} \frac{f(-h) + f(h)}{h^2} = 
+\lim_{h \rightarrow 0^-} \frac{h|h| + -h|-h|}{h^2} =
+\lim_{h \rightarrow 0^-} \frac{0}{h^2} = \infty
+\]
+
+Thus the difference approximation exists at $x=0$, even though $f''(0)$ does not exist.
+
+\section*{Problem 15}
+
+Define $f(x) = x^2$ if $x < 0$ and $f(x) = x + x^2$ if $x \geq 0$. Differentiation gives $f''(x) = 2$. This is bogus. Why?
+
+By the Fundamental Theorem of Calculus, if $G$ is an antiderivative of $g$, then $g$ equals the derivative of $G$ where $g$ is continuous. In this case, the standard power rule only applies when $x \neq 0$, since there is a discontinuity there.
+
+Specifically, we have $f''(0)$ does not exist, since $f'(x) = 2x$ when $x \geq 0$, and $f'(x) = 2x + 1$ when $x < 0$. $f'(x)$ is discontinuous at $x=0$, so its derivative does not exist there.
+
 \section*{Problem 29}
 
 Prove that the interval $[a, b]$ is not a zero set.

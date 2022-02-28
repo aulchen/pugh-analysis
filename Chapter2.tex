@@ -831,6 +831,34 @@ The 2-sphere is compact, because it is a closed and bounded subset of $\R^3$. If
 
 I claim that plane is not compact. Cover the plane with open disks with radius 1 centered at all points $\Z^2$. By compactness this should reduce to a finite subcover. However, we can not remove a single disk without losing the covering property. Say we remove the disk centered at the origin. Then there is no other disk that covers the origin, for the disks at $(0, 1), (1, 0)$, etc. are too far away, and the other disks are even further away. Thus this open cover does not reduce to a finite subcover, and the plane is not compact.
 
+\subsection*{Problem 57}
+
+If $S$ is connected, is the interior of $S$ connected? Prove this or give a counterexample.
+
+No. Let $M$ be the $\R^2$ plane, and let $S$ be the union of two disjoint closed disks, with a line drawn between them. $S$ is connected, but the interior of $S$ consists of two disjoint open disks, which are disconnected.
+
+\subsection*{Problem 58}
+
+Theorem 49 in the book states that the closure of a connected set is connected.
+
+\subsubsection*{Part a}
+
+Is the closure of a disconnected set disconnected?
+
+No. Let $M$ be $\R$, and let $S$ be a punctured closed interval. $S$ is disconnected but its closure, a closed interval, is connected.
+
+\subsubsection*{Part b}
+
+What about the interior of a disconnected set?
+
+Still no. Let $M$ be $\R$, and let $S$ be the union of an open interval with a point not contained in that interval. $S$ is disconnected but its interior is just an open interval, which is connected.
+
+\subsection*{Problem 59}
+
+Prove that every countable metric space (not empty and not a singleton) is disconnected.
+
+Connectedness is a topological property. Thus a countable metric space $M$ is either finite, making it homeomorphic to a finite (nonempty and non-singleton) subset of $\R$, or countably infinite, making it homeomorphic to $\R$. Thus this statement is equivalent to proving that $\R$ and finite subsets of $\R$ are disconnected. But this is easy, since all subsets of $\R$ are clopen. All singletons are open in $\R$, and the union of open sets is open, meaning all sets are open, meaning all sets are closed. Since $\R$ or its nonempty or nonsingleton subsets are nonempty, there always exists a partition of $\R$ or its nonempty/nonsingleton subsets into two proper clopen subsets. By homeomorphism, this implies $M$ is disconnected.
+
 \subsection*{Problem 60}
 
 \subsubsection*{Part a}
