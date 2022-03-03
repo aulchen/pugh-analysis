@@ -12,6 +12,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 
 \newcommand{\B}{\mathbb{B}}
+\newcommand{\osc}{\text{osc}}
 
 \author{Arthur Chen}
 \title{Chapter 3 Functions of a Real Variable}
@@ -390,5 +391,47 @@ By using the above Lemma, we see that $|I| < |I_1| + |I_2|$.
 Show that $\B' = \{I, I_3, \dots I_n\}$ is a bad covering of $[a, b]$ with fewer intervals, contradicting the minimality of $n$.
 
 Let $x \in [a, b]$. Since $\B$ is a covering of $[a, b]$, there exists $i \in 1, 2 \dots n$ such that $x \in I_i$. If $i \geq 3$, then because $I_i \in \B'$, $x$ is also covered by $\B'$. If $i = 1, 2$, then $x \in I = I_1 \cup I_2$, so $x$ is still covered by $\B'$. $\B'$ is a covering by open intervals, because $I$ is an open interval. $\B'$ is a bad covering. $|I| < |I_1| + |I_2|$ implies that $|I| + \sum_{j=3}^n I_j < \sum_{i=1}^n I_i < b-a$, implying that the total length of $\B'$ is less than the total length of $\B$. Thus $\B'$ is a bad covering with fewer intervals than $\B$, contradicting the assumption that $\B$ is the minimal bad covering. Thus, there are no bad coverings of $[a, b]$, coverings of $[a, b]$ can not have arbitrarily small length, and $[a, b]$ is not a zero set.
+
+\section*{Problem 34}
+
+Assume that $\psi: [a, b] \rightarrow \R$ is continuously differentiable. A critial point of $\psi$ is an $x$ such that $\psi'(x) = 0$. A critical value is a number $y$ such that for at least one critical point $x$ we have $y = \psi(x)$.
+
+\subsection*{Part a}
+
+Prove that the set of critical values is a zero set. (This is the Morse-Sard Theorem in dimension one.)
+
+We first start with some lemmas.
+
+\begin{lemma}
+If $\psi'(x) = 0$ on an interval $[c, d] \subset [a, b]$, then there is only one critical value on that interval, namely $\psi(c)$.
+
+\begin{proof}
+By the Fundamental Theorem of Calculus, for $x \in [c, d]$, $\psi(x) = \psi(c) + \int_c^x \psi'(x) dx = \psi(c)$ since $\psi'(x) = 0$ on the interval. 
+\end{proof}
+\end{lemma}
+
+FIX THIS UP.
+
+MODIFY THIS TO USE SIGN CHANGES. OR SOME OTHER TERMINOLOGY.
+
+\begin{lemma}
+Let $f$ be a continuous function on $[a, b]$ such that for all critical points $x$, $\osc_x(f) > 0$. Then $f$ has a finite number of critical points (i.e. points where $f$ changes sign).
+\begin{proof}
+Suppose not. Then $f$ has an infinite number of critical points in the interval $[a, b]$, which implies that there is a point $x$ which is a cluster point for critical points. Otherwise, all critical points have finite distance between them, and there is no way to fit an infinite number intervals with length $> \epsilon$ into a finite interval $[a, b]$.
+
+Because critical points get arbitrarily close to $x$, for all $\delta_n = \frac{b-a}{k}$, we can choose a $c_n, d_n \in (x - \delta_n, x + \delta_n)$ such that $f(c_n) > 0$ and $f(d_n) < 0$. $c_n, d_n \rightarrow x$, but because $\osc_x(f) > 0$, $f(c_n) \neq f(d_n)$, if those quantities exist. Thus $f$ is not continuous at $x$, contradicting the assumption. Thus $f$ only has finite oscillations in $[a, b]$.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+Let $f$ be a continuous function on $[a, b]$ with an infinite number of sign changes. Then the number of sign changes is countable.
+\begin{proof}
+TODO.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+Let $f$ be a continuous function on $[a, b]$ with infinite sign changes on $[a, b]$. Then there exists sign change $x$ such that $\osc_x(f) = 0$.
+\end{corollary}
 
 \end{document}
