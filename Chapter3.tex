@@ -284,6 +284,45 @@ By the Fundamental Theorem of Calculus, if $G$ is an antiderivative of $g$, then
 
 Specifically, we have $f''(0)$ does not exist, since $f'(x) = 2x$ when $x \geq 0$, and $f'(x) = 2x + 1$ when $x < 0$. $f'(x)$ is discontinuous at $x=0$, so its derivative does not exist there.
 
+\section*{Problem 16}
+
+$\log x$ is defined to be $\int_1^x 1/t dt$ for $x > 0$. Using only the mathematics explained in this chapter,
+
+\subsection*{Part a}
+
+Prove that $\log$ is a smooth function.
+
+By the Fundamental Theorem of Calculus, the indefinite integral of a Riemann integrable function is continuous with respect to $x$. Thus, $\log x$ is continuous. Its derivative, again by the Fundamental Theorem of Calculus, is $\frac{d}{dx} \int_1^x 1/t dx = 1/x$ when $x > 0$, which is continuous. $1/x$ itself is smooth, so it has derivatives of all orders, which are continuous. Thus $\log x$ is smooth.
+
+\subsection*{Part b}
+
+Prove that $\log(xy) = \log x + \log y$ for all $x, y > 0$.
+
+For any given $y > 0$, define $f(x) = \log xy - \log x - \log y$. By definition,
+
+\begin{align*}
+f(x) &= \int_1^{xy} 1/t dt - \int_1^x 1/t dt - \int_1^y 1/t dt \\
+&= \int_x^{xy} 1/t dt - \int_1^y 1/t dt
+\end{align*}
+
+When $x = 0$, $f(x) = \int_1^{y} 1/t dt - \int_1^{y} 1/t dt = 0$.
+
+We now evaluate $f'(x)$. Splitting the integrals, for all $x>0$, we can find a constant $0 < c < x$. Then
+
+\[
+f(x) = \int_c^{xy} 1/t dt - \int_c^x 1/t dt - \int_1^y 1/t dt
+\]
+
+By the Fundamental Theorem of Calculus, $\frac{d}{dx} \int_c^x 1/t dt = 1/x$ since $1/t$ is continuous on $[c, \infty)$. By the Chain Rule, $\frac{d}{dx} \int_c^{xy} 1/t dt = y\frac{1}{xy} = 1/x$. Thus, $f'(x) = 0$ for all $x > 0$. $\int_1^y 1/t dt$ is constant with regards to $x$, and thus has derivative zero. The only functions with derivatives equal to zero everywhere are constant functions, and since $f(1) = 0$, this implies that $f(x) = 0$. Thus $\log xy = \log x + \log y$.
+
+\subsection*{Part c}
+
+Prove that $\log$ is strictly monotone increasing and its range is all of $\R$.
+
+$\frac{d}{dx} \log x = 1/x$, which is strictly positive for all $x > 0$. Thus $\log x$ is strictly monotone increasing.
+
+TO FINISH.
+
 \section*{Problem 29}
 
 Prove that the interval $[a, b]$ is not a zero set.
