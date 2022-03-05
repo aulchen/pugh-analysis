@@ -10,6 +10,8 @@
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+
 
 \newcommand{\B}{\mathbb{B}}
 \newcommand{\osc}{\text{osc}}
@@ -394,7 +396,7 @@ Let $x \in [a, b]$. Since $\B$ is a covering of $[a, b]$, there exists $i \in 1,
 
 \section*{Problem 34}
 
-Assume that $\psi: [a, b] \rightarrow \R$ is continuously differentiable. A critial point of $\psi$ is an $x$ such that $\psi'(x) = 0$. A critical value is a number $y$ such that for at least one critical point $x$ we have $y = \psi(x)$.
+Assume that $\psi: [a, b] \rightarrow \R$ is continuously differentiable. A critical point of $\psi$ is an $x$ such that $\psi'(x) = 0$. A critical value is a number $y$ such that for at least one critical point $x$ we have $y = \psi(x)$.
 
 \subsection*{Part a}
 
@@ -410,18 +412,32 @@ By the Fundamental Theorem of Calculus, for $x \in [c, d]$, $\psi(x) = \psi(c) +
 \end{proof}
 \end{lemma}
 
-FIX THIS UP.
-
-MODIFY THIS TO USE SIGN CHANGES. OR SOME OTHER TERMINOLOGY.
-
 \begin{lemma}
-Let $f$ be a continuous function on $[a, b]$ such that for all critical points $x$, $\osc_x(f) > 0$. Then $f$ has a finite number of critical points (i.e. points where $f$ changes sign).
+\label{InfiniteCriticalImpliesCluster}
+Let $f$ be a continuous function on $[a, b]$ with an infinite number of critical points. Then there exists a point $x \in [a, b]$ such that $x$ is a cluster point of critical points.
 \begin{proof}
-Suppose not. Then $f$ has an infinite number of critical points in the interval $[a, b]$, which implies that there is a point $x$ which is a cluster point for critical points. Otherwise, all critical points have finite distance between them, and there is no way to fit an infinite number intervals with length $> \epsilon$ into a finite interval $[a, b]$.
-
-Because critical points get arbitrarily close to $x$, for all $\delta_n = \frac{b-a}{k}$, we can choose a $c_n, d_n \in (x - \delta_n, x + \delta_n)$ such that $f(c_n) > 0$ and $f(d_n) < 0$. $c_n, d_n \rightarrow x$, but because $\osc_x(f) > 0$, $f(c_n) \neq f(d_n)$, if those quantities exist. Thus $f$ is not continuous at $x$, contradicting the assumption. Thus $f$ only has finite oscillations in $[a, b]$.
+Suppose not. Then there exists a $\epsilon > 0$ such that for all critical points $x, y \in [a, b]$, $|x - y| > \epsilon$. There is no way to fit an infinite number of intervals with length $\epsilon > 0$ in a closed, bounded interval $[a, b]$. Thus there is no such epsilon. Thus there exists a critical point $x$ such that for all $\epsilon > 0$, there exist a critical point $y \in [a, b] - \{x\}$ such that $|x - y| < \epsilon$. Thus $x$ is a clustering point of critical points.
 \end{proof}
 \end{lemma}
+
+\begin{lemma}
+Let $f$ be a continuous function on $[a, b]$ with critical point $x_0$ such that $\osc_{x_0}(f) > 0$. Then $f$ is not constantly zero in an open neighborhood around $x_0$. More specifically, for all $\epsilon > 0$, there exists $x \in (x_0 - \epsilon, x_0 + \epsilon) \cap [a, b]$ such that $f(x) \neq 0$.
+\begin{proof}
+Suppose not. Then there exists $\epsilon > 0$ such that for all $x \in (x_0 - \epsilon, x_0 + \epsilon) \cap [a, b]$, $f(x) = 0$. 
+\end{proof}
+\end{lemma}
+
+\begin{theorem}
+Let $f$ be a continuous function on $[a, b]$ such that for all critical points $x$, $\osc_x(f) > 0$. Then $f$ has a finite number of critical points.
+\begin{proof}
+Note that $f$ can not be constantly zero in an open neighborhood of $x$, since that would violate the assumption that $\osc_x(f) > 0$.
+
+Suppose not. Then $f$ has an infinite number of critical points in the interval $[a, b]$. By Lemma \ref{InfiniteCriticalImpliesCluster}, there exists $x \in [a, b]$ that is a cluster point for critical points. Defining $\epsilon_k = \frac{1}{k}$, this means that for all $k \in \N$, there exists a critical point $x_k$ such that $|x - x_k| < \frac{1}{k}$. Denote this sequence of critical points as $(x_k)$.
+
+Consider $f$ on the interval $[x_k, x_{k+1}]$. Because
+
+\end{proof}
+\end{theorem}
 
 \begin{lemma}
 Let $f$ be a continuous function on $[a, b]$ with an infinite number of sign changes. Then the number of sign changes is countable.
