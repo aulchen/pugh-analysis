@@ -402,25 +402,43 @@ Assume that $\psi: [a, b] \rightarrow \R$ is continuously differentiable. A crit
 
 Prove that the set of critical values is a zero set. (This is the Morse-Sard Theorem in dimension one.)
 
-We first divide critical points into two types. I shall define a \textbf{critical point of type 1} of a function $f$ as a critical point $x$ such that $f(x)$ is uniformly zero in an open neighborhood of $x$. In other words, there exists a $\epsilon > 0$ such that for all $y$ such that $|x-y| < \epsilon$, $f(y) = 0$. I will denote a \textbf{critical point of type 2} as all other critical points. It's clear that the disjoint union of these two types is the set of all critical points of $f$. I will define \textbf{critical values of type 1} to be critical values that correspond to critical points of type 1, and \textbf{critical values of type 2} similarly. It's clear that the disjoint union of these sets is the set of all critical values of $f$. I have no idea if this characterization is standard, but that's what I've come up with.
-
-\begin{corollary}
-Let $x$ be a critical point of type 1 for $f$. Then $f$ is continuous at $x$.
-\begin{proof}
-Near $x$, $f$ is a constant zero function, and constant functions are continuous.
-\end{proof}
-\end{corollary}
+Let $f$ be differentiable. We first divide critical points into two types. I shall define a \textbf{critical point of type 1} of a function $f$ as a critical point $x$ such that $f'(x)$ is uniformly zero in an open neighborhood of $x$. In other words, there exists a $\epsilon > 0$ such that for all $y$ such that $|x-y| < \epsilon$, $f'(y) = 0$. I will denote a \textbf{critical point of type 2} as all other critical points. It's clear that the disjoint union of these two types is the set of all critical points of $f$. I will define \textbf{critical values of type 1} to be critical values that correspond to critical points of type 1, and \textbf{critical values of type 2} similarly. It's clear that the disjoint union of these sets is the set of all critical values of $f$. I have no idea if this characterization is standard, but that's what I've come up with.
 
 The immediate characterization for critical points of type 2 is stated below.
 
-\begin{corollary}
-Let $x$ be a critical point of type 2 of $f$. Then for all $\epsilon > 0$, there exists $y \in (x-\epsilon, x + \epsilon)$ such that $f(y) \neq 0$.
+\begin{lemma}
+Let $x$ be a critical point of type 2 of $f$. Then for all $\epsilon > 0$, there exists $y \in (x-\epsilon, x + \epsilon)$ such that $f'(y) \neq 0$.
 \begin{proof}
 If this is not true, then $x$ is a critical point of type 1.
 \end{proof} 
-\end{corollary} 
+\end{lemma}
 
-We start with a lemma on critical points of type 1.
+We state a lemma for critical points of type 2.
+
+\begin{lemma}
+Let $f$ be continuously differentiable with an infinite number of critical points of type 2. Then there exists at least one $x \in [a, b]$ such that $x$ is a cluster point of critical points of type 2. 
+\begin{proof}
+Suppose not. Then there is some $\epsilon > 0$ such that for all $x \in [a, b]$, $(x-\epsilon) \cup (x + \epsilon)$ contains no critical points of type 2, meaning $(x-\epsilon, x + \epsilon)$ contains at most one critical point of type 2. Spacing out test points with distance $\epsilon$ between them in $[a, b]$ shows that there are at most a finite number of critical points of type 2 in $[a, b]$, a contradiction.
+\end{proof}
+\end{lemma}
+
+We now want to prove the main theorem for critical points of type 2.
+
+\begin{theorem}
+Let $f$ be continuously differentiable on $[a, b]$. Then $f$ has at most countable critical points of type 2.
+\begin{proof}
+\textbf{TODO}.
+\end{proof}
+\end{theorem}
+
+\begin{corollary}
+Let $f$ be continuously differentiable on $[a, b]$. Then $f$ has at most countable critical values of type 2.
+\begin{proof}
+Each critical point of type 2 maps to at most one critical value of type 2.
+\end{proof}
+\end{corollary}
+
+We now turn to critical points of type 1. We now state a lemma on critical points of type 1.
 
 \begin{lemma}
 Let $x$ be a critical point of type 1 for $\psi'(x)$. Then on the neighborhood where $\psi'(x) = 0$, there is only one critical value. Specifically, if $\psi'(x) = 0$ on an interval $(c, d) \subset [a, b]$, then $\psi(c)$ is the only critical value on that interval.
@@ -429,26 +447,10 @@ By the Fundamental Theorem of Calculus, for $x \in [c, d]$, $\psi(x) = \psi(c) +
 \end{proof}
 \end{lemma}
 
-We now want to prove the main theorem for critical points of type 2.
-
-\begin{theorem}
-Let $f$ be continuous on $[a, b]$. Then $f$ has finite critical points of type 2. (Or maybe it's countable? I just need to show it's not uncountable.)
-\begin{proof}
-\textbf{TODO}. Something about oscillations or something.
-\end{proof}
-\end{theorem}
-
-\begin{corollary}
-Let $f$ be continuous on $[a, b]$. Then $f$ has finite critical values of type 2.
-\begin{proof}
-Immediate consequence of the above theorem.
-\end{proof}
-\end{corollary}
-
 We now want to prove the main theorem for critical values corresponding to critical points of type 1.
 
 \begin{theorem}
-If $f: [a, b] \rightarrow \R$, then $f$ has countably many critical values of type 1.
+If $f: [a, b] \rightarrow \R$ is continuously differentiable, then $f$ has countably many critical values of type 1.
 \begin{proof}
 \textbf{TODO}. Some sort of 1/k interval counting trick, since the critical points of type 1 can be grouped up into disjoint open intervals, except for some endpoint behavior. Then the countable intervals with critical points of type 1 map to at most countable critical values, using the lemma thingy with the fundamental theorem of calculus further up the page. Need to iron out the kinks.
 \end{proof}

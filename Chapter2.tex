@@ -875,6 +875,44 @@ What if all the values are irrational?
 
 The same conclusion holds, that $f$ is a constant function. Again, if $M$ has only one element, the proof is trivial. Otherwise, let $x, y$ be distinct irrational numbers in the range of $f$. By the denseness of rationals in $\R$, there exists a rational number $p \in (x, y)$.
 
-Consider the metric space $X = \R - \{p\}$, the real line with $p$ removed, and the subset $A = (-\infty, p)$. $A$ and $A^C$ are open in $X$, implying that $A$ is a clopen subset of $X$. Letting $F$ be the range of $f$, because $F \subset X$, we see that $A \cap F$ is a clopen subset of $F$ by the Inheritance Principle. Because $p < y$, $y$ is not in $F$, so $A$ is a proper clopen subset of $F$. Thus the range of $f$ is disconnected, a contradiction. Thus there are no two distinct points $x, y$ in the range of $f$, and $f$ is a constant function. 
+Consider the metric space $X = \R - \{p\}$, the real line with $p$ removed, and the subset $A = (-\infty, p)$. $A$ and $A^C$ are open in $X$, implying that $A$ is a clopen subset of $X$. Letting $F$ be the range of $f$, because $F \subset X$, we see that $A \cap F$ is a clopen subset of $F$ by the Inheritance Principle. Because $p < y$, $y$ is not in $F$, so $A$ is a proper clopen subset of $F$. Thus the range of $f$ is disconnected, a contradiction. Thus there are no two distinct points $x, y$ in the range of $f$, and $f$ is a constant function.
+
+\subsection*{Problem 126}
+
+Suppose $E$ is an uncountable subset of $\R$. Prove that there exists a point $p \in \R$ where $E$ condenses.
+
+I will start with some lemmas that will lead to using the decimal expansion.
+
+\begin{lemma}
+There exists $n \in \N$ such that $[n, n+1)$ contains uncountable elements of $E$.
+\begin{proof}
+Suppose not. Then for all $n \in \N$, $[n, n+1)$ contains countable elements of $E$. Taking unions over all $\N$, the countable union of countable elements is countable, so $E$ is countable, a contradiction.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+\label{UncountableEInInterval}
+Given $n \in \N$ such that $[n, n+1)$ contains uncountable elements of $E$, there exists a decimal subinterval of $[n, n+1)$ such that the decimal subinterval contains uncountable $E$.
+
+(A decimal subinterval $[a, b)$ has endpoints $a = n + k/10, b = n + (k+1)/10$ for some digit $k, 0 \leq k \leq 9$).
+\begin{proof}
+The proof is similar to Lemma \ref{UncountableEInInterval}. Suppose not. Then there are at most countable elements of $E$ in each subinterval. Since there are ten decimal subintervals, there are at most countable elements of $E$ in the interval $[n, n+1)$, a contradiction.
+\end{proof}
+\end{lemma}
+
+Let $n \in \N$ denote the interval $[n, n+1)$ that contains uncountable elements of $E$. Let $n.n_1 \in 0, 1 \dots 9$ denote the decimal subinterval $[n.n_1, n.(n_1+1))$ of $[n, n+1)$ that contains uncountable elements of $E$. Specifically, $n.n_1$ denotes the interval $[n.n_1, n.(n_1+1))$ unless $n_1 = 9$, then $n.n_1$ denotes the interval $[n.n_1, (n+1).0)$.
+
+This can be extended to all $k \in \N$. If $p_k \in \R$ is a real number with a terminating decimal expansion $n.n_1n_2 \dots n_k$ of length $k$, then $p_k$ denotes the decimal sub-interval of length $10^{-k}$. Specifically, $p_k$ denotes $[n.n_1n_2 \dots n_k, n.n_1n_2 \dots (n_k+1))$ unless $n_k = 9$, in which the appropriate addition and carrying occurs. Denote $I_k$ as the (decimal sub)-interval of length $10^{-k}$ that contains uncountably many points of $E$.
+
+\begin{theorem}
+Let $p_0, p_1, p_2 \dots p_k \dots \in \R$ be the representations of the decimal subintervals $I_k$ length $10^{-k}$ that contain uncountable elements of $E$. Then there exists $p \in \cap_{k=0}^\infty I_k$ such that $p$ is a condensing point of $E$.
+\begin{proof}
+The $I_k$ are closed intervals in $\R$, so they are compact. The diameter of the sets $I_k$ is the length of the interval $10^{-k}$, which tends to $0$ as $k \rightarrow \infty$. Thus, by the theorems in the book, $\cap_{k=0}^\infty I_k$ is a single point, and we can denote it $p$.
+
+For all $\epsilon > 0$, by the Archimedian property there is some $k \in \N$ such that $\epsilon < 10^{-k}$. Taking the decimal expansion of $p$ and truncating it at $k-1$, $p_0.p_1p_2 \dots p_{k-1}$ corresponds to an interval $I_{k-1} = [p_0.p_1p_2 \dots p_{k-1}, p_0.p_1p_2 \dots (p_{k-1}+1))$ that contains uncountably many elements of $E$. Since 
+
+YOU HAVE THE RIGHT IDEA, YOU JUST NEED TO FIDDLE WITH THE DETAILS TO MAKE SURE THAT THE TRUNCATED P + EPSILON IS IN THE RIGHT INTERVAL.
+\end{proof}
+\end{theorem}
 
 \end{document}
