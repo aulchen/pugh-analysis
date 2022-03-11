@@ -905,14 +905,14 @@ Let $n \in \N$ denote the interval $[n, n+1)$ that contains uncountable elements
 This can be extended to all $k \in \N$. If $p_k \in \R$ is a real number with a terminating decimal expansion $n.n_1n_2 \dots n_k$ of length $k$, then $p_k$ denotes the decimal sub-interval of length $10^{-k}$. Specifically, $p_k$ denotes $[n.n_1n_2 \dots n_k, n.n_1n_2 \dots (n_k+1))$ unless $n_k = 9$, in which the appropriate addition and carrying occurs. Denote $I_k$ as the (decimal sub)-interval of length $10^{-k}$ that contains uncountably many points of $E$.
 
 \begin{theorem}
-Let $p_0, p_1, p_2 \dots p_k \dots \in \R$ be the representations of the decimal subintervals $I_k$ length $10^{-k}$ that contain uncountable elements of $E$. Then there exists $p \in \cap_{k=0}^\infty I_k$ such that $p$ is a condensing point of $E$.
+Let $p_0, p_1, p_2 \dots p_k \dots \in \R$ be the representations of the decimal subintervals $I_k$ length $10^{-k}$ that contain uncountable elements of $E$. Then there exists $p = \cap_{k=0}^\infty I_k$ such that $p$ is a condensing point of $E$.
 \begin{proof}
-The $I_k$ are closed intervals in $\R$, so they are compact. The diameter of the sets $I_k$ is the length of the interval $10^{-k}$, which tends to $0$ as $k \rightarrow \infty$. Thus, by the theorems in the book, $\cap_{k=0}^\infty I_k$ is a single point, and we can denote it $p$.
+The $I_k$ are closed intervals in $\R$, so they are compact. They are nested and nonempty. The diameter of the sets $I_k$ is the length of the interval $10^{-k}$, which tends to $0$ as $k \rightarrow \infty$. Thus, by the theorems in the book, $\cap_{k=0}^\infty I_k$ is a single point, and we can denote it $p$.
 
-For all $\epsilon > 0$, by the Archimedian property there is some $k \in \N$ such that $\epsilon < 10^{-k}$. Taking the decimal expansion of $p$ and truncating it at $k-1$, $p_0.p_1p_2 \dots p_{k-1}$ corresponds to an interval $I_{k-1} = [p_0.p_1p_2 \dots p_{k-1}, p_0.p_1p_2 \dots (p_{k-1}+1))$ that contains uncountably many elements of $E$. Since 
-
-YOU HAVE THE RIGHT IDEA, YOU JUST NEED TO FIDDLE WITH THE DETAILS TO MAKE SURE THAT THE TRUNCATED P + EPSILON IS IN THE RIGHT INTERVAL.
+For all $\epsilon > 0$, by the Archimedian property there is some $k \in \N$ such that $10^{-k} < \epsilon$. Taking the decimal expansion of $p$ and truncating it at $k$, $p_0.p_1p_2 \dots p_k$ corresponds to an interval $I_k = [p_0.p_1p_2 \dots p_k, p_0.p_1p_2 \dots (p_k+1))$ that contains uncountably many elements of $E$. The length of this interval, $I_k$, is $10^{-k}$, and since $p \in I_k$ and $\epsilon > 10^{-k}$, $I_k$ is a subset of the epsilon-ball around $p$. Thus there are uncountable elements of $E$ within distance epsilon of $p$ for all positive epsilon, implying that $p$ is a condensing point of $E$.
 \end{proof}
 \end{theorem}
+
+The argument very easily generalizes to $\R^n$. From a similar argument to above, we can find cubes $A_1, A_2 \dots A_k$ with side lengths $10^{-k}$ such that there are uncountable elements of $E$ within the cube. By the Heine-Borel property on $\R^n$, $A_k$ is compact, and the intersection of all these cubes is a single point, $p$. For any epsilon-ball, we can find a cube $A_k$ that fits within the epsilon-ball centered at $p$ that contains uncountably many elements of $E$. Since this holds for all epsilon, it follows that $p$ is a condensing point of $E$.
 
 \end{document}

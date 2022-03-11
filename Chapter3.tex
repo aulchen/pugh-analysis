@@ -402,39 +402,103 @@ Assume that $\psi: [a, b] \rightarrow \R$ is continuously differentiable. A crit
 
 Prove that the set of critical values is a zero set. (This is the Morse-Sard Theorem in dimension one.)
 
-Let $f$ be differentiable. We first divide critical points into two types. I shall define a \textbf{critical point of type 1} of a function $f$ as a critical point $x$ such that $f'(x)$ is uniformly zero in an open neighborhood of $x$. In other words, there exists a $\epsilon > 0$ such that for all $y$ such that $|x-y| < \epsilon$, $f'(y) = 0$. I will denote a \textbf{critical point of type 2} as all other critical points. It's clear that the disjoint union of these two types is the set of all critical points of $f$. I will define \textbf{critical values of type 1} to be critical values that correspond to critical points of type 1, and \textbf{critical values of type 2} similarly. It's clear that the disjoint union of these sets is the set of all critical values of $f$. I have no idea if this characterization is standard, but that's what I've come up with.
+I will first introduce some notation. Let $f: [a, b] \rightarrow \R$ be continuous. I will define a \textbf{zero of type 1} of $f$ to be a zero of $f$ such that $f$ is uniformly zero in an open neighborhood of the root. In other words, if $f(x) = 0$, then there exists $\epsilon > 0$ such that for all $y$ such that $|x-y| < \epsilon$, $f(y) = 0$. I will denote a \textbf{zero point of type 2} of $f$ as all other zeros of $f$. It's clear that the disjoint union of zeros of types 1 and 2 make up all zeros of $f$.
 
-The immediate characterization for critical points of type 2 is stated below.
+Let $\psi$ be differentiable. We first divide critical points into two types. I shall define a \textbf{critical point of type 1} of a function $\psi$ as a critical point $x$ such that $\psi'(x)$ is uniformly zero in an open neighborhood of $x$. In other words, there exists a $\epsilon > 0$ such that for all $y$ such that $|x-y| < \epsilon$, $\psi'(y) = 0$. I will denote a \textbf{critical point of type 2} as all other critical points. It's clear that the disjoint union of these two types is the set of all critical points of $\psi$. I will define \textbf{critical values of type 1} to be critical values that correspond to critical points of type 1, and \textbf{critical values of type 2} similarly. It's clear that the disjoint union of these sets is the set of all critical values of $\psi$. I have no idea if this characterization is standard, but that's what I've come up with.
+
+\textbf{REWRITE AND SIMPLIFY THIS LATER.}
+
+The immediate characterization for roots of type 2 is stated below.
 
 \begin{lemma}
-Let $x$ be a critical point of type 2 of $f$. Then for all $\epsilon > 0$, there exists $y \in (x-\epsilon, x + \epsilon)$ such that $f'(y) \neq 0$.
+\label{ZeroType2ImpliesNonzeroPoint}
+Let $f$ be continuous, and let $x$ be a zero of type 2 of $f$. Then for all $\epsilon > 0$, there exists $y \in (x-\epsilon, x + \epsilon)$ such that $f(y) \neq 0$.
 \begin{proof}
 If this is not true, then $x$ is a critical point of type 1.
 \end{proof} 
 \end{lemma}
 
-We state a lemma for critical points of type 2.
+\begin{corollary}
+Let $f$ be continuous, and let $x$ be a zero of type 2 of $f$. 
+\end{corollary}
+
+We next state a lemma on non-zero points of continuous functions implying an interval with no zeros. This can be thought of as non-zero points of continuous functions creating 'exclusion zones' with a delta-radius that contain no zeros.
 
 \begin{lemma}
-Let $f$ be continuously differentiable with an infinite number of critical points of type 2. Then there exists at least one $x \in [a, b]$ such that $x$ is a cluster point of critical points of type 2. 
+\label{ExclusionZoneDelta}
+Let $f: [a, b] \rightarrow \R$ be continuous, and let $x \in [a, b]$ be a point such that $f(x) \neq 0$. Then there exists a $\delta > 0$ such that $f$ has no zeros in $(x-\delta, x+\delta)$.
 \begin{proof}
-Suppose not. Then there is some $\epsilon > 0$ such that for all $x \in [a, b]$, $(x-\epsilon) \cup (x + \epsilon)$ contains no critical points of type 2, meaning $(x-\epsilon, x + \epsilon)$ contains at most one critical point of type 2. Spacing out test points with distance $\epsilon$ between them in $[a, b]$ shows that there are at most a finite number of critical points of type 2 in $[a, b]$, a contradiction.
+Because $f$ is uniformly continuous, there exists a $\delta > 0$ such that for all $y$ such that $|x-y| < \delta$, $|f(x) - f(y)| < |f(x)|$. This implies that $y$ is not a zero of $f$.
 \end{proof}
 \end{lemma}
 
-We now want to prove the main theorem for critical points of type 2.
+\begin{lemma}
+\label{NearestZeros}
+Let $f: [a, b] \rightarrow \R$ be continuous, and let $x \in [a, b]$ such that $f(x) \neq 0$. Then $f$ is not a clustering point of zeros. In other words, we can reasonably speak of the nearest zero of $f$ greater than $x$, and the nearest zero of $f$ less than $x$.
+\begin{proof}
+Suppose not. Then there exists a sequence $(x_n) \rightarrow x$ of zeros of $f$. $\lim_{n \rightarrow \infty} f(x_n) = 0$, but $f(x) \neq 0$, violating the continuity of $f$.
+\end{proof}
+\end{lemma}
+
+We now introduce some useful terminology (that I have no idea whether is standard, but I am going to use it). Let $f: [a, b] \rightarrow \R$ be continuous, and let $x$ be a point such that $f(x) \neq 0$. The \textbf{covering interval of x} is the open interval between the nearest zero of $f$ to the left of $x$, and the nearest zero of $f$ to the right of $x$. This interval covers $x$. By Lemma \ref{NearestZeros}, this is a well-defined construction.
+
+I will denote the interval as $C$. If there are no zeros of $f$ to the left of $x$, then the left endpoint of $C$ is $a$, and if there are no zeros to the right of $x$, then the right endpoint of $C$ is $b$.
+
+Note that covering intervals are disjoint, since any two covering intervals are separated by at least one zero of $f$.
+
+We now show that the number of covering intervals is closely related to the number of zeros of type 2.
+
+\begin{lemma}
+Let $x$ be a zero of type 2. Then there is a covering interval such that $x$ is the endpoint. 
+\begin{proof}
+Suppose not. Then $x$ is not the nearest zero of type 2 to any nonzero point of $f$. This means that there are areas where $f$ is constantly zero to the left and right of $x$ until $f$ reaches a zero of type 2, which implies that $x$ is a zero of type 1. This is a contradiction.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+\label{ZeroType2Cardinality}
+The set of zeros of type 2 is of equal or lesser cardinality to the set of covering intervals.
+\begin{proof}
+Each zero of type 2 belongs to at least one covering interval.
+\end{proof}
+\end{corollary}
+
+We now state a brief lemma on exclusion zones and covering intervals.
+
+\begin{lemma}
+Let $f: [a, b] \rightarrow \R$ be continuous. Let $x$ be such that $f(x) \neq 0$, and let $\delta$ be the corresponding delta from uniform continuity, as in Lemma \ref{ExclusionZoneDelta}. Let $C$ be the covering interval of $x$. Then the length of the covering interval $C$ is greater than $2\delta$.
+\begin{proof}
+By Lemma \ref{ExclusionZoneDelta}, there are no zeros of $f$ within the $\delta$-ball centered at $x$. This implies that the nearest zeros of $f$ are further away than $\delta$ in each direction of $x$, implying that the covering interval of $x$ is longer than $2\delta$.
+\end{proof}
+\end{lemma}
+
+We next show a monotonicity result for covering interval sizes.
+
+\begin{lemma}
+\label{CoveringIntervalDelta}
+Let $f: [a, b] \rightarrow \R$ be continuous. Let $x$ be such that $f(x) \neq 0$, and let $\delta_x$ be the corresponding delta from uniform continuity. Let $y$ be such that $|f(y)| \geq |f(x)|$. Then the length of the covering interval of $y$ is greater than $2\delta_x$. Covering intervals are weakly increasing with $|f(x)|$.
+\begin{proof}
+Within the $\delta_x$-ball of $y$, $f$ changes by at most $|f(x)|$, which is insufficient for $f$ to get back to zero.
+\end{proof}
+\end{lemma}
+
+We now want to prove the main theorem for zeros of type 2. Intuitively, we will show that there are at most countable number of covering intervals, implying that there are most a countable number of zeros of type 2.
 
 \begin{theorem}
-Let $f$ be continuously differentiable on $[a, b]$. Then $f$ has at most countable critical points of type 2.
+Let $f$ be continuous on $[a, b]$. Then $f$ has at most countable zeros of type 2.
 \begin{proof}
-\textbf{TODO}.
+Consider the set of points where $f(x) \geq 1$, and let $A_1$ be the set of covering intervals of those points, with duplicates removed. By Lemma \ref{CoveringIntervalDelta}, there exists $\delta_1 > 0$ such that the covering intervals in $A_1$ have length $\geq 2\delta_1$. Since the covering intervals are disjoint, there are at most $\frac{b-a}{2\delta_1}$ intervals in $A_1$.
+
+We can then consider the set of points where $\frac{1}{2} \geq f(x) < 1$, and define $A_2$ to be the set of non-duplicate covering intervals that cover those points. Then there exists $\delta_2 > 0$ such that the covering intervals in $A_2$ have length $\geq 2 \delta_2$, implying that there are at most $\frac{b-a}{2 \delta_2}$ intervals in $A_2$.
+
+Continuing in this way for all $k \in \N$, we see that for all $k$, there are countably many covering intervals in $A_k$. Let $A$ be the union of all these sets, and thus the set of all covering intervals. It's clear that the intervals in $A$ cover all non-zero points of $f$, and that $A$ is countable. By Lemma \ref{ZeroType2Cardinality}, the set of zeros of type 2 is at most countable.
 \end{proof}
 \end{theorem}
 
 \begin{corollary}
 Let $f$ be continuously differentiable on $[a, b]$. Then $f$ has at most countable critical values of type 2.
 \begin{proof}
-Each critical point of type 2 maps to at most one critical value of type 2.
+$f'$ is continuous, implying that $f$ has at most countable zeros of type 2. Each zero of type 2 of $f'$ maps to at most one critical value of type 2 of $f$.
 \end{proof}
 \end{corollary}
 
@@ -450,7 +514,7 @@ By the Fundamental Theorem of Calculus, for $x \in [c, d]$, $\psi(x) = \psi(c) +
 We now want to prove the main theorem for critical values corresponding to critical points of type 1.
 
 \begin{theorem}
-If $f: [a, b] \rightarrow \R$ is continuously differentiable, then $f$ has countably many critical values of type 1.
+If $f: [a, b] \rightarrow \R$ is continuously differentiable, then $f$ has countably many zeros of type 1.
 \begin{proof}
 \textbf{TODO}. Some sort of 1/k interval counting trick, since the critical points of type 1 can be grouped up into disjoint open intervals, except for some endpoint behavior. Then the countable intervals with critical points of type 1 map to at most countable critical values, using the lemma thingy with the fundamental theorem of calculus further up the page. Need to iron out the kinks.
 \end{proof}
@@ -459,7 +523,7 @@ If $f: [a, b] \rightarrow \R$ is continuously differentiable, then $f$ has count
 \begin{theorem}
 The critical values of $f$ form a zero set.
 \begin{proof}
-The union of a countable set with a finite set is a countable set, which is a zero set.
+The union of countable sets is a countable set, which is a zero set.
 \end{proof}
 \end{theorem}
 
