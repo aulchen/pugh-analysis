@@ -308,7 +308,7 @@ f(x) &= \int_1^{xy} 1/t dt - \int_1^x 1/t dt - \int_1^y 1/t dt \\
 &= \int_x^{xy} 1/t dt - \int_1^y 1/t dt
 \end{align*}
 
-When $x = 0$, $f(x) = \int_1^{y} 1/t dt - \int_1^{y} 1/t dt = 0$.
+When $x = 1$, $f(x) = \int_1^{y} 1/t dt - \int_1^{y} 1/t dt = 0$.
 
 We now evaluate $f'(x)$. Splitting the integrals, for all $x>0$, we can find a constant $0 < c < x$. Then
 
@@ -316,7 +316,7 @@ We now evaluate $f'(x)$. Splitting the integrals, for all $x>0$, we can find a c
 f(x) = \int_c^{xy} 1/t dt - \int_c^x 1/t dt - \int_1^y 1/t dt
 \]
 
-By the Fundamental Theorem of Calculus, $\frac{d}{dx} \int_c^x 1/t dt = 1/x$ since $1/t$ is continuous on $[c, \infty)$. By the Chain Rule, $\frac{d}{dx} \int_c^{xy} 1/t dt = y\frac{1}{xy} = 1/x$. Thus, $f'(x) = 0$ for all $x > 0$. $\int_1^y 1/t dt$ is constant with regards to $x$, and thus has derivative zero. The only functions with derivatives equal to zero everywhere are constant functions, and since $f(1) = 0$, this implies that $f(x) = 0$. Thus $\log xy = \log x + \log y$.
+By the Fundamental Theorem of Calculus, $\frac{d}{dx} \int_c^x 1/t dt = 1/x$ since $1/t$ is continuous on $[c, \infty)$. By the Chain Rule, $\frac{d}{dx} \int_c^{xy} 1/t dt = y\frac{1}{xy} = 1/x$. $\int_1^y 1/t dt$ is constant with regards to $x$, and thus has derivative zero. Thus, $f'(x) = 0$ for all $x > 0$. The only functions with derivatives equal to zero everywhere are constant functions, and since $f(1) = 0$, this implies that $f(x) = 0$. Thus $\log xy = \log x + \log y$.
 
 \subsection*{Part c}
 
@@ -489,9 +489,9 @@ Let $f$ be continuous on $[a, b]$. Then $f$ has at most countable zeros of type 
 \begin{proof}
 Consider the set of points where $f(x) \geq 1$, and let $A_1$ be the set of covering intervals of those points, with duplicates removed. By Lemma \ref{CoveringIntervalDelta}, there exists $\delta_1 > 0$ such that the covering intervals in $A_1$ have length $\geq 2\delta_1$. Since the covering intervals are disjoint, there are at most $\frac{b-a}{2\delta_1}$ intervals in $A_1$.
 
-We can then consider the set of points where $\frac{1}{2} \geq f(x) < 1$, and define $A_2$ to be the set of non-duplicate covering intervals that cover those points. Then there exists $\delta_2 > 0$ such that the covering intervals in $A_2$ have length $\geq 2 \delta_2$, implying that there are at most $\frac{b-a}{2 \delta_2}$ intervals in $A_2$.
+We can then consider the set of points where $\frac{1}{2} \leq f(x) < 1$, and define $A_2$ to be the set of non-duplicate covering intervals that cover those points. Then there exists $\delta_2 > 0$ such that the covering intervals in $A_2$ have length $\geq 2 \delta_2$, implying that there are at most $\frac{b-a}{2 \delta_2}$ intervals in $A_2$.
 
-Continuing in this way for all $k \in \N$, we see that for all $k$, there are countably many covering intervals in $A_k$. Let $A$ be the union of all these sets, and thus the set of all covering intervals. It's clear that the intervals in $A$ cover all non-zero points of $f$, and that $A$ is countable. By Lemma \ref{ZeroType2Cardinality}, the set of zeros of type 2 is at most countable.
+Thus, for all $k \in \N$, we can consider the set of points where $\frac{1}{k} \leq f(x) < \frac{1}{k-1}$, and define $A_k$ to be the set of non-duplicate covering intervals that cover those points. Continuing in this way for all $k \in \N$, we see that for all $k$, there are countably many covering intervals in $A_k$. Let $A$ be the union of all these sets, and thus the set of all covering intervals. $A$ is countable. By Corollary \ref{ZeroType2Cardinality}, the set of zeros of type 2 is at most countable.
 \end{proof}
 \end{theorem}
 
