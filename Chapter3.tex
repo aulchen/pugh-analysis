@@ -324,7 +324,31 @@ Prove that $\log$ is strictly monotone increasing and its range is all of $\R$.
 
 $\frac{d}{dx} \log x = 1/x$, which is strictly positive for all $x > 0$. Thus $\log x$ is strictly monotone increasing.
 
-TO FINISH.
+We know that $\log (1) = 0$. Going to the right, let $a_k = \frac{1}{k}$. Because $\frac{1}{t}$ is decreasing, for all $t \in [k, k+1]$, $\frac{1}{t} \leq a_{k+1}$. Thus because $\sum_{k=2}^\infty a_k = \sum_{k=2}^\infty \frac{1}{k}$ diverges to infinity, by the Integral Test, $\int_1^\infty \frac{1}{t} dt$ diverges to infinity. This means that there is for large $x$, $\log (x) = \int_1^x \frac{1}{t} dt$ can be made arbitrarily large. This implies that when $x \geq 0$, $\log(x)$ takes on all values in $[0, \infty)$.
+
+Going to the left, for $x \in (0, 1]$, $\log(x) = - \int_x^1 \frac{1}{t} dt$. Let $k \in \N$ and consider $\log(\frac{1}{2^k}) = - \int_\frac{1}{2^k}^1 \frac{1}{t} dt$.
+
+To evaluate $\int_\frac{1}{2^k}^1 \frac{1}{t} dt$, consider the partition $P$ such that $x_i = \frac{1}{2^i}$ for $i \in \N$. Thus $x_0 = 1$, $x_1 = \frac{1}{2}$, $x_2 = \frac{1}{4}$, etc. Because $\frac{1}{t}$ is strictly decreasing, the minimum of $\frac{1}{t}$ occurs at the right endpoint of the interval. Thus the lower integral is greater than or equal to
+
+\begin{align*}
+&1(\frac{1}{2}) + 2(\frac{1}{4}) + 4(\frac{1}{8}) \dots \\
+=&\frac{1}{2} + \frac{1}{2} + \frac{1}{2} \dots \\
+=&\frac{k}{2}
+\end{align*}
+
+because there are $k$ intervals. Since $\frac{1}{t}$ is Riemann integrable on $(0, 1]$, $\frac{k}{2}$ is a lower bound for the integral. Thus
+
+\[
+- \int_\frac{1}{2^k}^1 \frac{1}{t} dt \leq -\frac{k}{2}
+\]
+
+which implies that the integral goes to negative infinity as $k$ goes to infinity. Thus
+
+\[
+-\int_0^1 \frac{1}{t} dt = -\infty
+\]
+
+which implies that as $x$ approaches zero, $\log(x)$ approaches negative infinity. Thus on $(0, 1]$, $\log(x)$ takes on all values in $(-\infty, 0]$. Putting the two statements together implies that the range of $\log(x)$ is all of $\R$.
 
 \section*{Problem 29}
 

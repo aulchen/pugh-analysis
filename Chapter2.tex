@@ -801,7 +801,7 @@ Show that $p \rightarrow \dist(p, S)$ is a uniformly continuous function of $p \
 Let $\delta = \epsilon$, and let $p, q \in M$. We first consider the case when $p$ or $q$ are in $\bar{S}$. Without loss of generality, let $p \in \bar{S} = S \cup S'$. Then $\dist(p, S) = 0$. Since $p \in \bar{S} = S \cup S'$, there exist points in $S$ arbitrarily close to $p$, so $\inf\{d(q, s): s \in S\} \leq d(p, q)$. Thus
 
 \[
-|\dist(p, S) - dist(q, S)| = \dist(q, S) = \inf\{d(q, s): s \in S\} \leq d(p, q) < \epsilon
+|\dist(p, S) - \dist(q, S)| = \dist(q, S) = \inf\{d(q, s): s \in S\} \leq d(p, q) < \epsilon
 \]
 
 which proves uniform continuity.
@@ -875,7 +875,7 @@ What if all the values are irrational?
 
 The same conclusion holds, that $f$ is a constant function. Again, if $M$ has only one element, the proof is trivial. Otherwise, let $x, y$ be distinct irrational numbers in the range of $f$. By the denseness of rationals in $\R$, there exists a rational number $p \in (x, y)$.
 
-Consider the metric space $X = \R - \{p\}$, the real line with $p$ removed, and the subset $A = (-\infty, p)$. $A$ and $A^C$ are open in $X$, implying that $A$ is a clopen subset of $X$. Letting $F$ be the range of $f$, because $F \subset X$, we see that $A \cap F$ is a clopen subset of $F$ by the Inheritance Principle. Because $p < y$, $y$ is not in $F$, so $A$ is a proper clopen subset of $F$. Thus the range of $f$ is disconnected, a contradiction. Thus there are no two distinct points $x, y$ in the range of $f$, and $f$ is a constant function.
+Consider the metric space $X = \R - \{p\}$, the real line with $p$ removed, and the subset $A = (-\infty, p)$. $A$ and $A^C$ are open in $X$, implying that $A$ is a clopen subset of $X$. Letting $F$ be the range of $f$, because $F \subset X$, we see that $A \cap F$ is a clopen subset of $F$ by the Inheritance Principle. Because $p < y$, $y$ is not in $A \cap F$, so $A \cap F$ is a proper clopen subset of $F$. Thus the range of $f$ is disconnected, a contradiction. Thus there are no two distinct points $x, y$ in the range of $f$, and $f$ is a constant function.
 
 \subsection*{Problem 126}
 
