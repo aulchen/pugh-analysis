@@ -111,4 +111,36 @@ Thus $f_1$ is $1$ everywhere, $f_2$ is $1$ at $0$ and $1$ and $1/2$ everywhere e
 
 $f_n(x) = f(x)$ when $x$ is a rational number in reduced form with denominator $\leq n$. Everywhere else, $f(x) \geq 0$, and $f_n(x) = \frac{1}{n}$ imply $f_n(x) - f(x) \leq \frac{1}{n}$, which approaches zero as $n$ goes to infinity. Thus $f_n \rightrightarrows f$. Similarly, $f_n$ is piecewise continuous, since it only has $1 + 2 + 3 \dots + n-1$ discontinuities, which is finite. However, $f$ is discontinuous at all rational numbers, and is thus is not piecewise continuous.
 
+\section*{Problem 4}
+
+\subsection*{Part a}
+
+If $f_n: \R \rightarrow \R$ is uniformly continuous for each $n \in \N$ and if $f_n \rightrightarrows f$ as $n \rightarrow \infty$, prove or disprove that $f$ is uniformly continuous.
+
+$f$ is uniformly continuous. Let $\epsilon > 0$ be arbitrary. Then by uniform convergence, there exists $N$ such that $n \geq N$ implies that $||f - f_n||_{\sup} < \frac{\epsilon}{3}$. By the uniform continuity of $f_n$, there exists $\delta > 0$ such that $|x - y| < \delta$ implies $|f_n(x) - f_n(y)| < \frac{\epsilon}{3}$, which is equivalent to $\max_{a \in [x, y]} f_n(a) - \min_{a \in [x, y]} f_n(a) < \frac{\epsilon}{3}$. Because $||f - f_n||_{\sup} < \frac{\epsilon}{3}$, this implies that for $|x-y| < \delta$,
+
+\[
+\max_{|x-y| < \delta} f(y) - \min_{|x-y| < \delta} f(a) < \epsilon
+\]
+
+which is equivalent to uniform continuity.
+
+\subsection*{Part b}
+
+What happens for functions from one metric space to another instead of $\R$ to $\R$?
+
+The same things happen. Let $f: M \rightarrow N$. The supremum norm is well defined for functions from $M$ to $N$. For uniform continuity, there exists $\delta > 0$ such that $d_M(x, y) < \delta$ implies $d_N(f_n(x), f_n(y)) < \frac{\epsilon}{3}$, which is equivalent to
+
+\[
+\sup_{d_M(x, y) < \delta} f_n(y) - \inf_{d_M(x, y) < \delta} f_n(y) < \frac{\epsilon}{3}
+\]
+
+Combined with $||f - f_n||_{\sup} < \frac{\epsilon}{3}$, this implies that
+
+\[
+\sup_{d_M(x, y) < \delta} f(y) - \inf_{d_M(x, y) < \delta} f(y) < \epsilon
+\]
+
+which implies uniform continuity.
+
 \end{document}
