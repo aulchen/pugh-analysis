@@ -877,6 +877,73 @@ The same conclusion holds, that $f$ is a constant function. Again, if $M$ has on
 
 Consider the metric space $X = \R - \{p\}$, the real line with $p$ removed, and the subset $A = (-\infty, p)$. $A$ and $A^C$ are open in $X$, implying that $A$ is a clopen subset of $X$. Letting $F$ be the range of $f$, because $F \subset X$, we see that $A \cap F$ is a clopen subset of $F$ by the Inheritance Principle. Because $p < y$, $y$ is not in $A \cap F$, so $A \cap F$ is a proper clopen subset of $F$. Thus the range of $f$ is disconnected, a contradiction. Thus there are no two distinct points $x, y$ in the range of $f$, and $f$ is a constant function.
 
+\subsection*{Problem 61}
+
+Prove that the double cone $\{(x, y, z) \in \R^3: x^2 + y^2 = x^2\}$ is path-connected.
+
+The double-cone consists of a union of lines that meet at the origin, and form a 45 degree angle with the xy plane. Each point in the double cone lies on one of those lines. If $a$ and $b$ are points on the double-cone, we can draw a path from $a$, up the line, until we hit the $z$ coordinate of $b$. Then since for a given $z$ coordinate, the double cone is a circle, we can travel along the circle until we reach $b$. This is a path. Since this holds for all points, the double cone is path-connected.
+
+\subsection*{Problem 62}
+
+Prove that the annulus $A = \{z \in \R^2: r \leq |z| \leq R\}$ is connected.
+
+The easiest way to do this is via path connectedness. For $a$ and $b$ in the annulus, starting from $a$, draw a path along the radial direction of the annulus until the radius matches the radius of $b$. Then move along the circle with constant radius until you reach $b$. This is a path, implying that the annulus is path-connected, implying that it is connected.
+
+\subsection*{Problem 63}
+
+A subset $E$ of $\R^m$ is \textbf{starlike} if it contains a point $p_0$ (called a \textbf{center} for $E$) such that for each $q \in E$, the segment between $p_0$ and $q$ lies in $E$.
+
+\subsubsection*{Part a}
+
+If $E$ is convex and nonempty prove that it is starlike.
+
+If $E$ consists of one point the proof is trivial. Otherwise, pick an arbitrary point of $E$ and denote it the center, $p_0$. For all other points $x \in E$, by convexity, the line segment between $x$ and $p_0$ lies in $E$. 
+
+\subsubsection*{Part b}
+
+Why is the converse false?
+
+Consider a three-pointed star in $\R^2$. It is starlike, but it is not convex. The line between two points of the star does not lie in the star.
+
+\subsubsection*{Part c}
+
+Is every starlike set connected?
+
+Yes. Let $p, q \in E$ be arbitrary. Because $E$ is starlike, there exists a path between $p$ and $p_0$, and between $p_0$ and $q$. Putting those together gives a path between $p$ and $q$, implying that $E$ is path-connected, implying that $E$ is connected.
+
+\subsubsection*{Part d}
+
+Is every connected set starlike? Why or why not?
+
+No. By Part c, being starlike implies path connectedness. The topologist's sine curve is connected, but not path-connected, and thus not starlike.
+
+\subsection*{Problem 64}
+
+Suppose that $E \subset \R^m$ is open, bounded, and starlike, and $p_0$ is a center for $E$.
+
+\subsubsection*{Part a}
+
+Is it true or false that all points $p_1$ in a small enough neighborhood of $p_0$ are also centers for $E$?
+
+It's probably true, but I don't know yet. Until then, have a lemma.
+
+\begin{lemma}
+For all $q \in E$, there exists $\epsilon_q > 0$ such that for all points $p_1 \in E$ in the $\epsilon_q$ neighborhood of $p_0$, the segment between $q$ and $p_1$ lies in $E$.
+\begin{proof}
+Let $S$ be the segment between $q$ and $p_0$, and let $\epsilon_0>0$ be the radius of the epsilon-ball around $p_0$ that lies completely in $E$. Since $S \subset E$ and $E$ is open, there is a covering of $S$ by open balls that are subsets of $E$ centered at the points of $S$. Since $E$ is bounded, $S$ is bounded. Since $S$ is a closed and bounded subset of $\R^m$, $S$ is compact, and so the covering reduces to a finite subcovering. Add the epsilon-ball around $p_0$ to the finite subcovering.
+
+Let $\epsilon_q > 0$ be the minimum of those epsilons in the balls of the finite subcovering. By construction, all points that are closer than $\epsilon_q$-away from $S$ are in $E$. For all $p_1$ such that $d_E(p_0, p_1) < \epsilon_q$, let $T$ be the line between $p_1$ and $q$. By construction, the epsilon-ball around $p_0$ was in the finite subcovering, so $\epsilon_q \leq \epsilon_0$, implying that $p_1 \in E$.
+
+By the Pythagorean Theorem, the distance from $p_1$ to $S$ is less than $\epsilon_q$, and the distance between any point on $T$ and the line $S$ is also less than $\epsilon_q$. Thus $T$ lies within $E$.
+\end{proof}
+\end{lemma}
+
+\subsection*{Problem 70}
+
+Prove that $(a, b)$ and $[a, b)$ are not homeomorphic.
+
+A single point, $a$, can be removed from $[a, b)$ without disconnecting it, but removing a single point from $(a, b)$ disconnects it. Since connectedness is a topological property, the two are not homeomorphic.
+
 \subsection*{Problem 126}
 
 Suppose $E$ is an uncountable subset of $\R$. Prove that there exists a point $p \in \R$ where $E$ condenses.
