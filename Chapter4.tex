@@ -96,7 +96,7 @@ f(x) =
 \end{cases}
 \]
 
-Let $f_n: [0, 1] \rightarrow \R$ be the following function for $n = 1, 2 \dots$
+Let $f_n: [0, 1] \rightarrow \R$ be the rational ruler function. Specifically,  for $n = 1, 2 \dots$
 
 \[
 f_n(x) = 
@@ -142,5 +142,43 @@ Combined with $||f - f_n||_{\sup} < \frac{\epsilon}{3}$, this implies that
 \]
 
 which implies uniform continuity.
+
+\section*{Problem 5}
+
+Suppose that $f_n: [a, b] \rightarrow \R$ and $f_n \rightrightarrows f$ as $n \rightarrow \infty$. Which of the following discontinuity properties of the functions $f_n$ carry over to the limit function?
+
+\subsection*{Part a}
+
+No discontinuities.
+
+This is immediate. By the theorems in the book, the uniform limit of continuous functions is continuous.
+
+\subsection*{Part b}
+
+At most ten discontinuities.
+
+TODO.
+
+\subsection*{Part c}
+
+At least ten discontinuities.
+
+No. Let the interval be $[0, 1]$ and $f_n$ be the function
+
+\[
+f_n = 
+\begin{cases}
+\frac{1}{n} & \text{ when } x \text{ in reduced form has denominator } 10^n \\
+0 & \text{ else}
+\end{cases}
+\]
+
+$f_n$ has at least ten discontinuities for all $n$, but uniformly converges to the zero function, which has no discontinuities.
+
+\subsection*{Part d}
+
+Finitely many discontinuities.
+
+No. From Problem 3 Part b above, there are functions with finitely discontinuities but uniformly converge to a function with infinite discontinuities.
 
 \end{document}

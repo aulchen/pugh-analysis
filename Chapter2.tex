@@ -944,6 +944,36 @@ Prove that $(a, b)$ and $[a, b)$ are not homeomorphic.
 
 A single point, $a$, can be removed from $[a, b)$ without disconnecting it, but removing a single point from $(a, b)$ disconnects it. Since connectedness is a topological property, the two are not homeomorphic.
 
+\subsection*{Problem 81}
+
+The topologist's sine curve is the set
+
+\[
+\{(x, y): x = 0 \text{ and } |y| \leq 1 \text{ or } 0 < x \leq 1 \text{ and } y = \sin(\frac{1}{x})
+\]
+
+The \textbf{topologist's sine circle} is is the union of a circular arc and the topologist's sine curve. Prove that it is path-connected but not locally path-connected. ($M$ is \textbf{locally path connected} if for each $p \in M$ and each neighborhood $U$ of $p$ there is a path-connected subneighborhood $V$ of $p$).
+
+I will denote $A$ to be the part of the topologist's sine curve that is a vertical line segment through the origin, and $B$ to be the part that consists of the sine curve. It's clear that $A$ and $B$ individually are path-connected. The entire sine circle is path-connected because the circular arc connects the two sets.
+
+Consider $p = (0, 1) \in A$ and the of $\epsilon_0 = \frac{1}{2}$ neighborhood around $p$. The neighborhood does not have a path-connected subneighborhood. Each cycle of the sine waves goes from $-1$ to $1$ and back again, meaning that for all $\epsilon \leq \frac{1}{2}$, $B$ leaves the $\epsilon_0$ neighborhood of $p$. Thus the intersection of $B$ and the $\epsilon_0$ neighborhood of $p$ is a series of disconnected peaks of the sine function, which implies that the epsilon neighborhood of $p$ does not have a path connected subneighborhood.
+
+\subsection*{Problem 96}
+
+If $A \subset B \subset C$, $A$ is dense in $B$, and $B$ is dense in $C$ prove that $A$ is dense in $C$.
+
+Because $A$ is dense in $B$, $B \subset \bar{A}$, and all points in $B$ are limit points of $A$. Similarly, since $C$ is dense in $B$, $C \subset \bar{B}$, and all points in $C$ are limit points of $B$.
+
+Let $c \in C$ be arbitrary. There exists $b_j \in B$ such that $b_j \rightarrow C$, and for each $b_j$, there exists $a_{i, j} \in A$ such that $a_{i, j} \rightarrow b_j$ with respect to $i$. $a_{i, j} \rightarrow b_j$ and $b_j \rightarrow c$ imply that $a_{i, i} \rightarrow c$ by the Triangle Inequality. 
+
+Specifically, there exists $I \in \N$ such that $i \geq I$ implies that $|a_{i,j} - b_{j}| < \epsilon/2$. Similarly, there exists $J \in \N$ such that $j \geq J$ implies that $|b_j - c| < \epsilon/2$. For $N = \max(I, J)$ and $n \geq N$,
+
+\[
+|a_{n,n} - c| \leq |a_{n, n} - b_n| + |b_n - c| < \epsilon
+\]
+
+which shows that $c$ is a limit point of $A$, and thus in $\bar{A}$. Thus $C \subset \bar{A}$ and $A$ is dense in $C$.
+
 \subsection*{Problem 126}
 
 Suppose $E$ is an uncountable subset of $\R$. Prove that there exists a point $p \in \R$ where $E$ condenses.
