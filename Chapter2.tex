@@ -925,7 +925,55 @@ Suppose that $E \subset \R^m$ is open, bounded, and starlike, and $p_0$ is a cen
 
 Is it true or false that all points $p_1$ in a small enough neighborhood of $p_0$ are also centers for $E$?
 
-It's probably true, but I don't know yet. Until then, have a lemma.
+False. Consider $\R^2$, the open rectangles $A = (-1, 1) \times (2, 0)$, $B = (-1/2, -1/2) \times (1/2, 1/2)$, and let $E = A \cup B$. $E$ is clearly open and bounded, and a bit of thought will show that $A$ is starlike with $p_0 = (0, 0)$ as a center.
+
+For all $0 < \epsilon < \frac{1}{2}$, consider the point $p_1 = (0, -\epsilon)$. $p_1 \in E$. The point $p_2 = (1, \epsilon)$ is also an element of $E$. By symmetry, the line segment between $p_1$ and $p_2$ runs through $(\frac{1}{2}, 0)$, which is not in $E$. Thus for all $0 < \epsilon < \frac{1}{2}$, $p_1$ is not a center for $E$.
+
+\subsubsection*{Part b}
+
+Is the set of centers convex?
+
+Yes. To start, we begin with the $\R^2$ case. We begin by showing that if $a, b \in E$ are centers and $c \in E$ is arbitrary, then the 'area' between $a, b, c$ is a subset of $E$.
+
+\begin{lemma}
+Let $E \subset \R^2$ be starlike. Let $a, b \in E$ be centers of $E$, and let $c \in E$ lie on the line $\bar{ab}$. Then the segment $\bar{cab}$ (or $\bar{cba}$ depending on the ordering) is a subset of $E$.
+\begin{proof}
+Without loss of generality, assume that the order is $\bar{cab}$. Because $b$ is a center of $E$, the line segment $\bar{cb} \subset E$, and $\bar{cab} = \bar{cb}$.
+\end{proof}
+\end{lemma}
+
+\begin{theorem}
+\label{TheoremTriangleInE}
+Let $E \subset \R^2$ be starlike. Let $a, b \in E$ be centers of $E$, and let $c \in E$ not lie on the line $\bar{ab}$. Then the triangle $\bigtriangleup abc \subset E$.
+\begin{proof}
+Because $a$ and $b$ are centers, the line segments $\bar{ab}$, $\bar{ac}$, and $\bar{bc}$ are subsets of $E$. These form the outline of a triangle $\bigtriangleup abc$. For any point $d$ inside $\bigtriangleup abc$, extend the line segment $\bar{ad}$ until it intersects $\bar{bc}$, and denote that point $e$. Because $e \in \bar{bc}$, $e \in E$. Because $a$ is a center of $E$, $\bar{ac} \subset E$, which implies $\bar{ad} \subset E$. Repeating this process for all points inside the outline of $\bigtriangleup abc$ shows that $\bigtriangleup abc \subset E$.
+\end{proof}
+\end{theorem}
+
+\begin{theorem}
+\label{TheoremCenterConvexityR2}
+Let $E \subset \R^2$ be starlike. Then the set of centers of $E$ is convex. Specifically, if $a, b \in E$ are centers and $c$ lies on the line segment $\bar{ab}$, then $c$ is a center of $E$.
+\begin{proof}
+Fix $a, b, c$, and let $d \in E$ be arbitrary. By Theorem \ref{TheoremTriangleInE}, $\bigtriangleup abd \subset E$. Since $c \in \bar{ab}$, $c \in \bigtriangleup abd$, and so the line segment $\bar{cd} \subset \bigtriangleup abd \subset E$. Repeating this for all points $d \in E$ shows that $c$ is a center of $E$.
+\end{proof}
+\end{theorem}
+
+The result extends to $\R^m$.
+
+\begin{theorem}
+Let $E \subset \R^m$ be starlike. Then the set of centers is convex.
+\begin{proof}
+If $m=1$, the proof is trivial, because the starlike subsets of $\R$ are intervals. The $m=2$ case has been proven.
+
+For $m > 2$, let $a, b \in E$ be centers of $E$, $c \in \bar{ab}$ be the prospective center, and $d \in E$ be arbitrary. If $d$ is collinear with $\bar{acb}$, then the proof is trivial. Otherwise, a line and a point define a plane. By Theorem \label{TheoremCenterConvexityR2}, the triangle $\bigtriangleup abd$ in this plane is a subset of $E$, which implies that $\bar{dc} \subset E$. Thus $c$ is a center for $E$, and the set of centers of $E$ is convex.
+\end{proof}
+\end{theorem}
+
+\subsubsection*{Part c}
+
+Is it closed as a subset of $E$?
+
+Here's a random lemma that I came up with. I don't need it yet, but I might need it later, so I'm saving it.
 
 \begin{lemma}
 For all $q \in E$, there exists $\epsilon_q > 0$ such that for all points $p_1 \in E$ in the $\epsilon_q$ neighborhood of $p_0$, the segment between $q$ and $p_1$ lies in $E$.
