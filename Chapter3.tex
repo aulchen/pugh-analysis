@@ -350,6 +350,130 @@ which implies that the integral goes to negative infinity as $k$ goes to infinit
 
 which implies that as $x$ approaches zero, $\log(x)$ approaches negative infinity. Thus on $(0, 1]$, $\log(x)$ takes on all values in $(-\infty, 0]$. Putting the two statements together implies that the range of $\log(x)$ is all of $\R$.
 
+\section*{Problem 17}
+
+Define $E: \R \rightarrow \R$ by
+
+\[
+E(x) =
+\begin{cases}
+e^{-1/x} & \text{ if } x > 0 \\
+0 & \text{ if } x \leq 0
+\end{cases}
+\]
+
+\subsection*{Part a}
+
+Prove that $E(x)$ is smooth; that is, $E$ has derivatives of all orders at all points $x$.
+
+For $x < 0$, smoothness is trivial. A quick application of the chain rule shows that on $x > 0$,
+
+\[
+E'(x) = \frac{1}{x^2} e^{-\frac{1}{x}}
+\]
+
+\begin{theorem}
+\label{TheoremE(x)Form}
+For $x > 0$, $E^{(n)}(x)$ has the form
+\[
+(a_{n+1} x^{-(n+1)} + a_{n+2}x^{-(n+2)} + \dots + a_{2n}x^{-2n})e^{-\frac{1}{x}}
+\]
+for all $n \in \N$.
+\begin{proof}
+The base case $n=1$ has been established above. Assume that the hypothesis holds for $n-1$. Then
+\[
+E^{(n-1)}(x) = (a_{n} x^{-n} + a_{n+1}x^{-(n+1)} + \dots + a_{2n-2}x^{-(2n-2)})e^{-\frac{1}{x}}
+\]
+Using the Product Rule,
+\begin{align*}
+E^{(n)}(x) &= [(-na_{n} x^{-(n+1)} - (n+1)a_{n+1}x^{-(n+2)} - \dots -(2n+2) a_{2n-2}x^{-(2n-1)}) \\
+&+ (a_{n} x^{-(n+2)} + a_{n+1}x^{-(n+3)} + \dots + a_{2n-2}x^{-2n})]e^{-\frac{1}{x}} \\
+&= (b_{n+1} x^{-(n+1)} + b_{n+2}x^{-(n+2)} + \dots + b_{2n}x^{-2n})e^{-\frac{1}{x}}
+\end{align*}
+since $n$ is a constant.
+\end{proof}
+\end{theorem}
+
+\begin{lemma}
+$\lim_{x \rightarrow 0} E(x) = E(0) = 0$. Thus $E(x) \in C^0$.
+\begin{proof}
+The left limit is trivially zero. On the right, as $x$ approaches zero from the positive direction, $-\frac{1}{x}$ approaches negative infinity, so $e^{-\frac{1}{x}}$ approaches zero. 
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+$\lim_{x \rightarrow 0^+} \frac{1}{x}e^{-\frac{1}{x}} = 0$.
+\begin{proof}
+\begin{align*}
+\lim_{x \rightarrow 0^+} \frac{e^{-\frac{1}{x}}}{x}
+= \lim_{x \rightarrow 0^+} \frac{x^{-1}}{e^{\frac{1}{x}}}
+= \lim_{x \rightarrow 0^+} \frac{-x^{-2}}{-x^{-2}e^{\frac{1}{x}}}
+= \lim_{x \rightarrow 0^+} e^{-\frac{1}{x}} = 0
+\end{align*}
+by using l'Hopital's rule on the second expression.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+\label{LemmaEn(x)PartsHaveRightLimitZero}
+$\lim_{x \rightarrow 0^+} \frac{1}{x^n}e^{-\frac{1}{x}} = 0$ for $n \in \N$.
+\begin{proof}
+The base case has been established. For the inductive case, assume that $\lim_{x \rightarrow 0^+} \frac{1}{x^{n-1}}e^{-\frac{1}{x}} = 0$. Then
+
+\begin{align*}
+\lim_{x \rightarrow 0^+} \frac{e^{-\frac{1}{x}}}{x^n}
+= \lim_{x \rightarrow 0^+} \frac{x^{-n}}{e^{\frac{1}{x}}}
+= \lim_{x \rightarrow 0^+} \frac{-nx^{-n-1}}{-x^{-2}e^{\frac{1}{x}}}
+= n\lim_{x \rightarrow 0^+} \frac{e^{-\frac{1}{x}}}{x^{n-1}} = 0
+\end{align*}
+by the inductive hypothesis.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+\label{CorollaryEn(x)HasRightLimitZero}
+$\lim_{x \rightarrow 0^+}E^{(n)}(x) = 0$ when $x > 0$ for all $n \in \N$.
+\begin{proof}
+By Theorem \ref{TheoremE(x)Form}, $E^{(n)}(x)$ is the sum of various terms of the form $\frac{1}{x^n}e^{-\frac{1}{x}}$, where $n \in N$. By Lemma \ref{LemmaEn(x)PartsHaveRightLimitZero}, each of these terms has right limit zero. Since $\frac{1}{x^n}e^{-\frac{1}{x}}$ is the sum of a finite number of these terms, it has right limit zero.
+\end{proof}
+\end{corollary}
+
+\begin{theorem}
+$E^{(n)}(0)$ exists and it equals zero for all $n \in \N$. $E^{(n)}(x)$ is continuous at $x=0$ for all $n \in \N$, thus making $E(x)$ smooth.
+\begin{proof}
+For $n \in N$, we need to evaluate
+\[
+\lim_{x \rightarrow 0} \frac{E^{(n-1)}(x)-0}{x-0} = 
+\lim_{x \rightarrow 0} \frac{E^{(n-1)}(x)}{x}
+\]
+
+The left limit is zero, since $E^{(n-1)}(x) = 0$ for $x \leq 0$. For the right limit, by Theorem \ref{TheoremE(x)Form}, $\frac{1}{x}E^{(n-1)}(x)$ has the form
+\[
+(a_{n+2} x^{-(n+2)} + a_{n+3}x^{-(n+3)} + \dots + a_{2n+1}x^{-2n+1})e^{-\frac{1}{x}}
+\]
+
+By repeated application of Lemma \ref{LemmaEn(x)PartsHaveRightLimitZero}, we see that this has right limit zero. Thus
+\[
+E^{(n)}(0) = \lim_{x \rightarrow 0} \frac{E^{(n-1)}(x)}{x} = 0
+\]
+Because $E^{(n)}(x) = 0$ on $x \leq 0$, $E^{(n)}(0) = 0$, and $E^{(n)}(x)$ is continuous at $x = 0$ for all $n \in \N$. Combined with smoothness everywhere else, this implies that $E(x)$ is smooth everywhere.
+\end{proof}
+\end{theorem}
+
+\subsection*{Part b}
+
+Is $E(x)$ analytic?
+
+No. A function $f$ defined on an open interval $(a, b)$ is analytic at $x \in (a, b)$ if it equals its a power series in a neighborhood of $x$. More specifically, for every $x$ there exists a $\delta > 0$ such that $|h| < \delta$ implies that
+
+\[
+f(x+h) = \sum_{r=0}^\infty a_r h^r
+\]
+
+where $a_r = \frac{f^{(r)}(x)}{r!}$.
+
+For $E(x)$ at $x=0$, $E^{(n)}(0) = 0$ for all whole numbers $n$, as established in Part a. Thus $a_r = 0$ for all whole numbers $r$, and the power series is just $0$. However, for $h > 0$, $f(h) \neq 0$ since $e^{-\frac{1}{x}}$ is a strictly positive function. Thus $E(x)$ is not analytic.
+
 \section*{Problem 29}
 
 Prove that the interval $[a, b]$ is not a zero set.

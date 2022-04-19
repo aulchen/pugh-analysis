@@ -925,7 +925,9 @@ Suppose that $E \subset \R^m$ is open, bounded, and starlike, and $p_0$ is a cen
 
 Is it true or false that all points $p_1$ in a small enough neighborhood of $p_0$ are also centers for $E$?
 
-False. Consider $\R^2$, the open rectangles $A = (-1, 1) \times (2, 0)$, $B = (-1/2, -1/2) \times (1/2, 1/2)$, and let $E = A \cup B$. $E$ is clearly open and bounded, and a bit of thought will show that $A$ is starlike with $p_0 = (0, 0)$ as a center.
+False. Consider $\R^2$, the open rectangles $A = (-1, 0) \times (2, 1)$, $B = (-1/2, -1/2) \times (1/2, 1/2)$, and let $E = A \cup B$. $E$ is clearly open and bounded.
+
+I claim that $p_0 = (0, 0)$ is a center of $E$, making $E$ starlike. For $q \in B$, the case is trivial, since $p_0$ is the informal center of the box. For $q \in A$, imagine the box as half (with edge removed) of a unit disk.
 
 For all $0 < \epsilon < \frac{1}{2}$, consider the point $p_1 = (0, -\epsilon)$. $p_1 \in E$. The point $p_2 = (1, \epsilon)$ is also an element of $E$. By symmetry, the line segment between $p_1$ and $p_2$ runs through $(\frac{1}{2}, 0)$, which is not in $E$. Thus for all $0 < \epsilon < \frac{1}{2}$, $p_1$ is not a center for $E$.
 
@@ -972,6 +974,8 @@ For $m > 2$, let $a, b \in E$ be centers of $E$, $c \in \bar{ab}$ be the prospec
 \subsubsection*{Part c}
 
 Is it closed as a subset of $E$?
+
+I think it is, but I can't prove it at the moment. Let the set of centers be $C \subset E$. Because the set of centers is convex, it is (should be?) the union of its supporting hyperplanes. These supporting hyperplanes are closed when they intersect with $E$, and not otherwise. Thus the boundary of $C$ is either $E$, which is closed in $E$, or a hyperplane, which is closed. But I don't know how to make this precise.
 
 Here's a random lemma that I came up with. I don't need it yet, but I might need it later, so I'm saving it.
 
