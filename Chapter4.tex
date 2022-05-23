@@ -157,7 +157,25 @@ This is immediate. By the theorems in the book, the uniform limit of continuous 
 
 At most ten discontinuities.
 
-TODO.
+We begin with a lemma on how discontinuities in the limiting function imply discontinuities in the sequence.
+
+\begin{lemma}
+Let $f_n, f$ be as described in the problem, and let $f$ be discontinuous at $x_0$. Then there exists $N \in \N$ such that for all $n \geq N$, $f_n$ is discontinuous at $x_0$.
+
+\begin{proof}
+Suppose not. Then for all $k \in \N$, there exists an $a > k$ such that $f_a$ is continuous at $x_0$.  By uniform convergence, there exists $N \in \N$ such that for all $n \geq N$, $|f_n - f|_{\sup} < \frac{\epsilon}{3}$. Choose $n \geq N$ such that $f_n$ is continuous at $x_0$.
+
+Let $\epsilon > 0$ be arbitrary. By the continuity of $f_n$, there exists $\delta > 0$ such that $|x-x_0| < \delta$ implies $|f_n(x) - f_n(x_0)| < \frac{\epsilon}{3}$. Because $n \geq N$, $|f_n - f|_{\sup} < \frac{\epsilon}{3}$ implies that for all $x \in (x_0-\delta, x_0 + \delta)$,
+
+\[
+|f(x) - f(x_0)| < \epsilon
+\]
+
+implies that $f$ is continuous at $x_0$, contradicting the assumption that $f$ is discontinuous at $x_0$. Thus there is some $k \in \N$ such that for all $n \geq k$, $f_n$ is discontinuous at $x_0$.
+\end{proof}
+\end{lemma}
+
+The statement is true by the contrapositive. If $f$ has more than ten discontinuities, then by the above lemma, there exists some $N \in \N$ such that for all $n \geq N$, $f_n$ has discontinuities at the discontinuities of $f$. Thus $f$ having more than ten discontinuities implies the tail of $f_n$ has more than ten discontinuities. Taking contrapositives, this implies that if the tail of $f_n$ has at most ten discontinuities, $f$ has at most ten discontinuities.
 
 \subsection*{Part c}
 
