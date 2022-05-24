@@ -543,6 +543,36 @@ Show that $\B' = \{I, I_3, \dots I_n\}$ is a bad covering of $[a, b]$ with fewer
 
 Let $x \in [a, b]$. Since $\B$ is a covering of $[a, b]$, there exists $i \in 1, 2 \dots n$ such that $x \in I_i$. If $i \geq 3$, then because $I_i \in \B'$, $x$ is also covered by $\B'$. If $i = 1, 2$, then $x \in I = I_1 \cup I_2$, so $x$ is still covered by $\B'$. $\B'$ is a covering by open intervals, because $I$ is an open interval. $\B'$ is a bad covering. $|I| < |I_1| + |I_2|$ implies that $|I| + \sum_{j=3}^n I_j < \sum_{i=1}^n I_i < b-a$, implying that the total length of $\B'$ is less than the total length of $\B$. Thus $\B'$ is a bad covering with fewer intervals than $\B$, contradicting the assumption that $\B$ is the minimal bad covering. Thus, there are no bad coverings of $[a, b]$, coverings of $[a, b]$ can not have arbitrarily small length, and $[a, b]$ is not a zero set.
 
+\section*{Problem 30}
+
+The standard \textbf{middle-quarters Cantor set} $Q$ is formed by removing the middle quarter from $[0, 1]$, then removing the middle quarter from each of the remaining two intervals, then removing the middle quarter from each of the remaining four intervals, and so on.
+
+\subsection*{Part a}
+
+Prove that $Q$ is a zero set.
+
+Let $Q_n$ be the $n$th stage of the construction of $Q$, and let $|Q_n|$ be the total length of the intervals in $Q_n$.
+
+$Q_1$ consists of two intervals with total length of $3/8$, so $|Q_1| = 3/4$. $Q_2$ consists of four intervals with length $9/64$ so $|Q_2| = 9/16$. In general, $Q_n$ consists of $2^n$ closed intervals of length $(\frac{3}{8})^n$, thus implying that $|Q_n| = (\frac{3}{4})^n$.
+
+Let $\epsilon > 0$ be arbitrary, and choose $n$ such that $|Q_n| = (\frac{3}{4})^n < \epsilon$. This implies that $(\frac{3}{8})^n < \frac{\epsilon}{2^n}$. Since the length of an interval in $Q_n$ is $(\frac{3}{8})^n$, this means that we can replace each interval $I_i$ in $Q_n$ with a slightly larger open interval $I_i \subset(a_i, b_i)$ such that $b_i - a_i < \frac{\epsilon}{2^n}$. Since there are $2^n$ intervals in $Q_n$, the total length of all these open intervals is $\epsilon$. Since $Q$ is a subset of $Q_n$, we have thus covered $Q$ with open intervals of arbitrary small length. Thus $Q$ is a zero set.
+
+\subsection*{Part b}
+
+Formulate the natural definition of the middle-$\beta$ Cantor set.
+
+I will define the standard middle-$\beta$ Cantor set, for $\beta \in (0, 1)$, as the set formed by removing the middle $\beta$ from $[0, 1]$, then removing the middle $\beta$ from each of the remaining two intervals, then removing the middle $\beta$ from each of the remaining four intervals, and so on.
+
+\subsection*{Part c}
+
+Is this also a zero set? Prove or disprove.
+
+This is also a zero set. The proof is a generalization of Part a. Let $B$ be the middle-$\beta$ Cantor set, and let $\beta \in (0, 1)$ be fixed. Let $B_n$ and $|B_n|$ be as in Part a.
+
+$B_1$ consists of two intervals with total length of $\frac{1}{2}(1-\beta)$, so $|B_1| = 1-\beta$. $Q_2$ consists of four intervals with length $\frac{1}{4}(1-\beta)^2$ so $|B_2| = (1-\beta)^2$. In general, $B_n$ consists of $2^n$ closed intervals of length $(\frac{1-\beta}{2})^n$, thus implying that $|B_n| = (1-\beta)^n$.
+
+Let $\epsilon > 0$ be arbitrary, and choose $n$ such that $|B_n| = (1-\beta)^n < \epsilon$. This is possible because $\beta \in (0, 1)$ implies that the sequence $(1-\beta)^n \rightarrow 0$. Multiplying both sides by $1/2^n$ shows that that $(\frac{1-\beta}{2})^n < \frac{\epsilon}{2^n}$. Since the length of an interval in $B_n$ is $(\frac{1-\beta}{2})^n$, this means that we can replace each interval $I_i$ in $B_n$ with a slightly larger open interval $I_i \subset(a_i, b_i)$ such that $b_i - a_i < \frac{\epsilon}{2^n}$. Since there are $2^n$ intervals in $B_n$, the total length of all these open intervals is $\epsilon$. For similar reasons to Part a, this implies that $B$ is a zero set.
+
 \section*{Problem 34}
 
 Assume that $\psi: [a, b] \rightarrow \R$ is continuously differentiable. A critical point of $\psi$ is an $x$ such that $\psi'(x) = 0$. A critical value is a number $y$ such that for at least one critical point $x$ we have $y = \psi(x)$.
