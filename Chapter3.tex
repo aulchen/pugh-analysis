@@ -573,6 +573,86 @@ $B_1$ consists of two intervals with total length of $\frac{1}{2}(1-\beta)$, so 
 
 Let $\epsilon > 0$ be arbitrary, and choose $n$ such that $|B_n| = (1-\beta)^n < \epsilon$. This is possible because $\beta \in (0, 1)$ implies that the sequence $(1-\beta)^n \rightarrow 0$. Multiplying both sides by $1/2^n$ shows that that $(\frac{1-\beta}{2})^n < \frac{\epsilon}{2^n}$. Since the length of an interval in $B_n$ is $(\frac{1-\beta}{2})^n$, this means that we can replace each interval $I_i$ in $B_n$ with a slightly larger open interval $I_i \subset(a_i, b_i)$ such that $b_i - a_i < \frac{\epsilon}{2^n}$. Since there are $2^n$ intervals in $B_n$, the total length of all these open intervals is $\epsilon$. For similar reasons to Part a, this implies that $B$ is a zero set.
 
+\section*{Problem 31}
+
+Define a Cantor set by removing from $[0, 1]$ the middle interval of length $1/4$. From the remaining two intervals $F^1$ remove the middle intervals of length $1/16$. From the remaining four intervals $F^2$ remove the middle intervals of length $1/64$, and so on. At the $n$th step in the construction $F^n$ consists of $2^n$ subintervals of $F^{n-1}$.
+
+\subsection*{Part a}
+
+Prove that $F = \cap F^n$ is a Cantor set but not a zero set. It is referred to as a \textbf{fat Cantor set}.
+
+To start, I will calculate the lengths of the intervals in $F_n$. Let $l_n$ be the lengths of the intervals in $F_n$. $l_0 = 1$. For $l_1$, since we remove a length of $1/4$ and split the remaining length in half,
+
+\[
+l_1 = \frac{1}{2}(1 - \frac{1}{4}) = \frac{3}{8}
+\]
+
+For $l_2$, we remove $1/16$ from the  length of $l_1$ and split the remainder in half, so
+
+\[
+l_2 = \frac{1}{2}(l_1 - \frac{1}{16})
+=
+\frac{1}{2}(\frac{1}{2}(1 - \frac{1}{4}) - \frac{1}{16})
+=
+\frac{1}{2^2}(1-\frac{1}{4}) - \frac{1}{32}
+\]
+
+Similarly for $l_3$,
+
+\begin{align*}
+l_3 &= 
+\frac{1}{2}(l_2 - \frac{1}{4^3})
+=
+\frac{1}{2}(\frac{1}{2^2}(1-\frac{1}{4}) - \frac{1}{2 \times 4^2} - \frac{1}{4^3}) \\
+&=
+\frac{1}{2^3}(1-\frac{1}{4}) - \frac{1}{2^2 \times 4^2} - \frac{1}{2 \times 4^3}
+\end{align*}
+
+Generally, for $n \geq 1$, we have the recursive relation
+
+\[
+l_n = \frac{1}{2}(l_{n-1} - \frac{1}{4^n})
+\]
+
+We now begin substituting. Substituting $l_{n-1} = \frac{1}{2}(l_{n-2}- \frac{1}{4^{n-1}})$,
+
+\[
+l_n = \frac{1}{2}(\frac{1}{2}(l_{n-2}- \frac{1}{4^{n-1}}) - \frac{1}{4^n})
+=
+\frac{1}{2^2}(l_{n-2} - \frac{1}{4^{n-1}}) - \frac{1}{2 \times 4^n}
+\]
+
+Substituting $l_{n-2} = \frac{1}{2}(l_{n-3} - \frac{1}{4^{n-2}})$,
+
+\begin{align*}
+l_n &= 
+\frac{1}{2^2}(\frac{1}{2}(l_{n-3} - \frac{1}{4^{n-2}}) - \frac{1}{4^{n-1}}) - \frac{1}{2 \times 4^n} \\
+&= \frac{1}{2^3}(l_{n-3} - \frac{1}{4^{n-2}}) - \frac{1}{2^2 \times 4^{n-1}} - \frac{1}{2 \times 4^n}
+\end{align*}
+
+Continuing this $n-1$ times until the the $l_{n-1}$ term reduces to $l_0$,
+
+\begin{align*}
+l_n &=
+\frac{1}{2^n}(l_0 - \frac{1}{4}) - \frac{1}{2^{n-1} \times 4^2} - \frac{1}{2^{n-2} \times 4^3} - \dots - \frac{1}{2^2 \times 4^{n-1}} - \frac{1}{2 \times 4^n} \\
+&= \frac{3}{2^{n+2}} - \sum_{k=1}^{n-1} \frac{1}{2^k \times 4^{n+1-k}}
+= \frac{3}{2^{n+2}} - \frac{1}{4^{n+1}} \sum_{k=1}^{n-1} 2^k \\
+&= \frac{3}{2^{n+2}} - \frac{1}{4^{n+1}}(2^n - 2)
+= \frac{1}{2^{n+1}} + \frac{1}{2^{2n+1}}
+\end{align*}
+
+This matches up with the heuristic evaluation of lengths. The total length of $F_n$ for $n \geq 1$ is
+
+\[
+|F_n| = 1 - \frac{1}{4} - \frac{1}{8} - \dots - \frac{1}{2^{n+1}} = 1 - \frac{1}{2} \sum_{k=1}^n \frac{1}{2^k}
+\]
+
+which approaches $\frac{1}{2}$ as $n$ goes to infinity. Similarly, by summing up the $2^n$ intervals, the total length of $F_n$ is $\frac{1}{2} + \frac{1}{2^{n+1}}$, which approaches to $\frac{1}{2}$ as $n$ goes to infinity.
+
+By the Moore-Kline Theorem, if I can show that $F$ is compact, nonempty, perfect, and totally disconnected, then it is homeomorphic to the standard middle-thirds Cantor set.
+
+$F$ is the intersection of compacts, so it is compact. It contains the point $0$, so it is nonempty. \textbf{TODO}.
+
 \section*{Problem 34}
 
 Assume that $\psi: [a, b] \rightarrow \R$ is continuously differentiable. A critical point of $\psi$ is an $x$ such that $\psi'(x) = 0$. A critical value is a number $y$ such that for at least one critical point $x$ we have $y = \psi(x)$.
