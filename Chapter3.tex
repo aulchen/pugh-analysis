@@ -738,11 +738,11 @@ Consider the characteristic functions $f(x)$ and $g(x)$ of the intervals $[1, 4]
 
 But both integrals are zero, while $f(3)g(3) - f(0)g(0) = 1$. Where is the error?
 
-The textbook integration by parts formula assumes that $f$ and $g$ are continuous on $[a, b]$. In this case, the interval in question is $[1, 5]$. However, $f$ is discontinuous at $x=4$, and $g$ is discontinuous at $x = 2$.
+The textbook integration by parts formula assumes that $f$ and $g$ are continuous on $[a, b]$. In this case, the interval in question is $[0, 3]$. However, $f$ is discontinuous at $x=1$, and $g$ is discontinuous at $x = 2$.
 
 Specifically, the Leibniz formula states that if $f, g$ are continuous at $x$, then $(fg)'(x) = (f'g)(x) + (fg')(x)$. If $f, g$ are continuous on the interval in question then the Leibniz formula says that $f'g + fg'$ is an antiderivative of $fg$, Then by the Antiderivative Theorem, the indefinite integral of $fg' + f'g$ differs from the antiderivative by a constant.
 
-However, in this case, $fg'$ is zero on $[1, 5]$, except at $x=2$, where it is undefined. A similar thing holds for $f'g$ at $x=4$. Since a potential antiderivative of $fg'$ has to have its derivative equal $fg'$ everywhere, not just almost everywhere, $fg'$ and $f'g$ do not have antiderivatives.
+However, in this case, $fg'$ is zero on $[0, 3]$, except at $x=2$, where it is undefined. A similar thing holds for $f'g$ at $x=1$. Since a potential antiderivative of $fg'$ has to have its derivative equal $fg'$ everywhere, not just almost everywhere, $fg'$ and $f'g$ do not have antiderivatives.
 
 In fact, because $fg'$ is zero almost everywhere, $\int_0^3 f(x)g'(x) dx = 0$.
 
