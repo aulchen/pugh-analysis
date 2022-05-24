@@ -10,11 +10,12 @@
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
-
 
 \newcommand{\B}{\mathbb{B}}
 \newcommand{\osc}{\text{osc}}
+\newcommand{\diam}{\text{diam}}
 
 \author{Arthur Chen}
 \title{Chapter 3 Functions of a Real Variable}
@@ -669,5 +670,80 @@ The union of countable sets is a countable set, which is a zero set.
 Generalize this result to continuous functions on $\R \rightarrow \R$.
 
 The result immediately generalizes. Divide $\R$ into countably many intervals of length $1$. By Part a, there are countably many critical values of $f$ on each of these intervals, and the countable union of countable sets is a zero set. Thus the set of critical values of a continuously differentiable function $f: \R \rightarrow \R$ is a zero set. 
+
+\section*{Problem 36}
+
+We say that $f: (a, b) \rightarrow \R$ has a \textbf{jump discontinuity} (or a discontinuity of the \textbf{first kind}) at $c \in (a, b)$ if
+
+\[
+f(c^-) = \lim_{x \rightarrow c^-} f(x) \text{ and } f(c^+) = \lim_{x \rightarrow c^+} f(x)
+\]
+
+exist, but are either unequal or are unequal to $f(c)$. An \textbf{oscillating discontinuity} (or a discontinuity of the \textbf{second kind} is any nonjump discontinuity).
+
+\subsection*{Part a}
+
+Show that $f: \R \rightarrow \R$ has at most countably many jump discontinuities.
+
+I will first start with showing that $f: [0, 1] \rightarrow \R$ has countably many jump discontinuities. Let $M(c)$ be defined as
+
+\[
+M(c) =
+\begin{cases}
+\max\{ |f(c^-) - f(c)|, |f(c^+) - f(c)|\} & \text{ if } f \text{ has a jump discontinuity at } c \\
+0 & \text{ else}
+\end{cases}
+\]
+
+Let $A_n$ be the set of points in $\R$ such that $M(c) > \frac{1}{n}$. It's clear that the set of jump discontinuities of $f$ is $A = \cup_{n=1}^\infty A_n$.
+
+For all $c \in A_n$, because $c$ is a jump discontinuity, there exists $\delta_-, \delta_+ > 0$ such that $x \in (c-\delta_-, c)$ implies that $|f(x) - f(c^-)| < \frac{1}{2n}$, with a similar result for $\delta_+$. Let $\delta = \min (\delta_-, \delta_+)$. Note that $\delta$ depends on $c$.
+
+I claim that $(c - \delta, c + \delta) - \{c\} \subset A_n^C$. Let $x \in (c - \delta, c + \delta) - \{c\}$. If $f$ is continuous at $x$, or if $x$ is an oscillating discontinuity of $x$, the result is trivial.
+
+If $x$ is a jump discontinuity of $x$, then the left and right limits of $f$ exist at $x$. Let $\gamma = \min\{|x-c|, |x - (c-\delta)|, |x-(c+\delta)| \}$. If $p_n$ is an arbitrary sequence such that $p_n \rightarrow x$, then eventually the tail of $p_n$ will lie entirely in $(x-\gamma, x+\gamma) \subset (c - \delta, c + \delta) - \{c\}$. Thus
+
+\[
+\diam f((x - \gamma, x + \gamma)) < \frac{1}{n}
+\]
+
+implies that $x$ is not in $A_n$. Thus $A_n$ is a zero set, implying that $A$ is a zero set. Thus $f:[0, 1] \rightarrow \R$ has at most countably many jump discontinuities. Repeating this argument for all $\Z$ shows that $f:\R \rightarrow \R$ has at most countably many jump discontinuities.
+
+\subsection*{Part b}
+
+What about the function
+\[
+f(x) = 
+\begin{cases}
+\sin \frac{1}{x} & \text{ if } x > 0 \\
+0 & \text{ if } x \leq 0
+\end{cases}
+\]
+
+$f$ is continuous when $x \neq 0$, since it on the left it is a constant function, and on the right it is the composition of continuous functions. $f$ has an oscillating discontinuity at $x=0$. Consider the sequences $p_n = 1/ (\frac{\pi}{2} + 2n)$ and $q_n = 1/ (\frac{3\pi}{2} + 2n)$. Both of these sequences converge to zero, but $f(p_n) = 1$ and $f(q_n) = -1$ for all $n \in \N$. Thus the right limit of $f$ does not exist at $0$, and so $x=0$ is an oscillating discontinuity.
+
+\subsection*{Part c}
+
+What about the characteristic function of the rationals?
+
+$f$ is oscillating discontinuous everywhere. For at any point $x$, there are a convergent sequence of rationals, and a convergent series of irrationals approaching $x$, implying that the limit of $f$ at $x$ does not exist.
+
+\section*{Problem 39}
+
+Consider the characteristic functions $f(x)$ and $g(x)$ of the intervals $[1, 4]$ and $[2, 5]$. The derivatives $f'$ and $g'$ exist almost everywhere. The integration by parts formula says that
+
+\[
+\int_0^3 f(x)g'(x) dx = f(3)g(3) - f(0)g(0) - \int_0^3 f'(x)g(x)dx
+\]
+
+But both integrals are zero, while $f(3)g(3) - f(0)g(0) = 1$. Where is the error?
+
+The textbook integration by parts formula assumes that $f$ and $g$ are continuous on $[a, b]$. In this case, the interval in question is $[1, 5]$. However, $f$ is discontinuous at $x=4$, and $g$ is discontinuous at $x = 2$.
+
+Specifically, the Leibniz formula states that if $f, g$ are continuous at $x$, then $(fg)'(x) = (f'g)(x) + (fg')(x)$. If $f, g$ are continuous on the interval in question then the Leibniz formula says that $f'g + fg'$ is an antiderivative of $fg$, Then by the Antiderivative Theorem, the indefinite integral of $fg' + f'g$ differs from the antiderivative by a constant.
+
+However, in this case, $fg'$ is zero on $[1, 5]$, except at $x=2$, where it is undefined. A similar thing holds for $f'g$ at $x=4$. Since a potential antiderivative of $fg'$ has to have its derivative equal $fg'$ everywhere, not just almost everywhere, $fg'$ and $f'g$ do not have antiderivatives.
+
+In fact, because $fg'$ is zero almost everywhere, $\int_0^3 f(x)g'(x) dx = 0$.
 
 \end{document}
