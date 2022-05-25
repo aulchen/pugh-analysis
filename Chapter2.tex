@@ -8,12 +8,14 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\newcommand{\diam}{\text{diam}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
 
+\newcommand{\diam}{\text{diam}}
 \newcommand{\dist}{\text{dist}}
+\newcommand{\inter}{\text{int}}
 
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
@@ -967,7 +969,7 @@ Let $E \subset \R^m$ be starlike. Then the set of centers is convex.
 \begin{proof}
 If $m=1$, the proof is trivial, because the starlike subsets of $\R$ are intervals. The $m=2$ case has been proven.
 
-For $m > 2$, let $a, b \in E$ be centers of $E$, $c \in \bar{ab}$ be the prospective center, and $d \in E$ be arbitrary. If $d$ is collinear with $\bar{acb}$, then the proof is trivial. Otherwise, a line and a point define a plane. By Theorem \label{TheoremCenterConvexityR2}, the triangle $\bigtriangleup abd$ in this plane is a subset of $E$, which implies that $\bar{dc} \subset E$. Thus $c$ is a center for $E$, and the set of centers of $E$ is convex.
+For $m > 2$, let $a, b \in E$ be centers of $E$, $c \in \bar{ab}$ be the prospective center, and $d \in E$ be arbitrary. If $d$ is collinear with $\bar{acb}$, then the proof is trivial. Otherwise, a line and a point define a plane. By Theorem \ref{TheoremCenterConvexityR2}, the triangle $\bigtriangleup abd$ in this plane is a subset of $E$, which implies that $\bar{dc} \subset E$. Thus $c$ is a center for $E$, and the set of centers of $E$ is convex.
 \end{proof}
 \end{theorem}
 
@@ -1009,6 +1011,62 @@ The \textbf{topologist's sine circle} is is the union of a circular arc and the 
 I will denote $A$ to be the part of the topologist's sine curve that is a vertical line segment through the origin, and $B$ to be the part that consists of the sine curve. It's clear that $A$ and $B$ individually are path-connected. The entire sine circle is path-connected because the circular arc connects the two sets.
 
 Consider $p = (0, 1) \in A$ and the of $\epsilon_0 = \frac{1}{2}$ neighborhood around $p$. The neighborhood does not have a path-connected subneighborhood. Each cycle of the sine waves goes from $-1$ to $1$ and back again, meaning that for all $\epsilon \leq \frac{1}{2}$, $B$ leaves the $\epsilon_0$ neighborhood of $p$. Thus the intersection of $B$ and the $\epsilon_0$ neighborhood of $p$ is a series of disconnected peaks of the sine function, which implies that the epsilon neighborhood of $p$ does not have a path connected subneighborhood.
+
+\subsection*{Problem 95}
+
+Let $S$ be a subset of a metric space $M$. With respect to the definitions in the book, prove the following.
+
+\subsubsection*{Part a}
+
+The closure of $S$ is the intersection of all closed subsets of $M$ that contain $S$.
+
+Let $C$ be all closed subsets of $M$ that contain $S$. Note that $C$ is nonempty because $M$ is in $C$. For $\cap C \subset \bar{S}$, $\bar{S}$ is a closed subset that contains $S$, so it is an element of $C$. Because taking the intersection of sets makes the sets weakly smaller, the equation follows. For $\bar{S} \subset \cap C$, let $s \in \bar{S}$ be arbitrary. Then there exists a sequence $(s_n) \in S$ such that $s_n \rightarrow s$. For all $C$, $S \subset C$. Viewing $s_n$ as a sequence in $C$, because limits are unique and $C$ is closed, $s \in C$. Since this is true for all $C$, $s \in \cap C$.
+
+\subsubsection*{Part b}
+
+The interior of $S$ is the union of all open subsets of $M$ that are contained in $S$.
+
+Let $O$ be all open subsets of $M$ that are contained in $S$. For all $O$, $O \subset S$ by definition. $\inter S \subset \cup O$, because by definition, $\inter S$ is an element of $O$, and the union only makes sets larger.
+
+For $\cap O \subset \inter S$, fix an $O$ and let $o \in O$ be arbitrary. $o \in S$ because $O \subset S$. Since by definition $\partial S = \bar{S} - \inter S$, $\bar{S} = \inter S \sqcup \partial S$. Thus if we can show that $o \in \bar{S}$ but $o \in (\partial S)^C$, then we have shown that $o \in \inter S$.
+
+We now characterize the boundary. This characterization is given without proof in the introduction to Problem 125, but I feel that I have to prove it before using it.
+
+\begin{lemma}
+\label{LemmaBoundaryContainsSandSC}
+Let $S$ be a subset of a metric space $M$. The boundary of $S$, $\partial S$, is the set of points such that for all $s \in \partial S$ and $r > 0$, the open neighborhood $B(s, r)$ contains points both in $S$ and $S^C$.
+\begin{proof}
+Suppose there exists $r > 0$ such that $B(s, r)$ contains no points of $S^C$. Then $B(s, r) \subset S$, and $s \in \inter S$, contradicting the assumption that $s \in \partial S$.
+
+Conversely, suppose that there exists $r > 0$ such that $B(s, r)$ contains no points of $S$. Then $B(s, r) \subset S^C$, and there exists no limiting sequence of points in $S$ that converge to $s$. Thus $s \in (\bar{S})^C$, contradicting the assumption that $s \in \partial S$.
+\end{proof}
+\end{lemma}
+
+Because $o \in S$ and $S \subset \bar{S}$, $o \in \bar{S}$. Because $O$ is open, there exists an open neighborhood around $o$ such that $B(o, r) \subset O \subset S$. By Lemma \ref{LemmaBoundaryContainsSandSC}, this implies that $o \in (\partial S)^C$, implying that $o \in \inter S$.
+
+\subsubsection*{Part c}
+
+The boundary of $S$ is a closed set.
+
+By definition, $\partial S = \bar{S} - \inter S$. Taking compliments, $(\partial S)^C = (\bar{S})^C \sqcup \inter S$, because $\inter S \subset S \subset \bar{S}$. $\inter S$ is open by definition, and because $\bar{S}$ is closed, $(\bar{S})^C$ is open. Thus $(\partial S)^C$ being open implies that $\partial S$ is closed.
+
+\subsubsection*{Part d}
+
+Why does Part a imply that the closure of $S$ equals $\lim S$?
+
+Let $(s_n)$ be a sequence in $S$ that has a limit $s$ in $M$, and let $C$ be the collection of all closed sets such that $S \subset C$. $s_n \in C$ for all $C$, $C$ being closed, and $s_n$ having a limit in $M$ implies that $s \in C$. Since this holds for all $C$, $s \in \cap C = \bar{S}$. Thus $\bar{S}$ contains all of the limit points of $S$.
+
+\subsubsection*{Part e}
+
+If $S$ is clopen, what is $\partial S$?
+
+$\bar{S} = \inter S$, so $\partial S = \bar{S} - \inter S = \emptyset$.
+
+\subsubsection*{Part f}
+
+Give an example of $S \subset \R$ such that $\partial(\partial S) \neq \emptyset$, and infer that "the boundary of the boundary $\partial \circ \partial$ is not always zero."
+
+Let $A = (0, 1) \cap \Q$. $\inter A = \emptyset$ while $\bar{A} = [0, 1]$, so $\partial A = [0, 1]$, while $\partial (\partial A) = \{0, 1\} \neq \emptyset$.
 
 \subsection*{Problem 96}
 
