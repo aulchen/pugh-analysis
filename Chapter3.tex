@@ -649,9 +649,29 @@ This matches up with the heuristic evaluation of lengths. The total length of $F
 
 which approaches $\frac{1}{2}$ as $n$ goes to infinity. Similarly, by summing up the $2^n$ intervals, the total length of $F_n$ is $\frac{1}{2} + \frac{1}{2^{n+1}}$, which approaches to $\frac{1}{2}$ as $n$ goes to infinity.
 
-By the Moore-Kline Theorem, if I can show that $F$ is compact, nonempty, perfect, and totally disconnected, then it is homeomorphic to the standard middle-thirds Cantor set.
+By the Moore-Kline Theorem, if I can show that $F$ is compact, nonempty, perfect, and totally disconnected, then it is homeomorphic to the standard middle-thirds Cantor set. The discussion as follows essentially follows the proof that the standard Cantor set is compact, nonempty, perfect, and totally disconnected.
 
-$F$ is the intersection of compacts, so it is compact. It contains the point $0$, so it is nonempty. \textbf{TODO}.
+$F$ is the intersection of compacts, so it is compact. It contains the point $0$, so it is nonempty. Let $E$ be the set of all endpoints that are contained in some $F^n$. $E$ is infinite, since each iteration $n$ except for the zeroth introduces $2^n$ new endpoints to $E$.
+
+To show that $F$ is perfect, take an arbitrary $x \in F$ and $\epsilon > 0$, and let $n$ be large enough such that $\frac{1}{2^{n+1}} + \frac{1}{2^{2n+1}} < \epsilon$. Since $F \subset F^n$, $x$ lies in one of the $2^n$ intervals of length $\frac{1}{2^{n+1}} + \frac{1}{2^{2n+1}}$ that make up $F^n$. Keeping $I$ fixed, $E \cup I$ is infinite, since by blowing up $I$ to $[0, 1]$ we can fit a miniature copy of $F$ in $I$, and $E$ is infinite. $E \cup I \subset F$, and $E \cup I \subset (x - \epsilon, x + \epsilon)$ imply that $F$ clusters at $x$, and so $F$ is perfect.
+
+For totally disconnected, keep $I$ fixed and consider $F^n$. $I$ is a closed interval in $F^n$, and $J = F^n - I$ is the union of finite closed intervals, so it's closed. Thus $I$ and $J$ are clopen in $F^n$, and by the Inheritance Principle, $I \cup F$ is clopen in $F$. Since $I$ is a subset of an arbitrary small epsilon-ball, $I \cup F$ is an arbitrarily small clopen subset. Thus $F$ is totally disconnected. By the Moore-Kline Theorem, $F$ is homeomorphic to the standard Cantor set.
+
+Intuitively, $F$ should have total length (or outer measure) $\frac{1}{2}$, as shown in the above calculation, thus making it not a zero set (or null set, in standard terminology). However, I don't know if that's rigorous enough, or if I have to show it using a proof by contradiction similar to Problem 29.
+
+\subsection*{Part b}
+
+Infer that being a zero set is not a topological property.
+
+The fat Cantor set is homeomorphic to the standard Cantor set. One is a zero set, the other isn't.
+
+\section*{Problem 33}
+
+\subsection*{Part a}
+
+Prove that the characteristic function $f$ of the middle-thirds Cantor set $C$ is Riemann integrable but that the characteristic function $g$ of the fat Cantor set $F$ is not.
+
+TODO. 
 
 \section*{Problem 34}
 
