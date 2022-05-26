@@ -16,6 +16,7 @@
 \newcommand{\B}{\mathbb{B}}
 \newcommand{\osc}{\text{osc}}
 \newcommand{\diam}{\text{diam}}
+\newcommand{\inter}{\text{int}}
 
 \author{Arthur Chen}
 \title{Chapter 3 Functions of a Real Variable}
@@ -671,7 +672,81 @@ The fat Cantor set is homeomorphic to the standard Cantor set. One is a zero set
 
 Prove that the characteristic function $f$ of the middle-thirds Cantor set $C$ is Riemann integrable but that the characteristic function $g$ of the fat Cantor set $F$ is not.
 
-TODO. 
+I will assume that the metric space is the interval $[0, 1]$.
+
+\begin{lemma}
+\label{InterCIsEmpty}
+$\inter C = \emptyset$
+\begin{proof}
+Suppose not. Then there exists an open set $A \subset C$. For any point $p \in A$, there is an open neighborhood with radius $r > 0$ such that $M_r p \subset A$. This implies that the interval $[p-r/2, p+r/2] \subset M_r p \subset A \subset C$, which contradicts that the standard Cantor set contains no intervals.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+\label{BarCIsC}
+$\bar{C} = C$.
+\begin{proof}
+For $C \subset \bar{C}$, $C$ is a perfect metric space, so every point of it is a clustering point and thus a limiting point.
+
+For $\bar{C} \subset C$, we take the contrapositive. Let $p \notin C$ be arbitrary. By the construction of $C$, there exists $N \in \N$ such that for all $n \geq N$, $p \notin C^n$. Since $C^n$ is the finite union of closed intervals, it is closed, implying that $(C^n)^C$ is open. Thus there is an open neighborhood of $p$ that contains no elements of $C^n$, meaning that the open neighborhood contains no elements of $C$, meaning that $p$ is not a clustering point of $C$. Combined with $p \notin C$, this implies that $p \notin \bar{C}$.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+\label{BoundaryCIsC}
+$\partial C = C$
+\begin{proof}
+$\partial C = \bar{C} - \inter C$.
+\end{proof}
+\end{corollary}
+
+\begin{corollary}
+$f$, the characteristic function of $C$ on $[0, 1]$, is Riemann-integrable.
+\begin{proof}
+By a corollary of the Riemann-Lebesgue Theorem, a characteristic function of a set $S$ is Riemann-integrable iff $\partial S$ is a zero set. The standard Cantor set is a zero set.
+\end{proof}
+\end{corollary}
+
+We now prove that $g$, the characteristic function of $F$, is not Riemann-integrable.
+
+\begin{lemma}
+$F$ contains no interval.
+\begin{proof}
+The proof is essentially the same as the first part of Theorem 69 in Chapter 2.
+
+Suppose not. Then there exists $(a, b) \subset C$ meaning that for all $n \in \N$, $(a, b) \subset C^n$. Take $n$ such that $\frac{1}{2^{n+1}} + \frac{1}{2^{2n+1}} < b-a$. Since $(a, b)$ is connected it lies wholly in a single $C^n$ interval with length $\frac{1}{2^{n+1}} + \frac{1}{2^{2n+1}}$. But you can't fit a longer interval in a smaller interval.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+$\partial F = F$.
+\begin{proof}
+$F$ is homeomorphic to $C$ by Problem 31. The proofs are the same as Lemma \ref{InterCIsEmpty}, Lemma \ref{BarCIsC}, and Corollary \ref{BoundaryCIsC}.
+\end{proof}
+\end{corollary}
+
+\begin{corollary}
+$g$, the characteristic function of $F$ on $[0, 1]$, is not Riemann-integrable.
+\begin{proof}
+The boundary of $F$ is not a zero set.
+\end{proof}
+\end{corollary}
+
+\subsection*{Part b}
+
+Why is there a homeomorphism $h: [0, 1] \rightarrow [0, 1]$ sending $C$ onto $F$?
+
+By the theorems in the book, any two Cantor spaces contained in $\R$ are ambiently homeomorphic, meaning that there exists a homeomorphism $g: \R \rightarrow \R$ such that one Cantor space is mapped to the other Cantor space. By Problem 31, $C$ and $F$ are Cantor spaces. Restrict $g$ to $[0, 1]$ to get $h$.
+
+\subsection*{Part c}
+
+Infer that the composite of Riemann integrable functions need not be Riemann integrable. How is this example related to Corollaries 28 and 32 of the Riemann-Lebesgue Theorem?
+
+$h(C) = F$, so $h^{-1}(F) = C$. This implies that $(f \circ h^{-1})$ is the characteristic function of $F$, so $f \circ h^{-1} = g$. $f$ is Riemann integrable by Part a, while $h$ being a homeomorphism means that it is bicontinuous. Thus $h^{-1}: [0, 1] \rightarrow [0, 1]$ is a bounded continuous function, and by the Riemann-Lebesgue Theorem is Riemann integrable. However, their composition $f \circ h^{-1} = g$ is not Riemann integrable.
+
+Corollary 28 states that if $m: [a, b] \rightarrow \R$ is Riemann integrable and $\phi: [c, d] \rightarrow \R$ is continuous, then the composite $\phi \circ m$ is continuous. However, in this case, the analogue for $m$, $f$, is not continuous, since it is a characteristic function on a set doesn't contain the entire integration region.
+
+Corollary 32 states that if $m$ is Riemann integrable, $\psi$ is a homeomorphism that bijects $[c, d]$ onto $[a, b]$ with $\psi(c) = a$, $\psi(d) = b$ and its inverse satisfies a Lipschitz condition, then $f \circ \psi$ is Riemann integrable. However, in this case $\psi^{-1}$ is $h$, and we have no idea whether or not $h$ satisfies a Lipschitz condition. Apparently it doesn't.
 
 \section*{Problem 34}
 
@@ -857,6 +932,12 @@ $f$ is continuous when $x \neq 0$, since it on the left it is a constant functio
 What about the characteristic function of the rationals?
 
 $f$ is oscillating discontinuous everywhere. For at any point $x$, there are a convergent sequence of rationals, and a convergent series of irrationals approaching $x$, implying that the limit of $f$ at $x$ does not exist.
+
+\section*{Problem 37}
+
+Suppose that $f: \R \rightarrow [-M, M]$ has no jump discontinuities. Does $f$ have the intermediate value property?
+
+No. Let $f = 1$ if $x \in \Q$, $f = -1$ if $x \in \R - \Q$. $f$ has oscillating discontinuities everywhere and clearly does not have the intermediate value property.
 
 \section*{Problem 39}
 
