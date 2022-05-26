@@ -504,9 +504,9 @@ Thus, if $\{I\}$ is an infinite bad covering, it reduces to a finite bad coverin
 
 Let $\B = \{I_1, \dots I_n\}$ be a bad covering such that $n$ is minimal among all bad coverings.
 
-There is at least one finite bad covering, by assumption. $n=1$ is a lower bound for the size of bad coverings. Then because $\R$ is complete, there exists a greatest lower bound for the sizes of the bad coverings, denoted $c$.
+There is at least one finite bad covering, by assumption. $n=1$ is a lower bound for the size of bad coverings. Then because $\R$ is complete, there exists a greatest lower bound for the sizes of the bad coverings, denoted $c$. $c$ must be a natural number, because if $c$ is not, then because the size of bad coverings are integers, the ceiling of $c$ is a greater lower bound, a contradiction.
 
-The must be a finite bad covering $\{C\}$ such that the size of $|\{C\}| = c$. Suppose not. Then all bad coverings have size $> c$, and size the sizes of the bad coverings must be integers, all bad coverings have size $\geq c+1$. This contradicts the assumption that $c$ is a greatest lower bound. This bad covering $\{C\}$ is the bad covering with minimal $n$ among all bad coverings.
+The must be a finite bad covering $\{C\}$ such that the size of $|\{C\}| = c$. Suppose not. Then all bad coverings have size $> c$, and since size the sizes of the bad coverings must be integers, all bad coverings have size $\geq c+1$. This contradicts the assumption that $c$ is a greatest lower bound. This bad covering $\{C\}$ is the bad covering with minimal $n$ among all bad coverings.
 
 \subsubsection*{iii}
 
@@ -658,7 +658,23 @@ To show that $F$ is perfect, take an arbitrary $x \in F$ and $\epsilon > 0$, and
 
 For totally disconnected, keep $I$ fixed and consider $F^n$. $I$ is a closed interval in $F^n$, and $J = F^n - I$ is the union of finite closed intervals, so it's closed. Thus $I$ and $J$ are clopen in $F^n$, and by the Inheritance Principle, $I \cup F$ is clopen in $F$. Since $I$ is a subset of an arbitrary small epsilon-ball, $I \cup F$ is an arbitrarily small clopen subset. Thus $F$ is totally disconnected. By the Moore-Kline Theorem, $F$ is homeomorphic to the standard Cantor set.
 
-Intuitively, $F$ should have total length (or outer measure) $\frac{1}{2}$, as shown in the above calculation, thus making it not a zero set (or null set, in standard terminology). However, I don't know if that's rigorous enough, or if I have to show it using a proof by contradiction similar to Problem 29.
+I will now show that $F$ is not a zero set.
+
+\begin{lemma}
+Let $\{A_n\}$ be a nested series of sets. If $|A_n| \geq \epsilon$ for all $n \in \N$, then $|A| = |\cap A| \geq \epsilon$.
+\begin{proof}
+Suppose not. Then $|A| < \epsilon$. Since the $A_n$ are nested, this implies that for some $k \in \N$, $|A_k| < \epsilon$, a contradiction.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+$F$ is not a zero set.
+\begin{proof}
+$F = \cap F_n$, which are nested. For all $n \in \N$, $|F_n| \geq \frac{1}{2}$, so $|F| \geq \frac{1}{2}$.
+\end{proof}
+\end{corollary}
+
+In fact, $|F|$ should equal $\frac{1}{2}$, but I don't know if the above argument is rigorous enough for that.
 
 \subsection*{Part b}
 

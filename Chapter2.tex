@@ -1020,13 +1020,13 @@ Let $S$ be a subset of a metric space $M$. With respect to the definitions in th
 
 The closure of $S$ is the intersection of all closed subsets of $M$ that contain $S$.
 
-Let $C$ be all closed subsets of $M$ that contain $S$. Note that $C$ is nonempty because $M$ is in $C$. For $\cap C \subset \bar{S}$, $\bar{S}$ is a closed subset that contains $S$, so it is an element of $C$. Because taking the intersection of sets makes the sets weakly smaller, the equation follows. For $\bar{S} \subset \cap C$, let $s \in \bar{S}$ be arbitrary. Then there exists a sequence $(s_n) \in S$ such that $s_n \rightarrow s$. For all $C$, $S \subset C$. Viewing $s_n$ as a sequence in $C$, because limits are unique and $C$ is closed, $s \in C$. Since this is true for all $C$, $s \in \cap C$.
+Let $\{C\}$ be all closed subsets of $M$ that contain $S$. Note that $\{C\}$ is nonempty because $M \in \{C\}$. For $\cap C \subset \bar{S}$, $\bar{S}$ is a closed subset that contains $S$, so it is an element of $C$. Because taking the intersection of sets makes the sets weakly smaller, the equation follows. For $\bar{S} \subset \cap C$, let $s \in \bar{S}$ be arbitrary. Then there exists a sequence $(s_n) \in S$ such that $s_n \rightarrow s$. For all $C$, $S \subset C$. Viewing $s_n$ as a sequence in $C$, because limits are unique and $C$ is closed, $s \in C$. Since this is true for all $C$, $s \in \cap C$.
 
 \subsubsection*{Part b}
 
 The interior of $S$ is the union of all open subsets of $M$ that are contained in $S$.
 
-Let $O$ be all open subsets of $M$ that are contained in $S$. For all $O$, $O \subset S$ by definition. $\inter S \subset \cup O$, because by definition, $\inter S$ is an element of $O$, and the union only makes sets larger.
+Let $\{O\}$ be all open subsets of $M$ that are contained in $S$. For all $O \in \{O\}$, $O \subset S$ by definition. $\inter S \subset \cup O$, because by definition, $\inter S$ is an element of $O$, and the union only makes sets larger.
 
 For $\cap O \subset \inter S$, fix an $O$ and let $o \in O$ be arbitrary. $o \in S$ because $O \subset S$. Since by definition $\partial S = \bar{S} - \inter S$, $\bar{S} = \inter S \sqcup \partial S$. Thus if we can show that $o \in \bar{S}$ but $o \in (\partial S)^C$, then we have shown that $o \in \inter S$.
 
