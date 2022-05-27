@@ -199,4 +199,63 @@ Finitely many discontinuities.
 
 No. From Problem 3 Part b above, there are functions with finitely discontinuities but uniformly converge to a function with infinite discontinuities.
 
+\section*{Problem 8}
+
+Is the sequence of functions $f_n: \R \rightarrow \R$ defined by
+
+\[
+f_n(x) = \cos(n+x) + \log(1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x))
+\]
+
+equicontinuous? Prove or disprove.
+
+\textbf{IN PROGRESS.}
+
+We first start with a lemma on $C^1$ functions and equicontinuity.
+
+\begin{lemma}
+Let $f_n: \R \rightarrow \R$ be a sequence of $C^1$ functions. Suppose that there exists $\epsilon > 0$ such that for all $\delta > 0$, there exists an interval $(s, t)$ with $t-s < \delta$ and an $n \in \N$ such that
+\[
+f_n(x) > \frac{\epsilon}{t-s}
+\]
+
+or
+
+\[
+f_n(x) < -\frac{\epsilon}{t-s}
+\]
+
+on the interval $(s, t)$. Then $(f_n)$ is not equicontinuous.
+\begin{proof}
+Because $f_n \in C^1$ for all $n \in \N$, by the Fundamental Theorem of Calculus
+\[
+f_n(t) = \int_s^t f'_n(x)dx
+\]
+
+In the case where $f_n(x) > 0$,
+
+\[
+\int_s^t f'_n(x)dx > \int_s^t \frac{\epsilon}{t-s} dx = \epsilon
+\]
+
+which violates equicontinuity. The case where $f_n(x) < 0$ is analogous.
+\end{proof}
+\end{lemma}
+
+We now give a result analogous to convergent sequences. The sum of a convergent and divergent sequence is divergent.
+
+\begin{lemma}
+If $f_n, g_n: \R \rightarrow \R$ be sequences of functions in $C^0$. If $f$ is equicontinuous but $g$ is not equicontinuous, $f+g$ is not equicontinuous.
+\begin{proof}
+Since $(g_n)$ is not equicontinuous, there exists an $\epsilon > 0$ such that for all $\delta_g>0$, there is an $n \in \N$ and interval $|s-t| < \delta_g$ such that $|g_n(s) - g_n(t)| > \epsilon$. Fix that epsilon and $n$. Because the $f_n$ are equally continuous, there is a $\delta_f > 0$ such that for all intervals $|s-t| < \delta_f$, we have $|f_n(s) - f_n(t)| < \frac{\epsilon}{2}$. Thus for that $n$ and interval $|s-t| < \delta = \min(\delta_f, \delta_g)$, we have
+
+\[
+|f_n(s) + g_n(s)- f_n(t) - g_n(t)| > \epsilon
+\]
+
+because $|g_n(s) - g_n(t)| > 2 \epsilon$ and $|f_n(s) - f_n(t)| < \epsilon$. Thus for all $\epsilon > 0$, there exists 
+
+\end{proof}
+\end{lemma}
+
 \end{document}
