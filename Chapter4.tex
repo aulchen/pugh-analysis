@@ -216,46 +216,66 @@ We first start with a lemma on $C^1$ functions and equicontinuity.
 \begin{lemma}
 Let $f_n: \R \rightarrow \R$ be a sequence of $C^1$ functions. Suppose that there exists $\epsilon > 0$ such that for all $\delta > 0$, there exists an interval $(s, t)$ with $t-s < \delta$ and an $n \in \N$ such that
 \[
-f_n(x) > \frac{\epsilon}{t-s}
+f_n(x) \geq \frac{\epsilon}{t-s}
 \]
 
 or
 
 \[
-f_n(x) < -\frac{\epsilon}{t-s}
+f_n(x) \leq -\frac{\epsilon}{t-s}
 \]
 
 on the interval $(s, t)$. Then $(f_n)$ is not equicontinuous.
 \begin{proof}
 Because $f_n \in C^1$ for all $n \in \N$, by the Fundamental Theorem of Calculus
 \[
-f_n(t) = \int_s^t f'_n(x)dx
+f_n(t) = f_n(s) + \int_s^t f'_n(x)dx
 \]
 
 In the case where $f_n(x) > 0$,
 
 \[
-\int_s^t f'_n(x)dx > \int_s^t \frac{\epsilon}{t-s} dx = \epsilon
+|f_n(t) - f_n(s)| =  f_n(t) - f_n(s) = \int_s^t f'_n(x)dx \geq \int_s^t \frac{\epsilon}{t-s} dx = \epsilon
 \]
 
 which violates equicontinuity. The case where $f_n(x) < 0$ is analogous.
 \end{proof}
 \end{lemma}
 
-We now give a result analogous to convergent sequences. The sum of a convergent and divergent sequence is divergent.
+We now give a result analogous to convergent sequences. The sum of a convergent and divergent sequence is divergent. Similarly, the sum of an equicontinuous sequence and a non-equicontinuous sequence is not equicontinuous.
 
 \begin{lemma}
-If $f_n, g_n: \R \rightarrow \R$ be sequences of functions in $C^0$. If $f$ is equicontinuous but $g$ is not equicontinuous, $f+g$ is not equicontinuous.
+If $f_n, g_n: \R \rightarrow \R$ be sequences of functions in $C^0$. If the $f_n$ are equally continuous but the $g_n$ are not equally continuous, the $(f+g)_n$ are not equally continuous.
 \begin{proof}
-Since $(g_n)$ is not equicontinuous, there exists an $\epsilon > 0$ such that for all $\delta_g>0$, there is an $n \in \N$ and interval $|s-t| < \delta_g$ such that $|g_n(s) - g_n(t)| > \epsilon$. Fix that epsilon and $n$. Because the $f_n$ are equally continuous, there is a $\delta_f > 0$ such that for all intervals $|s-t| < \delta_f$, we have $|f_n(s) - f_n(t)| < \frac{\epsilon}{2}$. Thus for that $n$ and interval $|s-t| < \delta = \min(\delta_f, \delta_g)$, we have
+Since the $g_n$ are not equally continuous, there exists an $\epsilon > 0$ such that for all $\delta_g>0$, there is an $n \in \N$ and interval $|s-t| < \delta_g$ such that $|g_n(s) - g_n(t)| > \epsilon$. Fix that epsilon and $n$. Because the $f_n$ are equally continuous, there is a $\delta_f > 0$ such that for all intervals $|s-t| < \delta_f$, we have $|f_n(s) - f_n(t)| < \frac{\epsilon}{2}$. 
+
+Let $\delta = \min(\delta_f, \delta_g)$. Fix the interval $|s-t| < \delta$ such that $|g_n(s) - g_n(t)| > \epsilon$. Since $\delta \leq \delta_f$, we also have $|f_n(s) - f_n(t)| < \frac{\epsilon}{2}$ on this interval. Thus on this interval,
 
 \[
-|f_n(s) + g_n(s)- f_n(t) - g_n(t)| > \epsilon
+|f_n(s) + g_n(s)- f_n(t) - g_n(t)| > \frac{\epsilon}{2}
 \]
 
-because $|g_n(s) - g_n(t)| > 2 \epsilon$ and $|f_n(s) - f_n(t)| < \epsilon$. Thus for all $\epsilon > 0$, there exists 
-
+Thus there exists $\epsilon/2 > 0$ such that for all $\delta > 0$, there is an $n \in N$ and interval $(s, t)$ with $t-s < \delta$ such that $|f_n(s) + g_n(s) - f_n(t) - g_n(t)| > \epsilon/2$. Thus the $(f+g)_n$ are not equally continuous.
 \end{proof}
 \end{lemma}
+
+The derivative of $f_n$ is
+
+\begin{align*}
+f'_n(x) &= -\sin(n+x) +
+\frac{
+\frac{1}{\sqrt{n+2}}n^n 2 \sin(n^n x) \cos(n^n x)
+}{
+1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x)
+} \\
+&= -\sin(n+x) +
+\frac{
+n^n \sin(2n^n x)
+}{
+\sqrt{n+2} + \sin^2(n^n x)
+}
+\end{align*}
+
+Insert something about how the log term is not equicontinuous due to the periodic nature, and how its period tends to zero as n goes to infinity. Since the cos term is equicontinuous (or at least tentatively it is), the whole things is not equicontinuous.
 
 \end{document}
