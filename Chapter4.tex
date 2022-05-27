@@ -14,6 +14,7 @@
 \newcommand{\N}{\mathbb{N}}
 
 \newcommand{\B}{\mathbb{B}}
+\newcommand{\var}{\text{var}}
 
 \author{Arthur Chen}
 \title{Chapter 4 Function Spaces}
@@ -209,77 +210,36 @@ f_n(x) = \cos(n+x) + \log(1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x))
 
 equicontinuous? Prove or disprove.
 
-\textbf{IN PROGRESS.}
-
-We first start with a lemma on $C^1$ functions and equicontinuity.
+Yes, the sequence is equicontinuous. We first show that sequences of equicontinuous functions form a vector space.
 
 \begin{lemma}
-Let $f_n: \R \rightarrow \R$ be a sequence of $C^1$ functions. Suppose that there exists $\epsilon > 0$ such that for all $\delta > 0$, there exists an interval $(s, t)$ with $t-s < \delta$ and an $n \in \N$ such that
-\[
-f_n(x) \geq \frac{\epsilon}{t-s}
-\]
+Let $f_n, g_n: \R \rightarrow \R$ be sequences of functions such that the $f_n$ are equally continuous and the $g_n$ are equally continuous. Then for all $\alpha, \beta \in \R$, $(\alpha f + \beta g)_n$ are equally continuous. In other words, equicontinuous sequences form a vector space.
 
-or
-
-\[
-f_n(x) \leq -\frac{\epsilon}{t-s}
-\]
-
-on the interval $(s, t)$. Then $(f_n)$ is not equicontinuous.
 \begin{proof}
-Because $f_n \in C^1$ for all $n \in \N$, by the Fundamental Theorem of Calculus
-\[
-f_n(t) = f_n(s) + \int_s^t f'_n(x)dx
-\]
-
-In the case where $f_n(x) > 0$,
+Fix $\epsilon > 0$. If $\alpha, \beta \neq 0$, then there exist $\delta_f, \delta_g > 0$ such that for all $n \in \N$, $|s-t| < \delta_f$ implies
 
 \[
-|f_n(t) - f_n(s)| =  f_n(t) - f_n(s) = \int_s^t f'_n(x)dx \geq \int_s^t \frac{\epsilon}{t-s} dx = \epsilon
+|f_n(s) - f_n(t)| < \frac{\epsilon}{2 |\alpha|}
 \]
-
-which violates equicontinuity. The case where $f_n(x) < 0$ is analogous.
-\end{proof}
-\end{lemma}
-
-We now give a result analogous to convergent sequences. The sum of a convergent and divergent sequence is divergent. Similarly, the sum of an equicontinuous sequence and a non-equicontinuous sequence is not equicontinuous.
-
-\begin{lemma}
-If $f_n, g_n: \R \rightarrow \R$ be sequences of functions in $C^0$. If the $f_n$ are equally continuous but the $g_n$ are not equally continuous, the $(f+g)_n$ are not equally continuous.
-\begin{proof}
-Since the $g_n$ are not equally continuous, there exists an $\epsilon > 0$ such that for all $\delta_g>0$, there is an $n \in \N$ and interval $|s-t| < \delta_g$ such that $|g_n(s) - g_n(t)| > \epsilon$. Fix that epsilon and $n$. Because the $f_n$ are equally continuous, there is a $\delta_f > 0$ such that for all intervals $|s-t| < \delta_f$, we have $|f_n(s) - f_n(t)| < \frac{\epsilon}{2}$. 
-
-Let $\delta = \min(\delta_f, \delta_g)$. Fix the interval $|s-t| < \delta$ such that $|g_n(s) - g_n(t)| > \epsilon$. Since $\delta \leq \delta_f$, we also have $|f_n(s) - f_n(t)| < \frac{\epsilon}{2}$ on this interval. Thus on this interval,
-
+and $|u -v| < \delta_g$ implies
 \[
-|f_n(s) + g_n(s)- f_n(t) - g_n(t)| > \frac{\epsilon}{2}
+|f_n(s) - f_n(t)| < \frac{\epsilon}{2 |\beta|}
 \]
 
-Thus there exists $\epsilon/2 > 0$ such that for all $\delta > 0$, there is an $n \in N$ and interval $(s, t)$ with $t-s < \delta$ such that $|f_n(s) + g_n(s) - f_n(t) - g_n(t)| > \epsilon/2$. Thus the $(f+g)_n$ are not equally continuous.
-\end{proof}
-\end{lemma}
-
-The derivative of $f_n$ is
-
+Take $\delta = \min(\delta_f, \delta_g)$. Then for all $n \in \N$ and $|x-y| < \delta$,
 \begin{align*}
-f'_n(x) &= -\sin(n+x) +
-\frac{
-\frac{1}{\sqrt{n+2}}n^n 2 \sin(n^n x) \cos(n^n x)
-}{
-1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x)
-} \\
-&= -\sin(n+x) +
-\frac{
-n^n \sin(2n^n x)
-}{
-\sqrt{n+2} + \sin^2(n^n x)
-}
+|\alpha f_n(x) + \beta g_n(x) - \alpha f_n(y) - \beta g_n(y)| &\leq |\alpha||f_n(x) - f_n(y)| + |\beta||g_n(x) - g_n(y)| \\
+&< \epsilon
 \end{align*}
 
-We now show that the $\cos$ part of the expression is equally continuous, but the $\log$ part is not equally continuous.
+thus $(\alpha f + \beta g)_n$ is equicontinuous. If $\alpha$ or $\beta$ equals zero then those terms drop out of the expression, and the inequality still holds.
+\end{proof}
+\end{lemma}
 
-\begin{theorem}
-$g(x) = \cos(n+x)$ is equally continuous.
+We now prove that the cosine and log terms are equicontinuous, which combined with the above lemma show that $f$ is equicontinuous. In all that follows, let $g_n(x) = \cos(n+x)$ and $h_n(x) = \log(1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x))$.
+
+\begin{lemma}
+The $g_n$ are equally continuous.
 \begin{proof}
 Let $\epsilon = \delta$. $\cos(n+x) = C^1$, so by the Fundamental Theorem of Calculus
 
@@ -290,12 +250,59 @@ Let $\epsilon = \delta$. $\cos(n+x) = C^1$, so by the Fundamental Theorem of Cal
 
 for all $n \in \N$.
 \end{proof}
-\end{theorem}
+\end{lemma}
+
+We now show that the $h_n$ are equally continuous.
+
+\begin{lemma}
+\label{HnBoundedVariation}
+$h_n$ has variation bounded by $\frac{1}{\sqrt{n+2}}$ for all $n \in \N$.
+\begin{proof}
+$h_n(x) = \log(1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x))$. The $\sin^2(n^n x)$ term has a maximum of $1$ and minimum of $0$. $\log$ is an increasing function, so 
+\[
+0 = \log(1) \leq h(x) \leq \log(1 + \frac{1}{\sqrt{n+2}}) \leq \frac{1}{\sqrt{n+2}}
+\]
+
+by taking the Taylor series of $\log(1+x)$ and truncating after the first term. $\frac{1}{\sqrt{n+2}} < 1$ for $n \in \N$, so the Taylor series converges.
+\end{proof}
+\end{lemma}
 
 \begin{theorem}
-$h(x) = \log(1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x))$ is not equally continuous.
+The $h_n$ are equally continuous.
+\begin{proof}
+Let $\epsilon > 0$ be arbitrary. By Lemma \ref{HnBoundedVariation}, $\var(h_n) \leq \frac{1}{\sqrt{n+2}}$. When $n$ is large enough such that $\frac{1}{\sqrt{n+2}} < \epsilon$, the conditions for equicontinuity are automatically met, since for all intervals, $\var(h_n) < \epsilon$. Let $N \in \N$ be the largest $n$ such that $\frac{1}{\sqrt{n+2}} \geq \epsilon$. Since $\frac{1}{\sqrt{n+2}} \rightarrow 0$, $N$ exists and is finite.
+
+Computing $h'_n$,
+\[
+h'_n(x) = \frac {
+\frac{1}{\sqrt{n+2}} n^n 2 \sin(n^n x) \cos(n^n x)
+}{
+1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x)
+} 
+= 
+\frac{
+n^n \sin(2n^nx)
+}{
+\sqrt{n+2} + \sin^2(n^2 x)
+}
+\]
+
+which implies that
+
+\[
+|h'_n(x)| \leq \frac{n^n}{\sqrt{n+2}}
+\]
+
+Since $h_n \in C^1$ for all $n \in \N$, by the Fundamental Theorem of Calculus
+
+\begin{align*}
+|h_n(t) - h_n(s)| &= |\int_s^t h'_n(x)dx| \leq \int_s^t |h'_n(x)| dx \leq \int_s^t \frac{n^n}{\sqrt{n+2}} dx = \frac{(t-s)n^n}{\sqrt{n+2}}
+\end{align*}
+
+Letting $\delta_n < \frac{\sqrt{n+2}}{n^n}\epsilon$ satisfies the bound needed for equicontinuity for a given $n$. Let $\delta = \min(\delta_1, \dots \delta_n)$. Since the $n$ are finite, this operation is well defined, and $\delta > 0$. For $n \leq N$, the above calculation shows that the variation in $h_n$ is bounded by $\epsilon$ on intervals smaller than $\delta$. For $n > N$, as shown above, $h_n$ has variation less than $\epsilon$ everywhere. Thus the $h_n$ are equicontinuous.
+\end{proof}
 \end{theorem}
 
-Insert something about how the log term is not equicontinuous due to the periodic nature, and how its period tends to zero as n goes to infinity. Since the cos term is equicontinuous (or at least tentatively it is), the whole things is not equicontinuous.
+Thus, since the $g_n$ are equicontinuous and the $h_n$ are equicontinuous, $h_n = f_n + g_n$ is equicontinuous.
 
 \end{document}
