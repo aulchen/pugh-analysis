@@ -276,6 +276,26 @@ n^n \sin(2n^n x)
 }
 \end{align*}
 
+We now show that the $\cos$ part of the expression is equally continuous, but the $\log$ part is not equally continuous.
+
+\begin{theorem}
+$g(x) = \cos(n+x)$ is equally continuous.
+\begin{proof}
+Let $\epsilon = \delta$. $\cos(n+x) = C^1$, so by the Fundamental Theorem of Calculus
+
+\begin{align*}
+|\cos(n+t) - \cos(n+s)| &= |- \int_s^t \sin(n+x)dx| \leq \int_s^t |\sin(n+x)|dx \\
+&\leq \int_s^t 1 dx = t-s < \delta = \epsilon
+\end{align*}
+
+for all $n \in \N$.
+\end{proof}
+\end{theorem}
+
+\begin{theorem}
+$h(x) = \log(1 + \frac{1}{\sqrt{n+2}} \sin^2(n^n x))$ is not equally continuous.
+\end{theorem}
+
 Insert something about how the log term is not equicontinuous due to the periodic nature, and how its period tends to zero as n goes to infinity. Since the cos term is equicontinuous (or at least tentatively it is), the whole things is not equicontinuous.
 
 \end{document}
