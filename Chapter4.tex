@@ -2,6 +2,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{bbm}
+
 
 \newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
 \newtheorem{theorem}{Theorem}
@@ -13,8 +15,11 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 
+\newcommand{\osc}{\text{osc}}
+
 \newcommand{\B}{\mathbb{B}}
 \newcommand{\var}{\text{var}}
+\newcommand{\ind}{\mathbbm{1}}
 
 \author{Arthur Chen}
 \title{Chapter 4 Function Spaces}
@@ -49,7 +54,7 @@ d_N(f_n(x), f(x)) < \epsilon
 
 For which metric spaces are these concepts equivalent?
 
-TODO. The immediate thing that springs to mind are trivial metric spaces with only one point, 
+TODO. The immediate thing that springs to mind are trivial metric spaces with only one point.
 
 \section*{Problem 3}
 
@@ -161,6 +166,7 @@ At most ten discontinuities.
 We begin with a lemma on how discontinuities in the limiting function imply discontinuities in the sequence.
 
 \begin{lemma}
+\label{FDiscontinuousImpliesFnDiscontinuous}
 Let $f_n, f$ be as described in the problem, and let $f$ be discontinuous at $x_0$. Then there exists $N \in \N$ such that for all $n \geq N$, $f_n$ is discontinuous at $x_0$.
 
 \begin{proof}
@@ -199,6 +205,78 @@ $f_n$ has at least ten discontinuities for all $n$, but uniformly converges to t
 Finitely many discontinuities.
 
 No. From Problem 3 Part b above, there are functions with finitely discontinuities but uniformly converge to a function with infinite discontinuities.
+
+\subsection*{Part e}
+
+Countably many discontinuities, all of jump type.
+
+Yes. We first show that $f_n$ all having countably many discontinuities implies that $f$ has countably many discontinuities. Using Lemma \ref{FDiscontinuousImpliesFnDiscontinuous}, we know that $f$ having uncountably many discontinuities implies that after a certain $n \in \N$, all the $f_n$ have uncountably many discontinuities.
+
+We now show a lemma that will show that the jump discontinuities in $f_n$ imply jump discontinuities in $f$.
+
+\begin{lemma}
+Let $f_n: [a, b] \rightarrow \R$ and $f_n \rightrightarrows f$ as $n \rightarrow \infty$. Let $f$ have an oscillating discontinuity at $x_0$. Then there exists $n \in \N$ such that for all $k \geq n$, $f_k$ also has an oscillating discontinuity at $x_0$.
+
+\begin{proof}
+Since $f$ has an oscillating discontinuity at $x_0$, either the left limit or right limit of $f$ at $x_0$ does not exist. Without loss of generality, suppose it is the left limit. Then there exists $\epsilon > 0$ such that for all $\delta > 0$,
+
+\[
+\osc_{x \in (x_0 - \delta, x_0)} f(x) \geq \epsilon
+\]
+
+or alternatively, there exist $y, z \in (x_0 - \delta, x_0)$ such that
+
+\[
+|f(y) - f(z)| \geq \epsilon
+\]
+
+By uniform convergence, there exists $n \in \N$ such that for all $k \geq n$, $\sup |f_k - f| < \frac{\epsilon}{3}$. By uniform convergence,
+
+\[
+|f_n(y) - f(y)| < \frac{\epsilon}{3}
+\]
+
+with a similar result for $z$. By noting that $|f(y) - f(z)| \geq \epsilon$ and manipulating the inequalities,
+
+\[
+\frac{\epsilon}{3} \leq |f_k(y) - f_k(z)| \leq \frac{5\epsilon}{3}
+\]
+
+which shows that there exists an $\epsilon > 0$ such that for all $\delta > 0$, there exists $y, z \in (x_0 - \delta, x_0)$ such that $|f_k(y) - f_k(z)| \geq \epsilon$. Thus $f_k$ has an oscillating discontinuity at $x_0$.
+\end{proof}
+\end{lemma}
+
+The result then follows from the lemma by contrapositives. 
+
+\subsection*{Part f}
+
+No jump discontinuities.
+
+No. Consider the following functions, $g_n: [0, 1] \rightarrow \R$ and $h_n: (1, 2] \rightarrow \R$:
+
+\[
+g_n(x) = 
+\begin{cases}
+0 & x \in \R - \Q \\
+\frac{1}{n} & x \in \Q
+\end{cases}
+\]
+
+\[
+h_n(x) = 
+\begin{cases}
+1 & x \in \R - \Q \\
+1- \frac{1}{n} & x \in \Q
+\end{cases}
+\]
+
+$g_n$ is uniformly converging to $0$ on $[0, 1]$, while $h_n$ is uniformly converging to $1$ on $(1, 2]$. Let $f_n: [0, 2] \rightarrow \R$ be defined as $f_n = g_n + h_n$. The $f_n$ have oscillating discontinuities everywhere, and thus no jump discontinuities. We see that the $f_n$ are uniformly converging to $f$, defined as
+
+\[
+f(x) = \ind_{(1, 2]}(x)
+\]
+
+which has a jump discontinuity at $x=1$.
 
 \section*{Problem 8}
 
