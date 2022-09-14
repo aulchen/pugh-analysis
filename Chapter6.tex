@@ -35,11 +35,12 @@ We start with a lemma.
 \begin{lemma}
 A point is a zero set in $m^*$ and $n^*$.
 \begin{proof}
-The same $(x - \frac{1}{n}, x + \frac{1}{n}$ proof works for both closed and open intervals.
+The same $(x - \frac{1}{n}, x + \frac{1}{n})$ proof works for both closed and open intervals.
 \end{proof}
 \end{lemma}
 
 \begin{theorem}
+\label{ClosedLinearMeasureOfOpenIntervalIsLength}
 The closed linear outer measure of an open interval is its length.
 \begin{proof}
 Let the open interval be $(a, b)$. Since the closed interval $[a, b]$ covers $(a, b)$ and we take infimums of closed covers, $n^*A \leq b-a$.
@@ -69,12 +70,36 @@ by the inductive hypothesis. Thus the theorem is proved by induction.
 \end{proof}
 \end{theorem}
 
-\begin{theorem}
-If $A$ is a bounded interval with endpoints $a < b$, then $m^*A = n^*A = b-a$.
+\begin{lemma}
+The open and closed linear measures of a half-open interval are both its length.
 \begin{proof}
-If the interval is closed, then the closed outer measure is just its length. The linear outer measure was shown to be its length, $b-a$ in Theorem 3.
+Without loss of generality, let $[a, b)$ be the interval. Then there is a point $c \in (a, b)$, and 
+\[
+[a, b) = [a, c] \cup (c, b)
+\]
+and by Theorem \ref{ClosedLinearMeasureOfOpenIntervalIsLength} above and Theorem 3 in the book, the closed and open linear outer measures of each sub-interval equal the lengths of the subintervals.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+The closed and open linear outer measures of intervals with a side going to infinity are infinite.
+\begin{proof}
+Suppose not. Then there exists a countable covering of the interval by closed intervals such that the sum of their lengths is finite. This is impossible. The same holds for open linear outer measure. 
+\end{proof}
+\end{lemma}
+
+\begin{theorem}
+For all subsets $A$ of $\R$, $m^*A = n^*A$.
+\begin{proof}
+All subsets of $\R$ are the disjoint union of countable points and countable intervals. The countable points are zero sets and do not affect the measure. If the intervals have ends going to infinity, the open and closed linear outer measures are both infinity. Otherwise, the disjoint intervals all have equal open and closed linear and outer measure, and thus the sums of those measures are equal.
 \end{proof}
 \end{theorem}
+
+\subsection*{Part b}
+
+Why does this immediately imply that the middle-thirds Cantor set has linear outer measure zero?
+
+At each stage $C_n$ of the middle-thirds Cantor set, $C_n$ is a subset of $2^n$ closed intervals of length $\frac{1}{3^n}$, with total length $(\frac{2}{3})^n$. This immediately means that the closed linear outer measure, and thus the open linear outer measure, of $C_n$ is $(\frac{2}{3})^n$, which goes to zero.
 
 \section*{Problem 3}
 
