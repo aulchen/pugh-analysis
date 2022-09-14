@@ -13,6 +13,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
 
+\newcommand{\A}{\mathcal{A}}
+
 \newcommand{\diam}{\text{diam}}
 \newcommand{\dist}{\text{dist}}
 \newcommand{\inter}{\text{int}}
@@ -1121,5 +1123,29 @@ For all $\epsilon > 0$, by the Archimedian property there is some $k \in \N$ suc
 \end{theorem}
 
 The argument very easily generalizes to $\R^n$. From a similar argument to above, we can find cubes $A_1, A_2 \dots A_k$ with side lengths $10^{-k}$ such that there are uncountable elements of $E$ within the cube. By the Heine-Borel property on $\R^n$, $A_k$ is compact, and the intersection of all these cubes is a single point, $p$. For any epsilon-ball, we can find a cube $A_k$ that fits within the epsilon-ball centered at $p$ that contains uncountably many elements of $E$. Since this holds for all epsilon, it follows that $p$ is a condensing point of $E$.
+
+\subsection*{Problem 127}
+
+The metric space $M$ is \textbf{separable} if it contains a countable dense subset.
+
+\subsubsection*{Part a}
+
+Prove that $\R^m$ is separable.
+
+$\Q^m$ is a subset of $\R^m$, and its closure is all of $\R^m$. Specifically, let $x \in \R^m$ be arbitrary. For each coordinate of $x$, there is a sequence of rational numbers that converges to that coordinate, and let $x_n$ be a tuple of an arbitrary choice of those sequences. Then $x_n \rightarrow x$, $x_n \in Q^m$ implies that $x \in \overline{\Q^m}$, implying that $\R^m \subset Q^m$, as desired.
+
+\subsubsection*{Part b}
+
+Prove that every compact metric space is separable.
+
+For $n \in \N$, cover $M$ with open balls with radius $\frac{1}{n}$. By compactness, this reduces to a finite subcover, and denote that subcover $\A_n$. For each open ball $A_{n, i} \in \A_n$, denote its center as $a_{n, i}$, and let $A = \cup_{n, i \in \N^2} a_{n, i}$. $A$ is countable since it is the countable union of finite sets.
+
+I claim that $A$ is dense in $M$. Let $x \in M$ be arbitrary. Then for all $n \in \N$, there is an $i$ such that $x \in A_{n, i}$. Since $A_{n,i}$ is an open ball with radius $\frac{1}{n}$, $d(x, a_{n, i}) < \frac{1}{n}$. Taking the $a_{n, i}$ and putting them into a sequence, the $a_{n,i}$ sequence converges to $x$, showing that $M \subset \overline{A}$. Thus $A$ is dense in $M$ and countable, thus $M$ is separable.
+
+\subsection*{Problem 129}
+
+Think up a nonseparable metric space.
+
+Let $M$ be $\R$ with the discrete metric. Every subset of $\R$ is clopen, so all subsets equal their own closures. Thus the only set with closure equal to $\R$ is $\R$ itself, which is uncountable. Thus $\R$ with the discrete metric is not separable.
 
 \end{document}

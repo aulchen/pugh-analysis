@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\author{Arthur Chen}
+\title{Chapter 6 Measure Theory}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 3}
+
+A line in the plane that is parallel to one of the coordinate axes is a planar zero set because it is the Cartesian product of a point (it's a linear zero set) and $\R$.
+
+\subsection*{Part a}
+
+What about a line that is not parallel to the coordinate axis?
+
+A line that is not parallel to a coordinate axis is also a planar zero set. Since the line is not a coordinate axis, it eventually intersects the x-axis with angle $\theta \in (0, \pi/2)$. The rectangles have height $\epsilon \sin(\theta)$, length $\epsilon \cos(\theta)$, and an area of $\epsilon^2 \sin(\theta) \cos(\theta) = \epsilon^2/2 \sin(2\theta)$.
+
+Consider a section of the line of unit length. This section of the line can be covered by $1/\epsilon$ boxes with area $\epsilon^2 \sin(\theta) \cos(\theta)$, with total area $\epsilon \sin(\theta) \cos(\theta)$. Since this can be made arbitrarily small, a non-parallel line segment of unit length has planar measure zero. Since the line that is not parallel to a coordinate axis is a countable union of such segments, it also has planar measure zero.
+
+\subsection*{Part b}
+
+What about the situation in higher dimensions?
+
+It should essentially be analogous. Consider a plane in $\R^3$.  Divide the plane into sections with area one, and cover each section with boxes in which the plane intersects the corners of the boxes, and the intersection of the box and the plane has area $\epsilon > 0$. The volume of the boxes is proportional to $\epsilon^3$, while the total area is proportional to $1/\epsilon^2$. Thus the section of the plane with area one can be covered by boxes with volume proportional to $\epsilon$, and is thus a zero set. Since $\Z^2$ is countable, the entire plane is a zero set.
+
+\end{document}
