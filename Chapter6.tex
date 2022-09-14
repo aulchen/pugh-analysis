@@ -37,20 +37,44 @@ A point is a zero set in $m^*$ and $n^*$.
 \begin{proof}
 The same $(x - \frac{1}{n}, x + \frac{1}{n}$ proof works for both closed and open intervals.
 \end{proof}
+\end{lemma}
 
-\begin{lemma}
+\begin{theorem}
 The closed linear outer measure of an open interval is its length.
 \begin{proof}
 Let the open interval be $(a, b)$. Since the closed interval $[a, b]$ covers $(a, b)$ and we take infimums of closed covers, $n^*A \leq b-a$.
 
-To show that $n^*a \geq b-a$, assume that $n^*A < b-a$ and derive a contradiction. 
+To show that $n^*a \geq b-a$, we use induction on $k$, the size of the closed cover. This is essentially the proof of Theorem 2. If we can show that for all closed covers $I_k$ of $(a, b)$, $\sum |I_k| \geq b-a$, the properties of the infimum imply that $n^*A \geq b-a$.
+
+For $k=1$, $[a, b]$ covers $(a, b)$. Moving the left endpoint to the right means that the cover no longer contains $a$, with a similar statement when moving the right endpoint left. Thus all other closed covers of $(a, b)$ have length greater than $b-a$.
+
+Suppose we have shown that for all open intervals $(c, d)$ and closed covers $I_k$ of size $n$, we have $\sum_{k=1}^n |I_k| \geq b-a$. We now have $(a, b)$ which is covered by $J_l$ with size $n+1$. We want to show that $\sum_{l=1}^{n+1} |J_l| \geq (a, b)$.
+
+$a$ is contained in a closed interval, say $J_1$. Thus $a_1 \leq a$. If $b_1 \geq b$, then
+\[
+\sum_{l=1}^{n+1} |J_l| \geq |J_1| \geq b_1 - a_1 \geq b - a
+\]
+and the inductive hypothesis is proven. On the other hand, if $b_1 < b$, then the open interval divides into
+
+\[
+(a, b) = (a, b_1] \cup (b_1, b)
+\]
+
+and $\{J_2 \dots J_{n+1}$ covers $(b_1, b)$. Thus
+
+\[
+\sum_{l=1}^{n+1} |J_l| = |J_1| + \sum_{l=2}^{n+1} |J_l| \geq (b_1 - a) + (b-b_1) = b-a
+\]
+by the inductive hypothesis. Thus the theorem is proved by induction.
 \end{proof}
+\end{theorem}
 
 \begin{theorem}
 If $A$ is a bounded interval with endpoints $a < b$, then $m^*A = n^*A = b-a$.
 \begin{proof}
 If the interval is closed, then the closed outer measure is just its length. The linear outer measure was shown to be its length, $b-a$ in Theorem 3.
 \end{proof}
+\end{theorem}
 
 \section*{Problem 3}
 
