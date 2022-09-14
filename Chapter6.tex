@@ -16,11 +16,41 @@
 \newcommand{\N}{\mathbb{N}}
 
 \author{Arthur Chen}
-\title{Chapter 6 Measure Theory}
+\title{Chapter 6 Lebesgue Theory}
 \date{\today}
 
 \begin{document}
 \maketitle
+
+\section*{Problem 1}
+
+\subsection*{Part a}
+
+Show that the definition of linear outer measure is unaffected if we demand that the intervals $I_k$ in the coverings be closed instead of open.
+
+Let $m^*$ be the open linear outer measure (the linear outer measure with open intervals), and $n^*$ be the closed linear outer measure (the same with closed intervals).
+
+We start with a lemma.
+
+\begin{lemma}
+A point is a zero set in $m^*$ and $n^*$.
+\begin{proof}
+The same $(x - \frac{1}{n}, x + \frac{1}{n}$ proof works for both closed and open intervals.
+\end{proof}
+
+\begin{lemma}
+The closed linear outer measure of an open interval is its length.
+\begin{proof}
+Let the open interval be $(a, b)$. Since the closed interval $[a, b]$ covers $(a, b)$ and we take infimums of closed covers, $n^*A \leq b-a$.
+
+To show that $n^*a \geq b-a$, assume that $n^*A < b-a$ and derive a contradiction. 
+\end{proof}
+
+\begin{theorem}
+If $A$ is a bounded interval with endpoints $a < b$, then $m^*A = n^*A = b-a$.
+\begin{proof}
+If the interval is closed, then the closed outer measure is just its length. The linear outer measure was shown to be its length, $b-a$ in Theorem 3.
+\end{proof}
 
 \section*{Problem 3}
 
