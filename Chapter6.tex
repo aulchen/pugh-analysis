@@ -153,9 +153,9 @@ Lebesgue measure is \textbf{regular} in the sense that each measurable set $E$ c
 \begin{proof}
 The converse does not rely on boundedness, so it should still hold in the unbounded case.
 
-For the forward, take $E \subset \R^2$. Let $R_k$ be the closed unit square, and place $R_k$s on all points on $\Z^2$. The $R_k$ are measurable and their union equals $\R^2$. The intersections between the squares have planar measure zero, and there are countably many intersections, so the intersections between the squares have no effect on measure.
+For the forward, take $E \subset \R^n$. Let $R_k$ be the closed cube in $\R^n$, and place $R_k$s on all points on $\Z^n$. The $R_k$ are measurable and their union equals $\R^n$. The intersections between the cubes have measure zero, and there are countably many intersections, so the intersections between the cubes have no effect on measure.
 
-Use the $R_k$s to split up $E$ and denote the resulting chunks $E_k$. Again, the double-counting forms a zero set and does not affect the results. We now essentially follow the book proof of Theorem 11, making sure that all the details are tidied up. Denote $E^C_k = R_k \backslash E_k$. By measurability of $R_k$,
+Use the $R_k$s to split up $E$ and denote the resulting chunks $E_k$. Again, the double-counting forms a zero set and does not affect the results. We now essentially follow the book proof of Theorem 11, making sure that all the details still hold. Denote $E^C_k = R_k \backslash E_k$. By measurability of $R_k$,
 
 \[
 m(R_k) = m(E_k) + m(E^C_k)
@@ -169,13 +169,14 @@ m(U_n) = \sum_{k=1}^\infty m(U_{n, k}), m(V_n) = \sum_{k=1}^\infty m(V_{n, k})
 
 The $U_n$ and $V_n$ sets are open, and the $U_n$ sets are decreasing towards $E$.
 
-Taking compliments, define $K_{n, k} = R_k \backslash V_{n, k}$. The $K_{n,k}$ are closed and subsets of $E_k$. By measurability of $K_{n, k}$, we thus have
+We now create the $F$ and $G$ sets. For the $F$ set, define
 
-\[
-m(K_{n,k}) = m(R_k) - m(V_{n, k})
-\]
+\begin{align*}
+V_n &= \cup_{k=1}^\infty V_{n, k} \\
+F_n &= V_n^C
+\end{align*}
 
-By DeMorgan's laws,
+$V_n$ is the union of open sets, and thus open, making the $F_n$ sets closed. $E_k^C \subset V_{n, k}$ implies $E^C \subset V_n$ implies $F_n \subset E$, and $V_{n, k} \rightarrow E_k$ implies $V_n \rightarrow E^C$ implies $F_n \rightarrow E$ as $n$ approaches infinity.
 
 \end{proof}
 \end{theorem}
