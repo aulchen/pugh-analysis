@@ -15,6 +15,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 
+\newcommand{\A}{\mathcal{A}}
+
 \author{Arthur Chen}
 \title{Chapter 6 Lebesgue Theory}
 \date{\today}
@@ -101,6 +103,18 @@ Why does this immediately imply that the middle-thirds Cantor set has linear out
 
 At each stage $C_n$ of the middle-thirds Cantor set, $C_n$ is a subset of $2^n$ closed intervals of length $\frac{1}{3^n}$, with total length $(\frac{2}{3})^n$. This immediately means that the closed linear outer measure, and thus the open linear outer measure, of $C_n$ is $(\frac{2}{3})^n$, which goes to zero.
 
+\subsection*{Part c}
+
+Show that the definition of linear outer measure is unaffected if we drop all openness/closedness requirements on the intervals $I_k$ in the coverings.
+
+The open and closed intervals were addressed in Part a. For intervals of the form $(a, b]$ and $[a, b)$, the intervals are the disjoint union of an open and closed interval.
+
+\subsection*{Part d}
+
+What about planar outer measure? Specifically, what if we demand that the rectangles be squares?
+
+Things remain unchanged. For a rectangle $R$ in the covering of $A$, let $S_1$ be the square with the side length equal to the minimum of the side lengths of the rectangle, and place the square flush against the side of the rectangle. The leftover $R\\S_1$ is a rectangle, and denote it $R_2$. Continuing this procedure, we either get termination, or a sequence of squares that converges upwards to the rectangle, maybe with some zero sets on the edges that don't affect the outer measure. Doing this for all rectangles in the covering of $A$ gives a covering of $A$ by squares with the same area.
+
 \section*{Problem 3}
 
 A line in the plane that is parallel to one of the coordinate axes is a planar zero set because it is the Cartesian product of a point (it's a linear zero set) and $\R$.
@@ -118,5 +132,19 @@ Consider a section of the line of unit length. This section of the line can be c
 What about the situation in higher dimensions?
 
 It should essentially be analogous. Consider a plane in $\R^3$.  Divide the plane into sections with area one, and cover each section with boxes in which the plane intersects the corners of the boxes, and the intersection of the box and the plane has area $\epsilon > 0$. The volume of the boxes is proportional to $\epsilon^3$, while the total area is proportional to $1/\epsilon^2$. Thus the section of the plane with area one can be covered by boxes with volume proportional to $\epsilon$, and is thus a zero set. Since $\Z^2$ is countable, the entire plane is a zero set.
+
+\section*{Problem 5}
+
+Prove that every closed set in $\R$ or $\R^n$ is a $G_\delta$-set. Does it follow at once that every open set is an $F_\sigma$ set? Why?
+
+For $k \in \N$, define
+
+\begin{align*}
+G_k &= \{x \in \R^n: xk \in \Z^n \}
+\end{align*}
+
+In other words, $G_k$ is $\Z^n$ shrunk by a factor of $k$, so all the points are $\frac{1}{k}$ distance apart from each other. Create a collection of open balls $A_k$ with radius $\frac{1}{k}$ and centers on the points of $G_k$, and define that collection as $\A_k$. Note that by the geometry, $\cup_{A_k \in \A_k} A_k = \R^n$
+
+Let $X$ be a closed set in $\R^n$. For all $k$, let $C_k$ be the union of all open balls in $\A_k$ such that $A_k \cap X \neq \emptyset$. $A_k$ is the union of open sets and thus open. Since 
 
 \end{document}
