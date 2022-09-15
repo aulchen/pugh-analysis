@@ -137,14 +137,47 @@ It should essentially be analogous. Consider a plane in $\R^3$.  Divide the plan
 
 Prove that every closed set in $\R$ or $\R^n$ is a $G_\delta$-set. Does it follow at once that every open set is an $F_\sigma$ set? Why?
 
-For $k \in \N$, define
+Let $X \subset R^n$ be closed. For all $k \in \N$, for every point in $X$, place an open ball with radius $\frac{1}{k}$, take their union, and denote the set $A_k$. By construction, $X \subset A_k$ and $A_k$ is open. Denote $A = \cap_{k=1}^\infty A_k$. By construction, $X \subset A$. $A$ is countable and equals $X$, so $X$ is a $G_\delta$-set. Specifically, let $p \in X^C$. Since $X$ is closed, points of $X$ do not get arbitrarily close to $p$. Thus by the Archimedian property, for some $k \in \N$, $p \in A_k^C$ implies that $p \in A^C$ implies $X^C \subset A^C$ implies $A \subset X$.
 
-\begin{align*}
-G_k &= \{x \in \R^n: xk \in \Z^n \}
-\end{align*}
+It immediately follows by taking compliments that all open sets in $\R^n$ are $F_\delta$ sets. For $Y \subset \R^n$ being open, take the compliment and build $A$, a $G_\delta$ set around $Y^C$. Then $A^C$ is an $F_\sigma$ set for $Y$.
 
-In other words, $G_k$ is $\Z^n$ shrunk by a factor of $k$, so all the points are $\frac{1}{k}$ distance apart from each other. Create a collection of open balls $A_k$ with radius $\frac{1}{k}$ and centers on the points of $G_k$, and define that collection as $\A_k$. Note that by the geometry, $\cup_{A_k \in \A_k} A_k = \R^n$
+\section*{Problem 6}
 
-Let $X$ be a closed set in $\R^n$. For all $k$, let $C_k$ be the union of all open balls in $\A_k$ such that $A_k \cap X \neq \emptyset$. $A_k$ is the union of open sets and thus open. Since 
+Complete the proofs of Theorems 16 and 21 in the unbounded, $n$-dimensional case.
+
+Since the numbering has changed, we reproduce the theorem:
+
+\begin{theorem}
+Lebesgue measure is \textbf{regular} in the sense that each measurable set $E$ can be sandwiched between an $F_\sigma$ set and a $G_\delta$ set, $F \subset E \subset G$, such that $G \\ F$ is a zero set. Conversely, if there is such an $F \subset E \subset G$ then $E$ is measurable.
+
+\begin{proof}
+The converse does not rely on boundedness, so it should still hold in the unbounded case.
+
+For the forward, take $E \subset \R^2$. Let $R_k$ be the closed unit square, and place $R_k$s on all points on $\Z^2$. The $R_k$ are measurable and their union equals $\R^2$. The intersections between the squares have planar measure zero, and there are countably many intersections, so the intersections between the squares have no effect on measure.
+
+Use the $R_k$s to split up $E$ and denote the resulting chunks $E_k$. Again, the double-counting forms a zero set and does not affect the results. We now essentially follow the book proof of Theorem 11, making sure that all the details are tidied up. Denote $E^C_k = R_k \backslash E_k$. By measurability of $R_k$,
+
+\[
+m(R_k) = m(E_k) + m(E^C_k)
+\]
+
+for all $k$. For each $k$, due to the measurability of $E$, there are decreasing sequences of open sets $U_{n, k}, V_{n, k}$ such that $E_k \subset U_{n, k}, E^C_k \subset V_{n, k}, m(E_k \backslash U_{n, k}) \rightarrow 0$, and $m(E^C_k \backslash V_{n, k}) \rightarrow 0$. For all $k$, denote $U_n = \cup_{k=1}^{\infty} U_{n, k}, V_n = \cup_{k=1}^{\infty} V_{n, k}$. Since all these sets are measurable, countable additivity of measure holds, so we get
+
+\[
+m(U_n) = \sum_{k=1}^\infty m(U_{n, k}), m(V_n) = \sum_{k=1}^\infty m(V_{n, k})
+\]
+
+The $U_n$ and $V_n$ sets are open, and the $U_n$ sets are decreasing towards $E$.
+
+Taking compliments, define $K_{n, k} = R_k \backslash V_{n, k}$. The $K_{n,k}$ are closed and subsets of $E_k$. By measurability of $K_{n, k}$, we thus have
+
+\[
+m(K_{n,k}) = m(R_k) - m(V_{n, k})
+\]
+
+By DeMorgan's laws,
+
+\end{proof}
+\end{theorem}
 
 \end{document}
