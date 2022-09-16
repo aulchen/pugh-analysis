@@ -153,30 +153,36 @@ Lebesgue measure is \textbf{regular} in the sense that each measurable set $E$ c
 \begin{proof}
 The converse does not rely on boundedness, so it should still hold in the unbounded case.
 
-For the forward, take $E \subset \R^n$. Let $R_k$ be the closed cube in $\R^n$, and place $R_k$s on all points on $\Z^n$. The $R_k$ are measurable and their union equals $\R^n$. The intersections between the cubes have measure zero, and there are countably many intersections, so the intersections between the cubes have no effect on measure.
+For the forward, take $E \subset \R^n$. Let $R_i$ be the closed cube in $\R^n$, and place $R_i$s on all points on $\Z^n$. The $R_i$ are measurable and their union equals $\R^n$. The intersections between the cubes have measure zero, and there are countably many intersections, so the intersections between the cubes have no effect on measure.
 
-Use the $R_k$s to split up $E$ and denote the resulting chunks $E_k$. Again, the double-counting forms a zero set and does not affect the results. We now essentially follow the book proof of Theorem 11, making sure that all the details still hold. Denote $E^C_k = R_k \backslash E_k$. By measurability of $R_k$,
-
-\[
-m(R_k) = m(E_k) + m(E^C_k)
-\]
-
-for all $k$. For each $k$, due to the measurability of $E$, there are decreasing sequences of open sets $U_{n, k}, V_{n, k}$ such that $E_k \subset U_{n, k}, E^C_k \subset V_{n, k}, m(E_k \backslash U_{n, k}) \rightarrow 0$, and $m(E^C_k \backslash V_{n, k}) \rightarrow 0$. For all $k$, denote $U_n = \cup_{k=1}^{\infty} U_{n, k}, V_n = \cup_{k=1}^{\infty} V_{n, k}$. Since all these sets are measurable, countable additivity of measure holds, so we get
+Use the $R_i$s to split up $E$ and denote the resulting chunks $E_i$ - that is, define
 
 \[
-m(U_n) = \sum_{k=1}^\infty m(U_{n, k}), m(V_n) = \sum_{k=1}^\infty m(V_{n, k})
+E_i = R_i \cap E
 \]
 
-The $U_n$ and $V_n$ sets are open, and the $U_n$ sets are decreasing towards $E$.
+for all $i$. Again, the double-counting forms a zero set and does not affect the results. We now essentially follow the book proof of Theorem 11, making sure that all the details still hold. Denote $E^C_i = R_i \backslash E_i$.
 
-We now create the $F$ and $G$ sets. For the $F$ set, define
+For each $i$, due to the measurability of $E_i$, there are decreasing sequences of open sets $U_{n, i}, V_{n, i}$ such that $E_i \subset U_{n, i}$ and $E^C_k \subset V_{n, i}, m(E_k \backslash U_{n, k}) \rightarrow 0$, and $m(E^C_k \backslash V_{n, k}) \rightarrow 0$.
+
+Adding up all of the chunks, we define
 
 \begin{align*}
-V_n &= \cup_{k=1}^\infty V_{n, k} \\
-F_n &= V_n^C
+U_n &= \bigcup_{i=1}^{\infty} U_{n, i} \\
+V_n &= \bigcup_{i=1}^{\infty} V_{n, i}
 \end{align*}
 
-$V_n$ is the union of open sets, and thus open, making the $F_n$ sets closed. $E_k^C \subset V_{n, k}$ implies $E^C \subset V_n$ implies $F_n \subset E$, and $V_{n, k} \rightarrow E_k$ implies $V_n \rightarrow E^C$ implies $F_n \rightarrow E$ as $n$ approaches infinity.
+The $U_n$ and $V_n$ sets are open and decreasing. We claim that the $U_n$ sets are decreasing towards $E$, because $E_i \subset U_{n, i}$ implies $\cup_{i=1}^\infty E_i = E \subset \cup_{i=1}^\infty U_{n, i} = U_n$.
+
+Define
+
+\[
+L_n = V_n^C
+\]
+
+The $L_n$ sets are closed and increasing. They are subsets of $E$, and increasing towards $E$. Now to create the $F_\sigma$ and $G_\delta$ sets, define $F = \cap_{n=1}^\infty U_n$ and $G = \cup_{n=1}^\infty L_n$. Thus we have the sandwich, $F \subset E \subset G$.
+
+We now show that $G \backslash F$ is a zero set.
 
 \end{proof}
 \end{theorem}
