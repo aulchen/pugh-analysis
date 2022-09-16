@@ -113,7 +113,7 @@ The open and closed intervals were addressed in Part a. For intervals of the for
 
 What about planar outer measure? Specifically, what if we demand that the rectangles be squares?
 
-Things remain unchanged. For a rectangle $R$ in the covering of $A$, let $S_1$ be the square with the side length equal to the minimum of the side lengths of the rectangle, and place the square flush against the side of the rectangle. The leftover $R\\S_1$ is a rectangle, and denote it $R_2$. Continuing this procedure, we either get termination, or a sequence of squares that converges upwards to the rectangle, maybe with some zero sets on the edges that don't affect the outer measure. Doing this for all rectangles in the covering of $A$ gives a covering of $A$ by squares with the same area.
+Things remain unchanged. For a rectangle $R$ in the covering of $A$, let $S_1$ be the square with the side length equal to the minimum of the side lengths of the rectangle, and place the square flush against the side of the rectangle. The leftover $R\backslash S_1$ is a rectangle, and denote it $R_2$. Continuing this procedure, we either get termination, or a sequence of squares that converges upwards to the rectangle, maybe with some zero sets on the edges that don't affect the outer measure. Doing this for all rectangles in the covering of $A$ gives a covering of $A$ by squares with the same area.
 
 \section*{Problem 3}
 
@@ -145,6 +145,21 @@ It immediately follows by taking compliments that all open sets in $\R^n$ are $F
 
 Complete the proofs of Theorems 16 and 21 in the unbounded, $n$-dimensional case.
 
+We first begin with a lemma.
+
+\begin{lemma}
+The countable union of $F_\sigma$ sets is an $F_\sigma$ set. The countable intersection of $G_\delta$ sets is a $G_\delta$ set.
+\begin{proof}
+Let $A_i$ be $F_\sigma$ sets, and $A_{i, j}$ be closed sets such that $\cup_{j=1}^\infty A_{i,j} = A_i$. Then
+
+\[
+A = \bigcup_{i=1}^\infty = \bigcup_{i=1}^\infty \bigcup_{j=1}^\infty A_{i,j} = \bigcup_{i,j \in \N^2} A_{i,j}
+\]
+
+is the countable union of closed sets, making $A$ a $F_\sigma$ set. The proof for $G$ is similar.
+\end{proof}
+\end{lemma}
+
 Since the numbering has changed, we reproduce the theorem:
 
 \begin{theorem}
@@ -153,17 +168,21 @@ Lebesgue measure is \textbf{regular} in the sense that each measurable set $E$ c
 \begin{proof}
 The converse does not rely on boundedness, so it should still hold in the unbounded case.
 
-For the forward, take $E \subset \R^n$. Let $R_i$ be the closed cube in $\R^n$, and place $R_i$s on all points on $\Z^n$. The $R_i$ are measurable and their union equals $\R^n$. The intersections between the cubes have measure zero, and there are countably many intersections, so the intersections between the cubes have no effect on measure.
+For the forward, take $E \subset \R^n$ and denote $H = E^C$. Let $R_i$ be the closed cube in $\R^n$, and place $R_i$s on all points on $\Z^n$. The $R_i$ are measurable and their union equals $\R^n$. The intersections between the cubes have measure zero, and there are countably many intersections, so the intersections between the cubes have no effect on measure.
 
-Use the $R_i$s to split up $E$ and denote the resulting chunks $E_i$ - that is, define
+Use the $R_i$s to split up $E$ and $H_i$ and denote the resulting chunks $E_i$ and $H_i$ - that is, define
 
-\[
-E_i = R_i \cap E
-\]
+\begin{align*}
+E_i &= R_i \cap E \\
+H_i &= R_i \cap H
+\end{align*}
 
-for all $i$. Again, the double-counting forms a zero set and does not affect the results. We now essentially follow the book proof of Theorem 11, making sure that all the details still hold. Denote $E^C_i = R_i \backslash E_i$.
+for all $i$. Note that some rectangles $R_i$ intersect both $E$ and $H$.
 
-For each $i$, due to the measurability of $E_i$, there are decreasing sequences of open sets $U_{n, i}, V_{n, i}$ such that $E_i \subset U_{n, i}$ and $E^C_k \subset V_{n, i}, m(E_k \backslash U_{n, k}) \rightarrow 0$, and $m(E^C_k \backslash V_{n, k}) \rightarrow 0$.
+
+
+
+
 
 Adding up all of the chunks, we define
 
@@ -182,7 +201,13 @@ L_n = V_n^C
 
 The $L_n$ sets are closed and increasing. They are subsets of $E$, and increasing towards $E$. Now to create the $F_\sigma$ and $G_\delta$ sets, define $F = \cap_{n=1}^\infty U_n$ and $G = \cup_{n=1}^\infty L_n$. Thus we have the sandwich, $F \subset E \subset G$.
 
-We now show that $G \backslash F$ is a zero set.
+I claim that
+
+\[
+m(L_n) = \sum_{i=1}^{\infty} m(L_{n, i})
+\]
+
+By finite additivity, 
 
 \end{proof}
 \end{theorem}
