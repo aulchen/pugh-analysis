@@ -168,46 +168,74 @@ Lebesgue measure is \textbf{regular} in the sense that each measurable set $E$ c
 \begin{proof}
 The converse does not rely on boundedness, so it should still hold in the unbounded case.
 
-For the forward, take $E \subset \R^n$ and denote $H = E^C$. Let $R_i$ be the closed cube in $\R^n$, and place $R_i$s on all points on $\Z^n$. The $R_i$ are measurable and their union equals $\R^n$. The intersections between the cubes have measure zero, and there are countably many intersections, so the intersections between the cubes have no effect on measure.
-
-Use the $R_i$s to split up $E$ and $H_i$ and denote the resulting chunks $E_i$ and $H_i$ - that is, define
+For the forward, take $E \subset \R^n$ and denote $H = E^C$. Let $R_i$ be the closed cube in $\R^n$, and place $R_i$s on all points on $\Z^n$. The $R_i$ are measurable and their union equals $\R^n$. The intersections between the cubes have measure zero, and there are countably many intersections, so the intersections between the cubes have no effect on measure. Define
 
 \begin{align*}
-E_i &= R_i \cap E \\
-H_i &= R_i \cap H
+E_i &= E \cap R_i \\
+H_i &= H \cap R_i
 \end{align*}
 
-for all $i$. Note that some rectangles $R_i$ intersect both $E$ and $H$.
+for all $R_i$. We will sandwich $E_i$ between sets such that their difference has zero measure, then take their countable union to get the $F$ and $G$ sets for $E$ itself.
 
+There are decreasing open sets $U_{i, n}, V_{i, n}$ with $U_{i, n} \supset E_i$, $V_{i, n} \supset H_i$ such that $\lim_{n \rightarrow \infty} m(U_{i,n}) \rightarrow m(E_i)$, $\lim_{n \rightarrow \infty} m(V_{i,n}) \rightarrow m(H_i)$ by the definition of outer measure. Denote 
 
+\[
+K_{i, n} = R_{i,n} \backslash V_{i, n}
+\]
 
+The $K_{i,n}$ are closed, increasing subsets of $E_i$. As a minor detail, note that $K_{i,n} \cup V_{i,n} \supset R_i$, since $V_{i,n}$ in general contains elements outside of $R_i$.
 
-
-
-Adding up all of the chunks, we define
+By the measurability of $R_i$,
 
 \begin{align*}
-U_n &= \bigcup_{i=1}^{\infty} U_{n, i} \\
-V_n &= \bigcup_{i=1}^{\infty} V_{n, i}
+m(K_{i,n}) &= m(R_i \backslash V_{i,n}) = m(R_{i,n}) - m(V_{i,n} \cap R_i) \\
+&= m(R_{i,n}) - m(V_{i,n}) + m(V_{i,n} \cap R_i^C)
 \end{align*}
 
-The $U_n$ and $V_n$ sets are open and decreasing. We claim that the $U_n$ sets are decreasing towards $E$, because $E_i \subset U_{n, i}$ implies $\cup_{i=1}^\infty E_i = E \subset \cup_{i=1}^\infty U_{n, i} = U_n$.
+implies as $n \rightarrow \infty$
+
+\[
+m(K_i) = m(R_i) - m(V_i) \longrightarrow 
+m(K_i) + m(V_i) = 1
+\]
+
+by the continuity of measure, since $m(V_{i,n}) \rightarrow m(E_i)$, $E_i \subset R_i$ imply $m(V_{i,n} \cap R_i^C) \rightarrow 0$.
 
 Define
-
 \[
-L_n = V_n^C
+F = \bigcup_{i,n \in \N^2} K_{n,i}
 \]
 
-The $L_n$ sets are closed and increasing. They are subsets of $E$, and increasing towards $E$. Now to create the $F_\sigma$ and $G_\delta$ sets, define $F = \cap_{n=1}^\infty U_n$ and $G = \cup_{n=1}^\infty L_n$. Thus we have the sandwich, $F \subset E \subset G$.
+$F$ is an $F_\sigma$ set since it is the countable union of closed sets.
 
-I claim that
-
+Define
 \[
-m(L_n) = \sum_{i=1}^{\infty} m(L_{n, i})
+G = \bigcap_{n=1}^\infty \bigcup_{i=1}^\infty U_{n,i}
 \]
+$G$ is a $G_\sigma$ set, since $\bigcup_{i=1}^\infty U_{n,i}$ is the union of open sets and thus open, and $G$ is the countable intersection of open sets.
 
-By finite additivity, 
+We now rewrite $G$ in a useful way for measure.
+
+\begin{lemma}
+\[
+G = \bigcap_{n=1}^\infty \bigcup_{i=1}^\infty U_{n,i} = \bigcup_{i=1}^\infty \bigcap_{n=1}^\infty U_{n,i}
+\]
+\begin{proof}
+I will denote the left expression $G_1$ and the right expression $G_2$.
+
+According to Wikipedia, the right is always a subset of the left. For the forward, let $n$ be fixed, and let $x \in \bigcup_{i=1}^\infty U_{n,i}$. Then there exists an $i$ that can vary with $n$ such that $x \in U_{n, i(n)}$. 
+Taking the intersection over all $n$, $x \in G_1$ means that for all $n$, we can find an $i(n)$ such that $x \in U_{n, i(n)}$.
+
+The $U_i$ are decreasing in $n$. Thus if $x \in U_{n, i}$ for a given $n$, then for all $m \leq n$, $x \in U_{m, i}$. Using this, we see that for $x \in G_1$, if $x \in U_{n, i(n)}$, then for all $m \leq n$, we have $x \in U_{m, i(n)}$.
+
+We now show that $G_1 \subset G_2$. For arbitrary $x \in G_1$, for all $n$, there is some $i$ such that $x \in U_{n, i}$. Because of the decreasing sets, this means that there is some $i$ such that for all $n$, $x \in U_{n,i}$. Suppose not. Then there is an $n \in \N$ such that $x \in U_{n, i}$ but $x \notin U_{n+1, i}$. Since $x \in G_1$, there is some other set, call it $j$, such that $x \in U_{n+1, j}$. By the decreasing sets property, this means that for $m \leq n+1$, $x \in U_{m, j}$. Since we can continue this for all $n$, we eventually get a set $U_{n, i}$ that contains $x$ for all $n$.
+
+I am not one hundred percent sure that that argument is rigorous, but that's the best I've got.
+
+Thus, $x \in G_1$ means that there is some $i$ such that for all $n \in \N$, $x \in U_{n, i}$. This is precisely the definition of $G_2$.
+\end{proof}
+\end{lemma}
+
 
 \end{proof}
 \end{theorem}
