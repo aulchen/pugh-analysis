@@ -271,8 +271,31 @@ Thus $\bigcap_{n=1}^\infty U_{i, n} \backslash \bigcup_{n=1}^\infty K_{i, n}$ is
 
 We now begin the proof of the Measurable Product Theorem in arbitrary spaces, possibly unbounded.
 
+\begin{lemma}
+If $A$ or $B$ is a zero set then so is $A \times B$.
+\end{lemma}
+
+\begin{proof}
+The proof is the same as in the book. Let $A \subset \R^n$, $B \subset \R^k$, and $mA = 0$. Fix $\epsilon > 0$. For all $\ell \in \N$, we can cover $A$ with open boxes $C_i \in \R^n$ whose total $n$-volume is so small that when taking the Cartesian product with boxes $D_\ell$ with coordinates $[-\ell, \ell]$ in $R^k$, we have
+
+\[
+m(C_i \times D_\ell) < \frac{\epsilon}{2^\ell}
+\]
+
+The union of all these boxes (where increasing $\ell$ causes the open boxes $C_i$ to shrink) covers $A \times \R^k$ and has measure $<\epsilon$. Thus $A \times \R^k$ is a zero set and so is its subset, $A \times B$.
+\end{proof}
+
+The proof of Lemma 24 in the book also follows immediately. Now for the Measurable Product Theorem.
+
 \begin{theorem}
-\textbf{TODO}
+If $A \subset \R^n$ and $B \subset \R^k$ are measurable then $A \times B$ is measurable and
+\[
+m(A \times B) = mA \cdot mB
+\]
+By convention, $0 \cdot \infty = \infty \cdot 0 = 0$.
+\begin{proof}
+
+\end{proof}
 \end{theorem}
 
 \end{document}

@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{enumitem}
+
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\author{Arthur Chen}
+\title{Chapter 5 Multivariable Calculus}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+Let $T: V \rightarrow W$ be a linear transformation, and let $p \in V$ be given. Prove that the following are equivalent:
+
+\begin{enumerate}[label=(\alph*)]
+\item $T$ is continuous at the origin.
+\item $T$ is continuous at $p$.
+\item $T$ is continuous at at least one point of $V$.
+\end{enumerate}
+
+For (a) to (b), let $p_n \in V$ be an arbitrary sequence such that $p_n \rightarrow p$. I claim that this implies $T(p_n) \rightarrow T(p)$ in $W$, meaning that $T$ is continuous at $p$.
+
+Although we can not use the translation invariance of the norm, we can derive a similar property for sequences when $X$ is a vector space.
+
+\begin{lemma}
+Let $V$ be a vector space. Translation is a continuous function.
+\begin{proof}
+Let $T: V \rightarrow V$ be defined such that $T(x) = x + y$, $x, y \in V$ are arbitrary, $y$ is fixed. Let $\epsilon > 0$ be arbitrary, and let $\delta = \frac{\epsilon}{2}$. Then the translation of the $\delta$-ball around $x$ to the $\delta$-ball around $x+y$ lies inside the $\epsilon$-ball around $x+y$.
+
+Specifically, $B_(x, \delta)$ is defined as
+
+\textbf{TO FINISH}
+
+\end{proof}
+\end{lemma}
+
+
+\begin{lemma}
+Let $V$ be a vector space and $d$ be a metric. Let $p_n \rightarrow p$ and $x \in X$ be arbitrary. Then $p_n + x \rightarrow p+x$.
+\begin{proof}
+Translation is continuous, and the product of continuous functions is continuous. All metrics are continuous, and the composition of continuous functions is continuous. Thus $p_n \rightarrow p$ implies
+
+\[
+\lim_{n \rightarrow \infty} d(p_n + x, p + x) = d(p + x, p + x) = 0
+\]
+
+by continuity.
+\end{proof}
+\end{lemma}
+
+Letting $d_W$ be the metric on $W$, we have
+
+\[
+d_W(T(x_n + p), T(p)) = d_W(T(x_n) + T(p)
+\]
+
+\end{document}
