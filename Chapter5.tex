@@ -33,40 +33,44 @@ Let $T: V \rightarrow W$ be a linear transformation, and let $p \in V$ be given.
 \item $T$ is continuous at at least one point of $V$.
 \end{enumerate}
 
-For (a) to (b), let $p_n \in V$ be an arbitrary sequence such that $p_n \rightarrow p$. I claim that this implies $T(p_n) \rightarrow T(p)$ in $W$, meaning that $T$ is continuous at $p$.
+For a to b, let $p_n \rightarrow p \in V$ be arbitrary. Consider $a_n  = p_n - p$, which converges to $0$. Then
+\[
+T(p_n) = T(a_n + p) = T(a_n) + T(p) \rightarrow T(p)
+\]
+by the linearity of $T$ and continuity at the origin.
 
-Although we can not use the translation invariance of the norm, we can derive a similar property for sequences when $X$ is a vector space.
-
-\begin{lemma}
-Let $V$ be a vector space. Translation is a continuous function.
-\begin{proof}
-Let $T: V \rightarrow V$ be defined such that $T(x) = x + y$, $x, y \in V$ are arbitrary, $y$ is fixed. Let $\epsilon > 0$ be arbitrary, and let $\delta = \frac{\epsilon}{2}$. Then the translation of the $\delta$-ball around $x$ to the $\delta$-ball around $x+y$ lies inside the $\epsilon$-ball around $x+y$.
-
-Specifically, $B_(x, \delta)$ is defined as
-
-\textbf{TO FINISH}
-
-\end{proof}
-\end{lemma}
-
-
-\begin{lemma}
-Let $V$ be a vector space and $d$ be a metric. Let $p_n \rightarrow p$ and $x \in X$ be arbitrary. Then $p_n + x \rightarrow p+x$.
-\begin{proof}
-Translation is continuous, and the product of continuous functions is continuous. All metrics are continuous, and the composition of continuous functions is continuous. Thus $p_n \rightarrow p$ implies
+b to c is trivial. For c to a, let $T$ be continuous at $q \in V$ and let $a_n \rightarrow 0$ be arbitrary. Then $q_n = q + a_n \rightarrow q$, and
 
 \[
-\lim_{n \rightarrow \infty} d(p_n + x, p + x) = d(p + x, p + x) = 0
+T(a_n) = T(q_n - q) = T(q_n) - T(q) \rightarrow T(q)-T(q) = 0
 \]
 
-by continuity.
-\end{proof}
-\end{lemma}
+\section*{Problem 22}
 
-Letting $d_W$ be the metric on $W$, we have
+If $Y$ is a metric space and $f:[a, b] \times Y \rightarrow \R$ is continuous, then show that
+\[
+F(y) = \int_a^b f(x, y)dx
+\]
+
+is continuous.
+
+Let $y_0 \in Y$ be arbitrary; we will show continuity of $F(y_0)$. Let $P$ be a partition of $[a, b]$, and let $a = x_1 < \dots < x_n = b$ be the points of the partition. Since $f$ is continuous, for an arbitrary $\epsilon > 0$, there exist $\delta_1, \dots \delta_n$ such that
+\[
+|y-y_0| < \delta_i \Rightarrow |f(x_i, y) - f(x_i, y_0)| < \frac{\epsilon}{n \times \text{mesh }P}
+\]
+
+Let $\delta = \min(\delta_i)$. Thus for $|y - y_0| < \delta$, letting $g(x) = f(x, y)$ and $h(x) = f(x, y_0)$,
 
 \[
-d_W(T(x_n + p), T(p)) = d_W(T(x_n) + T(p)
+|R(g, P, T) - R(h, P, T)| = \sum_{i=1}^n|f(x_i, y_0) - f(x_i, y)|\Delta t_i < \epsilon
 \]
+
+and letting the mesh go to zero,
+
+\[
+|F(y) - F(y_0)| = \bigg| \int_a^bf(x,y)dx - \int_a^bf(x, y_0)dx \bigg| \leq \epsilon
+\]
+
+as desired.
 
 \end{document}
